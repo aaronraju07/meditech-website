@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Equipment | MediCore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="main-header">
+        <a href="{{ url_for('home') }}" class="logo"><strong>MediCore</strong></a>
+        <nav class="main-nav" aria-label="Main Navigation">
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('products') }}">Products</a></li>
+                <li><a href="{{ url_for('trust') }}">About Us</a></li>
+                <li><a href="{{ url_for('trust') }}">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-icons">
+            <span role="button" tabindex="0" aria-label="Search Products" id="search-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </span>
+            <span role="button" tabindex="0" aria-label="Shopping Cart" id="cart-icon" style="position: relative;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span id="cart-badge" class="cart-badge">0</span>
+            </span>
+        </div>
+
+        <div id="search-overlay" class="search-overlay hidden">
+            <input type="text" id="global-search-input" placeholder="Search medical equipment...">
+            <button type="button" id="close-search" aria-label="Close search">&times;</button>
+        </div>
+    </header>
+
+    <main id="main-content" class="plp-container">
+        <header class="plp-header fade-in">
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li aria-current="page">All Products</li>
+                </ol>
+            </nav>
+            <h1 class="section-title">Medical Equipment Catalog</h1>
+            <p class="section-subtitle" style="margin: 0;">Showing all available devices and solutions.</p>
+        </header>
+
+        <div class="plp-layout">
+            <aside class="plp-sidebar fade-in">
+                <div class="filter-group">
+                    <h3>Category</h3>
+                    <label class="filter-label"><input type="checkbox" value="diagnostic" class="filter-checkbox"
+                            checked> Diagnostic</label>
+                    <label class="filter-label"><input type="checkbox" value="monitoring" class="filter-checkbox"
+                            checked> Monitoring</label>
+                    <label class="filter-label"><input type="checkbox" value="surgical" class="filter-checkbox" checked>
+                        Surgical</label>
+                </div>
+                <div class="filter-group">
+                    <h3>Certification</h3>
+                    <label class="filter-label"><input type="checkbox" value="fda" class="filter-checkbox"> FDA
+                        Approved</label>
+                    <label class="filter-label"><input type="checkbox" value="iso" class="filter-checkbox"> ISO
+                        13485</label>
+                </div>
+                <button type="button" id="clear-filters" class="btn btn-secondary"
+                    style="width: 100%; padding: 10px;">Clear Filters</button>
+            </aside>
+
+            <div class="plp-grid fade-in" id="product-grid">
+
+                <div class="product-card is-loading fade-in" data-category="monitoring" data-cert="fda iso">
+                    <picture>
+                        <img src="{{ url_for('static', filename='monitoring-main.jpg') }}" alt="Monitor Pro"
+                            loading="lazy">
+                    </picture>
+                    <div class="card-tag">Monitoring</div>
+
+                    <div class="card-hover-overlay">
+                        <div class="overlay-content">
+                            <h4>VitalMon Pro</h4>
+                            <div class="overlay-buttons">
+                                <a href="{{ url_for('product_details') }}" class="btn btn-primary btn-sm">View</a>
+                                <button type="button" class="btn btn-secondary btn-add-cart btn-sm" data-id="vitalmon"
+                                    data-name="VitalMon Pro" data-sku="MED-MON-V1">
+                                    Add to List
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card is-loading fade-in" data-category="surgical" data-cert="fda iso">
+                    <picture>
+                        <img src="{{ url_for('static', filename='surgical-main.jpg') }}" alt="Surgical Laser"
+                            loading="lazy">
+                    </picture>
+                    <div class="card-tag">Surgical</div>
+
+                    <div class="card-hover-overlay">
+                        <div class="overlay-content">
+                            <h4>X-200 Laser Scalpel</h4>
+                            <div class="overlay-buttons">
+                                <a href="{{ url_for('product_details') }}" class="btn btn-primary btn-sm">View</a>
+                                <button type="button" class="btn btn-secondary btn-add-cart btn-sm" data-id="x200"
+                                    data-name="X-200 Laser Scalpel" data-sku="MED-SURG-X200">
+                                    Add to List
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+    <dialog id="cart-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-cart" class="btn-close" aria-label="Close cart">&times;</button>
+            <h2>Your Procurement List</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">
+                Review your selected equipment before requesting a combined quote.
+            </p>
+
+            <div id="cart-items" class="cart-items-container">
+            </div>
+
+            <div class="cart-actions" style="display: flex; gap: 10px; margin-top: 25px;">
+                <button type="button" class="btn btn-secondary" id="clear-cart" style="flex: 1;">Clear List</button>
+                <button type="button" class="btn btn-primary" id="checkout-cart" style="flex: 2;">Request Combined
+                    Quote</button>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="quote-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-modal" class="btn-close" aria-label="Close modal">&times;</button>
+            <h2>Request a Quote</h2>
+            <form id="quote-form">
+                <div class="form-group"><label for="full-name">Full Name *</label><input type="text" id="full-name"
+                        required></div>
+                <div class="form-group"><label for="email">Institutional Email *</label><input type="email" id="email"
+                        required></div>
+                <div class="form-group">
+                    <label for="product-select">Product of Interest</label>
+                    <select id="product-select">
+                        <option value="diagnostic">Diagnostic Imaging</option>
+                        <option value="monitoring">Patient Monitoring</option>
+                        <option value="surgical">Surgical Systems</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Submit Request</button>
+            </form>
+        </div>
+    </dialog>
+</body>
+
+</html>

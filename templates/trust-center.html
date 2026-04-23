@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Meditech Components</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="main-header">
+        <a href="{{ url_for('home') }}" class="logo"><strong>Meditech Components</strong></a>
+        <nav class="main-nav" aria-label="Main Navigation">
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('products') }}">Products</a></li>
+                <li><a href="{{ url_for('trust') }}">About Us</a></li>
+                <li><a href="#contact-section">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-icons">
+            <span role="button" tabindex="0" aria-label="Search Products" id="search-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </span>
+            <span role="button" tabindex="0" aria-label="Shopping Cart" id="cart-icon" style="position: relative;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span id="cart-badge" class="cart-badge">0</span>
+            </span>
+        </div>
+
+        <div id="search-overlay" class="search-overlay hidden">
+            <input type="text" id="global-search-input" placeholder="Search medical equipment...">
+            <button type="button" id="close-search" aria-label="Close search">&times;</button>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="trust-hero-v2 fade-in">
+            <div class="container">
+                <p class="section-eyebrow">Established 2006</p>
+                <h1 class="hero-title">Engineering the Future of <strong>Medical Care</strong></h1>
+                <p class="hero-subtitle">Bridging the gap between innovative technology and frontline healthcare with
+                    precision-engineered components.</p>
+            </div>
+        </section>
+
+        <section class="story-section fade-in">
+            <div class="story-row">
+                <div class="story-image">
+                    <img src="{{ url_for('static', filename='high-tech-part.jpg') }}" alt="Precision Component"
+                        class="is-loading">
+                </div>
+                <div class="story-text">
+                    <h2 class="section-title">Uncompromising Quality</h2>
+                    <p>We believe that in medical care, there is no room for error. Every component we supply undergoes
+                        a rigorous multi-stage validation process to ensure 100% reliability in the field.</p>
+                    <div class="cert-tag">ISO 13485 Certified</div>
+                </div>
+            </div>
+
+            <div class="story-row reverse">
+                <div class="story-image">
+                    <img src="{{ url_for('static', filename='cybersecurity-lab.jpg') }}" alt="Cybersecurity Lab"
+                        class="is-loading">
+                </div>
+                <div class="story-text">
+                    <h2 class="section-title">Security-First Philosophy</h2>
+                    <p>In an era of connected medicine, hardware is only as good as its defense. We integrate
+                        cybersecurity standards into our procurement chain to protect patient data and device integrity.
+                    </p>
+                    <a href="#contact-section" class="btn-link">Learn about our Disclosure Policy →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="impact-grid fade-in">
+            <div class="impact-item">
+                <span class="impact-number">20+</span>
+                <span class="impact-label">Years of Industry Leadership</span>
+            </div>
+            <div class="impact-item">
+                <span class="impact-number">1k+</span>
+                <span class="impact-label">Institutional Partners</span>
+            </div>
+            <div class="impact-item">
+                <span class="impact-number">50+</span>
+                <span class="impact-label">Countries Supplied</span>
+            </div>
+        </section>
+
+        <section class="contact-split-view" id="contact-section">
+            <div class="contact-container">
+
+                <div class="contact-info-pane">
+                    <p class="section-eyebrow">Connect</p>
+                    <h2 class="pane-title-sm">Direct Channels</h2>
+
+                    <div class="info-group-sm">
+                        <span class="info-label">Phone</span>
+                        <p>+1 (800) MEDI-TECH</p>
+                    </div>
+
+                    <div class="info-group-sm">
+                        <span class="info-label">Email</span>
+                        <p>procurement@meditech.com</p>
+                        <p>security@meditech.com</p>
+                    </div>
+
+                    <div class="info-group-sm">
+                        <span class="info-label">Socials</span>
+                        <div class="contact-social-icons">
+                            <a href="#" aria-label="LinkedIn">
+                                <img src="{{ url_for('static', filename='linkedin.svg') }}" alt="LinkedIn Icon"
+                                    width="20" height="20">
+                            </a>
+                            <a href="#" aria-label="Twitter">
+                                <img src="{{ url_for('static', filename='twitter.svg') }}" alt="Twitter Icon" width="20"
+                                    height="20">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-divider"></div>
+
+                <div class="contact-form-pane">
+                    <h2 class="pane-title">Initialize Inquiry</h2>
+                    <form class="modern-form" method="POST" action="/contact">
+                        <div class="form-row">
+                            <input type="text" name="name" placeholder="Full Name" required>
+                            <input type="email" name="email" placeholder="Email" required>
+                            <input type="text" name="phone" placeholder="Phone" required>
+                            <textarea name="message" placeholder="Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-full">Send Message</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <dialog id="cart-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-cart" class="btn-close">&times;</button>
+            <h2>Your Procurement List</h2>
+            <div id="cart-items" class="cart-items-container"></div>
+            <div class="cart-actions" style="display: flex; gap: 10px; margin-top: 25px;">
+                <button type="button" class="btn btn-secondary" id="clear-cart" style="flex: 1;">Clear List</button>
+                <button type="button" class="btn btn-primary" id="checkout-cart" style="flex: 2;">Request Quote</button>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+
+</html>

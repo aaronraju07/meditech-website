@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meditech Components - Advanced Medical Equipment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <meta property="og:title" content="Meditech Components | Advanced Medical Equipment Solutions">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "MedicalBusiness",
+      "name": "Meditech Components",
+      "certification": "ISO 13485"
+    }
+    </script>
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="main-header">
+        <a href="index.html" class="logo"><strong>Meditech Components</strong></a>
+        <nav class="main-nav" aria-label="Main Navigation">
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('products') }}">Products</a></li>
+                <li><a href="{{ url_for('trust') }}">About Us</a></li>
+                <li><a href="{{ url_for('trust') }}#contact-section">Contact</a></li>
+                <li><a href="/login" class="admin-btn">Admin</a></li>
+            </ul>
+        </nav>
+
+        <div class="nav-icons">
+            <span role="button" tabindex="0" aria-label="Search Products" id="search-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </span>
+            <span role="button" tabindex="0" aria-label="Shopping Cart" id="cart-icon" style="position: relative;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span id="cart-badge" class="cart-badge">0</span>
+            </span>
+        </div>
+        <div id="search-overlay" class="search-overlay hidden">
+            <input type="text" id="global-search-input" placeholder="Search medical equipment...">
+            <button type="button" id="close-search" aria-label="Close search">&times;</button>
+        </div>
+
+    </header>
+    <main id="main-content">
+        <section class="hero-section">
+            <div class="hero-badge">&#9679; ISO 13485 Certified</div>
+            <h1 class="hero-title">Advanced Medical <strong>Equipment</strong></h1>
+            <p class="hero-subtitle">Providing healthcare professionals with cutting-edge medical equipment and
+                solutions for superior patient care.</p>
+            <div class="hero-buttons">
+                <a href="{{ url_for('products') }}" class="btn btn-primary">Browse Equipment <span>&#8594;</span></a>
+                <button type="button" class="btn btn-secondary btn-quote">Request Quote</button>
+            </div>
+        </section>
+
+        <section class="featured-equipment">
+            <p class="section-eyebrow">FEATURED EQUIPMENT</p>
+            <h2 class="section-title">Medical Equipment</h2>
+            <p class="section-subtitle">Premium medical equipment trusted by healthcare professionals worldwide.</p>
+
+            <div class="featured-grid">
+                <div class="product-card is-loading fade-in" data-category="diagnostic" data-cert="fda iso">
+                    <picture>
+                        <img src="{{ url_for('static', filename='diagnostic-main.jpg') }}" alt="Diagnostic Alpha"
+                            loading="lazy">
+                    </picture>
+                    <div class="card-tag">Diagnostic</div>
+                    <div class="card-icon" role="button">&#9825;</div>
+
+                    <div class="card-hover-overlay">
+                        <a href="{{ url_for('products') }}" class="btn btn-quote">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in" id="card-monitoring">
+                    <picture>
+                        <img src="{{ url_for('static', filename='monitoring-main.jpg') }}" alt="Monitoring Equipment"
+                            loading="lazy">
+                    </picture>
+                    <div class="card-tag">Monitoring</div>
+                    <div class="card-icon" role="button">&#9825;</div>
+
+                    <div class="card-hover-overlay">
+                        <a href="{{ url_for('products') }}" class="btn btn-quote">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card is-loading fade-in" id="card-surgical">
+                    <picture>
+                        <img src="{{ url_for('static', filename='surgical-main.jpg') }}" alt="Surgical Equipment"
+                            loading="lazy">
+                    </picture>
+                    <div class="card-tag">Surgical</div>
+                    <div class="card-icon card-icon-active" role="button">&#9829;</div>
+
+                    <div class="card-hover-overlay">
+                        <a href="{{ url_for('products') }}" class="btn btn-quote">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-us-section" id="about">
+            <div class="about-grid">
+                <div class="about-text fade-in">
+                    <p class="section-eyebrow">ABOUT US</p>
+                    <h2 class="section-title">Engineering the Future of Medical Care</h2>
+                    <p class="section-subtitle" style="margin-left: 0;">
+                        At Meditech Components, we specialize in developing and distributing high-grade medical
+                        components and equipment. We are committed to bridging the gap between innovative technology and
+                        frontline healthcare.
+                    </p>
+                    <ul class="about-highlights">
+                        <li><strong>&#10003; Industry Leading Expertise:</strong> Over two decades of supplying top-tier
+                            medical components.</li>
+                        <li><strong>&#10003; Security First:</strong> Rigorous cybersecurity standards for all connected
+                            devices.</li>
+                        <li><strong>&#10003; Global Supply Chain:</strong> Reliable delivery to hospitals and clinics
+                            worldwide.</li>
+                    </ul>
+                    <a href="trust-center.html" class="btn btn-primary" style="margin-top: 20px;">View Our Trust
+                        Center</a>
+                </div>
+                <div class="about-image is-loading fade-in">
+                    <picture>
+                        <img src="{{ url_for('static', filename='meditech-facility.jpg') }}"
+                            alt="Meditech Components Facility" loading="lazy"
+                            style="width: 100%; border-radius: var(--radius-lg); box-shadow: 0 8px 20px rgba(0,0,0,0.05);">
+                    </picture>
+                </div>
+            </div>
+        </section>
+
+        <section class="trusted-partners text-center">
+            <p class="section-eyebrow">OUR TRUSTED PARTNERS</p>
+            <h2 class="section-title">Collaborating with Industry Leaders</h2>
+            <p class="section-subtitle">We supply essential components to top healthcare institutions and technology
+                partners.</p>
+
+            <div class="partners-grid fade-in">
+                <div class="partner-logo"><img src="{{ url_for('static', filename='partner1.png') }}" alt="Partner 1">
+                </div>
+                <div class="partner-logo"><img src="{{ url_for('static', filename='partner2.png') }}" alt="Partner 2">
+                </div>
+                <div class="partner-logo"><img src="{{ url_for('static', filename='partner3.png') }}" alt="Partner 3"
+                        alt="Partner 3"></div>
+                <div class="partner-logo"><img src="{{ url_for('static', filename='partner4.png') }}" alt="Partner 4"
+                        alt="Partner 4"></div>
+                <div class="partner-logo"><img src="{{ url_for('static', filename='partner5.png') }}" alt="Partner 5"
+                        alt="Partner 5"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-column brand">
+                <strong class="logo">Meditech Components</strong>
+                <p>Advanced medical equipment for superior patient care.</p>
+                <div class="social-icons"><a href="#"><span>IG</span></a><a href="#"><span>FB</span></a><a
+                        href="#"><span>TW</span></a><a href="#"><span>YT</span></a></div>
+            </div>
+            <div class="footer-column links">
+                <h3>Products</h3>
+                <ul>
+                    <li><a href="products.html">All Equipment</a></li>
+                    <li><a href="#">Diagnostic</a></li>
+                    <li><a href="#">Laboratory</a></li>
+                    <li><a href="#">Surgical</a></li>
+                </ul>
+            </div>
+            <div class="footer-column links">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="trust-center.html">Certifications</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column links">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Technical Support</a></li>
+                    <li><a href="#">Installation</a></li>
+                    <li><a href="#">Maintenance</a></li>
+                    <li><a href="#">Training</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom" id="contact">
+            <p>&copy; 2026 Meditech Components. All rights reserved.</p>
+        </div>
+        <footer class="main-footer" id="contact">
+        </footer>
+
+        <dialog id="cart-modal" class="modal">
+            <div class="modal-content">
+                <button type="button" id="close-cart" class="btn-close" aria-label="Close cart">&times;</button>
+                <h2>Your Procurement List</h2>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Review your selected
+                    equipment before requesting a combined quote.</p>
+                <div id="cart-items" class="cart-items-container"></div>
+                <div class="cart-actions" style="display: flex; gap: 10px; margin-top: 25px;">
+                    <button type="button" class="btn btn-secondary" id="clear-cart" style="flex: 1;">Clear List</button>
+                    <button type="button" class="btn btn-primary" id="checkout-cart" style="flex: 2;">Request Combined
+                        Quote</button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog id="quote-modal" class="modal">
+            <div class="modal-content">
+                <button type="button" id="close-modal" class="btn-close" aria-label="Close modal">&times;</button>
+                <h2>Request a Quote</h2>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Complete the form below and
+                    our medical specialists will contact you.</p>
+                <form action="/contact" method="POST">
+                    <div class="form-group"><label for="full-name">Full Name *</label><input type="text" id="full-name"
+                            name="name" required placeholder="Dr. John Doe"></div>
+                    <div class="form-group"><label for="email">Institutional Email *</label><input type="email"
+                            id="email" name="email" required placeholder="john@hospital.org"></div>
+                    <div class="form-group"><label for="institution">Healthcare Institution *</label><input type="text"
+                            id="institution" name="phone" required placeholder="City General Hospital"></div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea name="message" placeholder="Enter your requirement"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-select">Product of Interest</label>
+                        <select id="product-select">
+                            <option value="diagnostic">Diagnostic Imaging</option>
+                            <option value="monitoring">Patient Monitoring</option>
+                            <option value="surgical">Surgical Systems</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Submit Request</button>
+                </form>
+            </div>
+        </dialog>
+
+        <div id="success-popup" class="popup hidden">
+            <div class="popup-content">
+                <div class="checkmark">✔</div>
+                <h2>Message Sent!</h2>
+                <p>Your message has been successfully submitted.</p>
+                <button onclick="closePopup()">OK</button>
+            </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+
+</html>

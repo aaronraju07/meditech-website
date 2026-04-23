@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-200 Laser Scalpel | MediCore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="main-header">
+        <a href="{{ url_for('home') }}" class="logo"><strong>Meditech Components</strong></a>
+
+        <nav class="main-nav" aria-label="Main Navigation">
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('products') }}">Products</a></li>
+                <li><a href="{{ url_for('trust') }}">About Us</a></li>
+                <li><a href="{{ url_for('trust') }}">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="nav-icons">
+            <span role="button" tabindex="0" aria-label="Search Products" id="search-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </span>
+            <span role="button" tabindex="0" aria-label="Shopping Cart" id="cart-icon" style="position: relative;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span id="cart-badge" class="cart-badge">0</span>
+            </span>
+        </div>
+
+        <div id="search-overlay" class="search-overlay hidden">
+            <input type="text" id="global-search-input" placeholder="Search medical equipment...">
+            <button type="button" id="close-search" aria-label="Close search">&times;</button>
+        </div>
+    </header>
+
+    <main id="main-content" class="pdp-container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('products') }}">Products</a></li>
+                <li aria-current="page">X-200 Advanced Laser Scalpel</li>
+            </ol>
+        </nav>
+
+        <section class="pdp-top-grid">
+            <div class="pdp-gallery">
+                <div class="main-image fade-in">
+                    <img src="{{ url_for('static', filename='x200-laser.jpg' ) }}" alt="X-200 Advanced Laser Scalpel"
+                        id="current-image">
+                </div>
+                <div class="thumbnail-list fade-in">
+                    <img src="{{ url_for('static', filename='x200-laser.jpg' ) }}" alt="Front view"
+                        class="thumb active-thumb">
+                    <img src="{{ url_for('static', filename='x200-laser.jpg' ) }}" alt="Side view" class="thumb">
+                    <img src="{{ url_for('static', filename='x200-laser.jpg' ) }}" alt="Interface view" class="thumb">
+                </div>
+            </div>
+
+            <div class="pdp-info fade-in">
+                <div class="pdp-badges"><span class="badge badge-fda">FDA Approved</span><span
+                        class="badge badge-iso">ISO 13485</span></div>
+                <h1 class="pdp-title">X-200 Advanced Laser Scalpel</h1>
+                <p class="pdp-sku">SKU: MED-SURG-X200</p>
+                <p class="pdp-description">The X-200 provides unparalleled precision for minimally invasive
+                    neurosurgery. Featuring real-time depth monitoring and thermal tissue protection.</p>
+                <ul class="pdp-highlights">
+                    <li>&#10003; 0.1mm cutting precision</li>
+                    <li>&#10003; Integrated smoke evacuation system</li>
+                    <li>&#10003; 12-hour continuous battery backup</li>
+                </ul>
+                <div class="pdp-actions">
+                    <button type="button" class="btn btn-secondary btn-add-cart" data-id="x200"
+                        data-name="X-200 Laser Scalpel" data-sku="MED-SURG-X200" style="width: 100%;">Add to Quote
+                        List</button>
+                    <a href="#" download class="btn btn-primary" style="width: 100%; margin-top: 15px;">Download Spec
+                        Sheet</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="pdp-tabs-section fade-in">
+            <div class="tab-headers" role="tablist">
+                <button type="button" class="tab-btn active" role="tab" aria-selected="true"
+                    aria-controls="tab-overview" id="btn-overview">Overview</button>
+                <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-specs"
+                    id="btn-specs">Technical Specs</button>
+                <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-support"
+                    id="btn-support">Support & Manuals</button>
+            </div>
+            <div class="tab-content-container">
+                <div class="tab-panel active" id="tab-overview" role="tabpanel" aria-labelledby="btn-overview">
+                    <h3>Clinical Overview</h3>
+                    <p>Designed for high-demand surgical environments, the X-200 integrates seamlessly into existing OR
+                        workflows...</p>
+                </div>
+                <div class="tab-panel" id="tab-specs" role="tabpanel" aria-labelledby="btn-specs" hidden>
+                    <table class="tech-table">
+                        <tbody>
+                            <tr>
+                                <th>Laser Type</th>
+                                <td>CO2 Continuous Wave</td>
+                            </tr>
+                            <tr>
+                                <th>Wavelength</th>
+                                <td>10.6 µm</td>
+                            </tr>
+                            <tr>
+                                <th>Operating System</th>
+                                <td>Hardened Embedded Linux</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-panel" id="tab-support" role="tabpanel" aria-labelledby="btn-support" hidden>
+                    <ul class="download-list">
+                        <li><a href="#">&#128196; User Operator Manual (PDF, 4.2MB)</a></li>
+                        <li><a href="#">&#128196; Installation & Calibration Guide (PDF, 1.8MB)</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+    <dialog id="cart-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-cart" class="btn-close" aria-label="Close cart">&times;</button>
+            <h2>Your Procurement List</h2>
+            <div id="cart-items" class="cart-items-container"></div>
+            <div class="cart-actions" style="display: flex; gap: 10px; margin-top: 25px;">
+                <button type="button" class="btn btn-secondary" id="clear-cart" style="flex: 1;">Clear List</button>
+                <button type="button" class="btn btn-primary" id="checkout-cart" style="flex: 2;">Request Quote</button>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="quote-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-modal" class="btn-close" aria-label="Close modal">&times;</button>
+            <h2>Request a Quote</h2>
+            <form id="quote-form">
+                <div class="form-group"><label for="full-name">Full Name *</label><input type="text" id="full-name"
+                        required></div>
+                <div class="form-group"><label for="email">Institutional Email *</label><input type="email" id="email"
+                        required></div>
+                <div class="form-group">
+                    <label for="product-select">Product of Interest</label>
+                    <select id="product-select">
+                        <option value="diagnostic">Diagnostic Imaging</option>
+                        <option value="monitoring">Patient Monitoring</option>
+                        <option value="surgical" selected>Surgical Systems</option>
+                        <option value="combined-cart">Combined Quote (Multiple Items)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Submit Request</button>
+            </form>
+        </div>
+    </dialog>
+</body>
+
+</html>
