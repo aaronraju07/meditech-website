@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Equipment | MediCore</title>
+    <title>All Equipment | Meditech</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
@@ -13,7 +13,7 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <header class="main-header">
-        <a href="{{ url_for('home') }}" class="logo"><strong>MediCore</strong></a>
+        <a href="{{ url_for('home') }}" class="logo"><strong>Meditech Components</strong></a>
         <nav class="main-nav" aria-label="Main Navigation">
             <ul>
                 <li><a href="{{ url_for('home') }}">Home</a></li>
@@ -57,6 +57,16 @@
             </nav>
             <h1 class="section-title">Medical Equipment Catalog</h1>
             <p class="section-subtitle" style="margin: 0;">Showing all available devices and solutions.</p>
+            <button type="button" id="layout-toggle" class="btn btn-secondary"
+                style="padding: 8px 16px; font-size: 0.85rem; display: flex; align-items: center; gap: 8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+                Switch View
+            </button>
         </header>
 
         <div class="plp-layout">
@@ -70,61 +80,149 @@
                     <label class="filter-label"><input type="checkbox" value="surgical" class="filter-checkbox" checked>
                         Surgical</label>
                 </div>
-                <div class="filter-group">
-                    <h3>Certification</h3>
-                    <label class="filter-label"><input type="checkbox" value="fda" class="filter-checkbox"> FDA
-                        Approved</label>
-                    <label class="filter-label"><input type="checkbox" value="iso" class="filter-checkbox"> ISO
-                        13485</label>
-                </div>
-                <button type="button" id="clear-filters" class="btn btn-secondary"
-                    style="width: 100%; padding: 10px;">Clear Filters</button>
             </aside>
 
-            <div class="plp-grid fade-in" id="product-grid">
-
-                <div class="product-card is-loading fade-in" data-category="monitoring" data-cert="fda iso">
-                    <picture>
-                        <img src="{{ url_for('static', filename='monitoring-main.jpg') }}" alt="Monitor Pro"
-                            loading="lazy">
-                    </picture>
-                    <div class="card-tag">Monitoring</div>
-
-                    <div class="card-hover-overlay">
-                        <div class="overlay-content">
-                            <h4>VitalMon Pro</h4>
-                            <div class="overlay-buttons">
-                                <a href="{{ url_for('product_details') }}" class="btn btn-primary btn-sm">View</a>
-                                <button type="button" class="btn btn-secondary btn-add-cart btn-sm" data-id="vitalmon"
-                                    data-name="VitalMon Pro" data-sku="MED-MON-V1">
-                                    Add to List
-                                </button>
-                            </div>
+            <div class="plp-list-view fade-in" id="product-grid">
+                <div class="product-card product-row is-loading" data-category="diagnostic" data-cert="fda iso">
+                    <div class="row-image">
+                        <img src="{{ url_for('static', filename='diagnostic-main.jpg') }}" alt="Alpha Scanner X1">
+                        <div class="card-tag">Diagnostic</div>
+                    </div>
+                    <div class="row-content">
+                        <div class="row-info">
+                            <span class="row-sku">SKU: MED-DIAG-A1</span>
+                            <h3>Alpha Scanner X1</h3>
+                            <ul class="row-specs">
+                                <li>High-Resolution Imaging</li>
+                                <li>FDA & ISO Certified</li>
+                                <li>Cloud Integration Ready</li>
+                            </ul>
+                        </div>
+                        <div class="row-actions">
+                            <a href="{{ url_for('product_details') }}" class="btn btn-primary btn-sm">View Details</a>
+                            <button type="button" class="btn btn-secondary btn-add-cart btn-sm" data-id="alpha-x1"
+                                data-name="Alpha Scanner X1" data-sku="MED-DIAG-A1">Add to List</button>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card is-loading fade-in" data-category="surgical" data-cert="fda iso">
-                    <picture>
-                        <img src="{{ url_for('static', filename='surgical-main.jpg') }}" alt="Surgical Laser"
-                            loading="lazy">
-                    </picture>
-                    <div class="card-tag">Surgical</div>
+                <div class="product-card product-row is-loading" data-category="monitoring" data-cert="fda">
+                    <div class="row-image">
+                        <img src="{{ url_for('static', filename='monitoring-main.jpg') }}">
+                        <div class="card-tag">Monitoring</div>
+                    </div>
+                    <div class="row-content">
+                        <div class="row-info">
+                            <span class="row-sku">SKU: MED-MON-V1</span>
+                            <h3>VitalMon Pro</h3>
+                            <ul class="row-specs">
+                                <li>Real-time Vital Tracking</li>
+                                <li>Wireless Telemetry</li>
+                                <li>FDA Approved</li>
+                            </ul>
+                        </div>
+                        <div class="row-actions">
+                            <a href="{{ url_for('product_details') }}" class="btn btn-primary btn-sm">View Details</a>
+                            <button type="button" class="btn btn-secondary btn-add-cart btn-sm" data-id="vitalmon"
+                                data-name="VitalMon Pro" data-sku="MED-MON-V1">Add to List</button>
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="card-hover-overlay">
-                        <div class="overlay-content">
-                            <h4>X-200 Laser Scalpel</h4>
-                            <div class="overlay-buttons">
-                                <a href="{{ url_for('product_details') }}" class="btn btn-primary btn-sm">View</a>
-                                <button type="button" class="btn btn-secondary btn-add-cart btn-sm" data-id="x200"
-                                    data-name="X-200 Laser Scalpel" data-sku="MED-SURG-X200">
-                                    Add to List
-                                </button>
-                            </div>
+                <div class="product-card product-row is-loading" data-category="surgical" data-cert="iso">
+                    <div class="row-image">
+                        <img src="{{ url_for('static', filename='surgical-main.jpg') }}" alt="Surgical Laser">
+                        <div class="card-tag">Surgical</div>
+                    </div>
+                    <div class="row-content">
+                        <div class="row-info">
+                            <span class="row-sku">SKU: MED-SURG-X200</span>
+                            <h3>X-200 Laser Scalpel</h3>
+                            <ul class="row-specs">
+                                <li>Precision Cutting</li>
+                                <li>ISO 13485 Certified</li>
+                                <li>Thermal Control System</li>
+                            </ul>
+                        </div>
+                        <div class="row-actions">
+                            <a href="{{ url_for('product_details') }}" class="btn btn-primary btn-sm">View Details</a>
+                            <button type="button" class="btn btn-secondary btn-add-cart btn-sm" data-id="x200"
+                                data-name="X-200 Laser Scalpel" data-sku="MED-SURG-X200">Add to List</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card product-row is-loading" data-category="surgical" data-cert="fda iso">
+                    <div class="row-image">
+                        <img src" {{ url_for('static', filename='high-tech-part.jpg' ) }}" alt="Robotic Assistant">
+                        <div class="card-tag">Surgical</div>
+                    </div>
+                    <div class="row-content">
+                        <div class="row-info">
+                            <span class="row-sku">SKU: MED-SURG-ROB8</span>
+                            <h3>Omni-Glide Robotic Arm</h3>
+                            <ul class="row-specs">
+                                <li>Sub-millimeter Precision</li>
+                                <li>Haptic Feedback System</li>
+                                <li>FDA Class II Approved</li>
+                            </ul>
+                        </div>
+                        <div class="row-actions">
+                            <a href="{{ url_for('product_details') }}" class="btn btn-primary btn-sm">View Details</a>
+                            <button type="button" class="btn btn-secondary btn-add-cart btn-sm" data-id="omni-glide"
+                                data-name="Omni-Glide Arm" data-sku="MED-SURG-ROB8">Add to List</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card product-row is-loading" data-category="monitoring" data-cert="iso">
+                    <div class="row-image">
+                        <img src="{{ url_for('static', filename='high-tech-part.jpg') }}" alt=" Elite Monitor">
+                        <div class="card-tag">Monitoring</div>
+                    </div>
+                    <div class="row-content">
+                        <div class="row-info">
+                            <span class="row-sku">SKU: MED-MON-ELT</span>
+                            <h3>VitalSign Elite V12</h3>
+                            <ul class="row-specs">
+                                <li>12-Lead ECG Sync</li>
+                                <li>Nitric Oxide Monitoring</li>
+                                <li>ISO 13485 Certified</li>
+                            </ul>
+                        </div>
+                        <div class="row-actions">
+                            <a href="{{ url_for('product_details') }}" class="btn btn-primary btn-sm">View Details</a>
+                            <button type="button" class="btn btn-secondary btn-add-cart btn-sm"
+                                data-id="vitalsign-elite" data-name="VitalSign Elite" data-sku="MED-MON-ELT">Add to
+                                List</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card product-row is-loading" data-category="diagnostic" data-cert="fda">
+                    <div class="row-image">
+                        <img src="" {{ url_for('static', filename='high-tech-part.jpg' ) }}" alt="Portable Ultrasound">
+                        <div class="card-tag">Diagnostic</div>
+                    </div>
+                    <div class="row-content">
+                        <div class="row-info">
+                            <span class="row-sku">SKU: MED-DIAG-ULT</span>
+                            <h3>EchoScan Portable</h3>
+                            <ul class="row-specs">
+                                <li>Handheld Form Factor</li>
+                                <li>WiFi Image Transfer</li>
+                                <li>FDA Approved</li>
+                            </ul>
+                        </div>
+                        <div class="row-actions">
+                            <a href="{{ url_for('product_details') }}" class="btn btn-primary btn-sm">View Details</a>
+                            <button type="button" class="btn btn-secondary btn-add-cart btn-sm" data-id="echoscan"
+                                data-name="EchoScan Portable" data-sku="MED-DIAG-ULT">Add to List</button>
                         </div>
                     </div>
                 </div>
             </div>
+
     </main>
 
     <script src="{{ url_for('static', filename='app.js') }}" defer></script>

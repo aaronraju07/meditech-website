@@ -21,8 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.fade-in').forEach((element) => observer.observe(element));
-
+    document.querySelectorAll('.fade-in, .is-loading').forEach((element) => observer.observe(element));
     // ======== 2. Global Search UI & Routing Logic ========
     // ======== Global Search UI & Routing Logic ========
     const searchIcon = document.getElementById('search-icon');
@@ -171,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ======== 5. Product Listing Page (PLP) Filtering ========
     const checkboxes = document.querySelectorAll('.filter-checkbox');
-    const productCards = document.querySelectorAll('.plp-grid .product-card');
+    const productCards = document.querySelectorAll('#product-grid .product-row, #product-grid .product-card');
     const plpClearBtn = document.getElementById('clear-filters');
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -188,7 +187,8 @@ document.addEventListener("DOMContentLoaded", () => {
         productCards.forEach(card => {
             const cardCategory = card.getAttribute('data-category');
             const cardCerts = card.getAttribute('data-cert') || "";
-            const productTitle = card.querySelector('h4').textContent.toLowerCase();
+            const titleEl = card.querySelector('h3') || card.querySelector('h4');
+            const productTitle = titleEl ? titleEl.textContent.toLowerCase() : "";
 
             const matchesCategory = activeCategories.length === 0 || activeCategories.includes(cardCategory);
             const matchesCert = activeCerts.every(cert => cardCerts.includes(cert));
@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
         checkboxes.forEach(cb => cb.addEventListener('change', filterProducts));
         if (plpClearBtn) {
             plpClearBtn.addEventListener('click', () => {
-                checkboxes.forEach(cb => cb.checked = false);
+                checkboxes.forEach(cb => cb.checked = true);
                 activeSearchQuery = '';
                 window.history.pushState({}, '', window.location.pathname);
                 if (globalSearchInput) globalSearchInput.value = '';
@@ -275,3 +275,12 @@ window.closePopup = function () {
         popup.classList.add('hidden');
     }
 };
+
+const layoutBtn = document.getElementById('layout-toggle');
+const productGrid = document.getElementById('product-grid');
+
+if (layoutBtn && productGrid) {
+    layoutBtn.addEventListener('click', () => {
+        productGrid.classList.toggle('grid-mode');
+    });
+}
