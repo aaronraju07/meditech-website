@@ -74,6 +74,32 @@
         {% endfor %}
     </table>
 
+    <h2>Quote Requests</h2>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Message</th>
+            <th>Product</th>
+            <th>Source</th>
+        </tr>
+
+        {% for q in quotes %}
+        <tr>
+            <td>{{ q[0] }}</td>
+            <td>{{ q[1] }}</td>
+            <td>{{ q[2] }}</td>
+            <td>{{ q[3] }}</td>
+            <td>{{ q[4] }}</td>
+            <td>{{ q[5] }}</td>
+            <td>{{ q[6] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
 </body>
 
 </html>

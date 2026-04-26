@@ -33,6 +33,18 @@ def init_db():
         )
     ''')
 
+    cur.execute('''
+    CREATE TABLE IF NOT EXISTS quotes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    email TEXT,
+    phone TEXT,
+    message TEXT,
+    product TEXT,
+    source TEXT
+    )
+    ''')
+
     conn.commit()
     conn.close()
 
@@ -75,17 +87,24 @@ def admin():
     conn = sqlite3.connect('database.db')
     cur = conn.cursor()
 
+    # Fetch contacts
     cur.execute("SELECT * FROM contact")
-    data = cur.fetchall()
+    contacts = cur.fetchall()
+
+    # Fetch quotes
+    cur.execute("SELECT * FROM quotes")
+    quotes = cur.fetchall()
 
     conn.close()
 
-    return render_template('admin.html', contacts=data)
+    return render_template('admin.html', contacts=contacts, quotes=quotes)
 
 
 # ---------------- CONTACT ----------------
 @app.route('/contact', methods=['POST'])
 def contact():
+    print("CONTACT ROUTE HIT")
+
     name = request.form['name']
     email = request.form['email']
     phone = request.form['phone']
@@ -216,6 +235,31 @@ def edit_product(id):
     conn.close()
 
     return render_template('edit_product.html', product=product)
+
+
+@app.route("/submit-quote", methods=["POST"])
+def submit_quote():
+    print("QUOTE ROUTE HIT")
+
+    name = request.form.get("name")
+    email = request.form.get("email")
+    phone = request.form.get("phone")
+    message = request.form.get("message")
+    product = request.form.get("product")
+    source = request.form.get("source")
+
+    conn = sqlite3.connect('database.db')
+    cur = conn.cursor()
+
+    cur.execute("""
+        INSERT INTO quotes (name, email, product, source)
+        VALUES (?, ?, ?, ?)
+    """, (name, email, product, source))
+
+    conn.commit()
+    conn.close()
+
+    return redirect("/")
 
 # ---------------- TEST ----------------
 

@@ -249,19 +249,22 @@
         <div class="modal-content">
             <button type="button" id="close-modal" class="btn-close" aria-label="Close modal">&times;</button>
             <h2>Request a Quote</h2>
-            <form id="quote-form">
-                <div class="form-group"><label for="full-name">Full Name *</label><input type="text" id="full-name"
-                        required></div>
-                <div class="form-group"><label for="email">Institutional Email *</label><input type="email" id="email"
-                        required></div>
+            <form method="POST" action="/submit-quote">
+                <div class="form-group"><label for="full-name">Full Name *</label>
+                    <input type="text" name="name" id="full-name" required>
+                </div>
+                <div class="form-group"><label for="email">Institutional Email *</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
                 <div class="form-group">
                     <label for="product-select">Product of Interest</label>
-                    <select id="product-select">
+                    <select name="product" id="product-select">
                         <option value="diagnostic">Diagnostic Imaging</option>
                         <option value="monitoring">Patient Monitoring</option>
                         <option value="surgical">Surgical Systems</option>
                     </select>
                 </div>
+                <input type="hidden" name="source" value="products">
                 <button type="submit" class="btn btn-primary btn-full">Submit Request</button>
             </form>
         </div>

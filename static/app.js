@@ -284,3 +284,7 @@ if (layoutBtn && productGrid) {
         productGrid.classList.toggle('grid-mode');
     });
 }
+
+document.getElementById("checkout-cart").addEventListener("click", function () {
+    document.getElementById("quote-modal").showModal();
+});
