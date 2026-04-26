@@ -2345,3 +2345,15 @@ html {
 .socials svg:hover {
     transform: scale(1.2);
 }
+
+.address-link {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.address-link:hover {
+    text-decoration: underline;
+    color: #2e0bf5;
+    /* your yellow theme */
+}
