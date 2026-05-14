@@ -13,7 +13,11 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <header class="main-header">
-        <a href="{{ url_for('home') }}" class="logo"><strong>Meditech Components</strong></a>
+       <a href="{{ url_for('home') }}" class="logo">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Meditech Components">
+</a></a>
+
+
         <nav class="main-nav" aria-label="Main Navigation">
             <ul>
                 <li><a href="{{ url_for('home') }}">Home</a></li>
@@ -79,6 +83,8 @@
                             checked> Monitoring</label>
                     <label class="filter-label"><input type="checkbox" value="surgical" class="filter-checkbox" checked>
                         Surgical</label>
+		<label class="filter-label">
+        
                 </div>
             </aside>
 
@@ -152,75 +158,156 @@
                     </div>
                 </div>
 
-                <div class="product-card product-row is-loading" data-category="surgical" data-cert="fda iso">
-                    <div class="row-image">
-                        <img src=" {{ url_for('static' , filename='high-tech-part.jpg') }} " alt="Robotic Assistant">
-                        <div class="card-tag">Robotics</div>
-                    </div>
-                    <div class="row-content">
-                        <div class="row-info">
-                            <span class="row-sku">SKU: MED-SURG-ROB8</span>
-                            <h3>Omni-Glide Robotic Arm</h3>
-                            <ul class="row-specs">
-                                <li>Sub-millimeter Precision</li>
-                                <li>Haptic Feedback System</li>
-                                <li>FDA Class II Approved</li>
-                            </ul>
-                        </div>
-                        <div class="row-actions">
-                            <a href="{{ url_for('product_details') }}" class="btn btn-primary btn-sm">View Details</a>
-                            <button type="button" class="btn btn-secondary btn-add-cart btn-sm" data-id="omni-glide"
-                                data-name="Omni-Glide Arm" data-sku="MED-SURG-ROB8">Add to List</button>
-                        </div>
-                    </div>
-                </div>
+                <div class="product-card product-row is-loading" data-category="monitoring" data-cert="ce iso">
+    <div class="row-image">
+        <img src="{{ url_for('static', filename='aed.png') }}" alt="MCL Smarty Saver AED">
+        <div class="card-tag">AED</div>
+    </div>
+    <div class="row-content">
+        <div class="row-info">
+            <span class="row-sku">SKU: MCL-AED-SS-01</span>
+            <h3>MCL Smarty Saver AED</h3>
+            <ul class="row-specs">
+                <li>Semi-Automatic Operation</li>
+                <li>Long-Life Lithium Battery</li>
+                <li>Fixed 200J Adult Energy</li>
+            </ul>
+        </div>
+        <div class="row-actions">
+    <a href="{{ url_for('aed_product') }}" class="btn btn-primary btn-sm">View Details</a>
+    <button type="button" class="btn btn-secondary btn-add-cart btn-sm" 
+            data-id="smarty-saver" 
+            data-name="MCL Smarty Saver AED" 
+            data-sku="MCL-AED-SS-01">Add to List</button>
+	</div>
+    </div>
+</div>
 
-                <div class="product-card product-row is-loading" data-category="monitoring" data-cert="iso">
-                    <div class="row-image">
-                        <img src="{{ url_for('static', filename='vitals-main.jpg') }}" alt=" Elite Monitor">
-                        <div class="card-tag">Vitals</div>
-                    </div>
-                    <div class="row-content">
-                        <div class="row-info">
-                            <span class="row-sku">SKU: MED-MON-ELT</span>
-                            <h3>VitalSign Elite V12</h3>
-                            <ul class="row-specs">
-                                <li>12-Lead ECG Sync</li>
-                                <li>Nitric Oxide Monitoring</li>
-                                <li>ISO 13485 Certified</li>
-                            </ul>
-                        </div>
-                        <div class="row-actions">
-                            <a href="{{ url_for('product_details') }}" class="btn btn-primary btn-sm">View Details</a>
-                            <button type="button" class="btn btn-secondary btn-add-cart btn-sm"
-                                data-id="vitalsign-elite" data-name="VitalSign Elite" data-sku="MED-MON-ELT">Add to
-                                List</button>
-                        </div>
-                    </div>
-                </div>
+<div class="product-card product-row is-loading" data-category="monitoring" data-cert="ce iso">
+    <div class="row-image">
+        <img src="{{ url_for('static', filename='aed2.png') }}" alt="MCL Saver One P">
+        <div class="card-tag">Professional</div>
+    </div>
+    <div class="row-content">
+        <div class="row-info">
+            <span class="row-sku">SKU: MCL-AED-PRO-P</span>
+            <h3>MCL Saver One P</h3>
+            <ul class="row-specs">
+                <li>Professional AED/Monitor</li>
+                <li>Configurable up to 360J</li>
+                <li>Integrated ECG Display</li>
+            </ul>
+        </div>
+        <div class="row-actions">
+    <a href="{{ url_for('aed_product2') }}" class="btn btn-primary btn-sm">View Details</a>
+    <button type="button" class="btn btn-secondary btn-add-cart btn-sm" 
+            data-id="saver-one-p" 
+            data-name="MCL Saver One P" 
+            data-sku="MCL-AED-PRO-P">Add to List</button>
+	</div>
+    </div>
+</div>
 
-                <div class="product-card product-row is-loading" data-category="diagnostic" data-cert="fda">
-                    <div class="row-image">
-                        <img src="{{ url_for('static', filename='Imaging-main.jpg') }}" alt="Portable Ultrasound">
-                        <div class="card-tag">Imaging</div>
-                    </div>
-                    <div class="row-content">
-                        <div class="row-info">
-                            <span class="row-sku">SKU: MED-DIAG-ULT</span>
-                            <h3>EchoScan Portable</h3>
-                            <ul class="row-specs">
-                                <li>Handheld Form Factor</li>
-                                <li>WiFi Image Transfer</li>
-                                <li>FDA Approved</li>
-                            </ul>
-                        </div>
-                        <div class="row-actions">
-                            <a href="{{ url_for('product_details') }}" class="btn btn-primary btn-sm">View Details</a>
-                            <button type="button" class="btn btn-secondary btn-add-cart btn-sm" data-id="echoscan"
-                                data-name="EchoScan Portable" data-sku="MED-DIAG-ULT">Add to List</button>
-                        </div>
-                    </div>
-                </div>
+<div class="product-card product-row is-loading" data-category="monitoring" data-cert="ce iso">
+    <div class="row-image">
+        <img src="{{ url_for('static', filename='aed3.png') }}" alt="MCL Saver One D">
+        <div class="card-tag">AED</div>
+    </div>
+    <div class="row-content">
+        <div class="row-info">
+            <span class="row-sku">SKU: MCL-AED-S1D</span>
+            <h3>MCL Saver One D</h3>
+            <ul class="row-specs">
+                <li>Semi/Fully Automatic Mode</li>
+                <li>Escalating Energy (360J)</li>
+                <li>Trainer Preferred Model</li>
+            </ul>
+        </div>
+        <div class="row-actions">
+    <a href="{{ url_for('aed_product3') }}" class="btn btn-primary btn-sm">View Details</a>
+    <button type="button" class="btn btn-secondary btn-add-cart btn-sm" 
+            data-id="saver-one-d" 
+            data-name="MCL Saver One D" 
+            data-sku="MCL-AED-S1D">Add to List</button>
+	</div>
+    </div>
+</div>
+
+<div class="product-card product-row is-loading" data-category="surgical" data-cert="iso">
+    <div class="row-image">
+        <img src="{{ url_for('static', filename='tg241-stretcher.jpg') }}" alt="MCL TG241 Stretcher">
+        <div class="card-tag">Stretcher</div>
+    </div>
+    <div class="row-content">
+        <div class="row-info">
+            <span class="row-sku">SKU: MCL-STR-TG241</span>
+            <h3>MCL TG241 Compact Stretcher</h3>
+            <ul class="row-specs">
+                <li>250 KG Load Capacity</li>
+                <li>Aluminium Construction</li>
+                <li>Lockable Twin Wheels</li>
+            </ul>
+        </div>
+        <div class="row-actions">
+            <a href="{{ url_for('strech') }}" class="btn btn-primary btn-sm">View Details</a>
+            <button type="button" class="btn btn-secondary btn-add-cart btn-sm" 
+                    data-id="tg241" 
+                    data-name="MCL TG241 Stretcher" 
+                    data-sku="MCL-STR-TG241">Add to List</button>
+        </div>
+    </div>
+</div>
+<div class="product-card product-row is-loading" data-category="surgical" data-cert="ce">
+    <div class="row-image">
+        <img src="{{ url_for('static', filename='tgx241-stretcher.jpg') }}" alt="MCL TGX241 Stretcher">
+        <div class="card-tag">Stretcher</div>
+    </div>
+    <div class="row-content">
+        <div class="row-info">
+            <span class="row-sku">SKU: MCL-STR-TGX241</span>
+            <h3>MCL TGX241 Foldable Stretcher</h3>
+            <ul class="row-specs">
+                <li>Fully Foldable Design</li>
+                <li>Shock Absorbing Leg Rest</li>
+                <li>Collapsible Guardrails</li>
+            </ul>
+        </div>
+        <div class="row-actions">
+            <a href="{{ url_for('strech2') }}" class="btn btn-primary btn-sm">View Details</a>
+            <button type="button" class="btn btn-secondary btn-add-cart btn-sm" 
+                    data-id="tgx241" 
+                    data-name="MCL TGX241 Stretcher" 
+                    data-sku="MCL-STR-TGX241">Add to List</button>
+        </div>
+    </div>
+</div>
+
+<div class="product-card product-row is-loading" data-category="surgical" data-cert="iso">
+    <div class="row-image">
+        <img src="{{ url_for('static', filename='tgm241-stretcher.jpg') }}" alt="MCL TGM241 Stretcher">
+        <div class="card-tag">Stretcher</div>
+    </div>
+    <div class="row-content">
+        <div class="row-info">
+            <span class="row-sku">SKU: MCL-STR-TGM241</span>
+            <h3>MCL TGM241 Professional Stretcher</h3>
+            <ul class="row-specs">
+                <li>Professional Grade</li>
+                <li>Longitudinal Guardrails</li>
+                <li>Reclinable Platform</li>
+            </ul>
+        </div>
+        <div class="row-actions">
+            <a href="{{ url_for('strech3') }}" class="btn btn-primary btn-sm">View Details</a>
+            <button type="button" class="btn btn-secondary btn-add-cart btn-sm" 
+                    data-id="tgm241" 
+                    data-name="MCL TGM241 Stretcher" 
+                    data-sku="MCL-STR-TGM241">Add to List</button>
+        </div>
+    </div>
+</div>
+
+
             </div>
 
     </main>

@@ -78,6 +78,40 @@ def trust():
 def product_details():
     return render_template('product.html')
 
+@app.route('/AED_1')
+def aed_product():
+    
+    return render_template('AED_1.html')
+
+@app.route("/AED_2")
+def aed_product2():
+    
+    return render_template('AED_2.html')
+
+@app.route("/AED_3")
+def aed_product3():
+    
+    return render_template('AED_3.html')
+
+@app.route('/strecher1')
+def strech():
+    return render_template('strecher1.html')
+
+@app.route('/strecher2')
+def strech2():
+    return render_template('strecher2.html')
+
+@app.route('/strecher3')
+def strech3():
+    return render_template('strecher3.html')
+
+@app.route('/wheelchair1')
+def wheelchair1():
+    return render_template('wheelchair1.html')
+
+@app.route('/wheelchair2')
+def wheelchair2():
+    return render_template('wheelchair2.html')
 
 @app.route('/admin')
 def admin():
@@ -235,6 +269,9 @@ def edit_product(id):
     conn.close()
 
     return render_template('edit_product.html', product=product)
+
+
+
 
 
 @app.route("/submit-quote", methods=["POST"])

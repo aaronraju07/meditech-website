@@ -1013,27 +1013,34 @@ html {
 
 /* ======== Page: Product Listing (products.html) ======== */
 .plp-container {
-    max-width: var(--container-width);
-    margin: 0 auto;
-    padding: 40px 5% 80px 5%;
+    max-width: 90%;
+    margin: 0 ;
+    padding: 30;
 }
 
 .plp-header {
     margin-bottom: 40px;
     border-bottom: 1px solid var(--border-light);
-    padding-bottom: 20px;
+    padding: 60px 5% 30px 40px;
 }
 
 .plp-layout {
     display: grid;
-    grid-template-columns: 250px 1fr;
-    gap: 40px;
+    grid-template-columns: 300px 1fr;
+    gap: 10px;
 }
 
 .plp-sidebar {
     position: sticky;
-    top: 100px;
-    height: fit-content;
+    top: 80px;
+    height: calc(100vh - 80px); /* Fill the vertical screen */
+    background-color: var(--bg-white);
+    border-right: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the filter-group horizontally */
+    padding: 60px 0; /* Vertical breathing room */
+    width: 300px;
 }
 
 .filter-group {
@@ -2052,8 +2059,9 @@ html {
 /* Ensure the container changes layout when grid-mode is active */
 #product-grid.grid-mode {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
+    padding-bottom: 80px;
 }
 
 /* Container for Horizontal Mode */
@@ -2356,4 +2364,23 @@ html {
     text-decoration: underline;
     color: #2e0bf5;
     /* your yellow theme */
+}
+
+/* Logo Image Styling */
+.logo img {
+    height: 50px; /* Adjust this height to fit your design */
+    width: auto;  /* Maintains aspect ratio */
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.logo:hover img {
+    opacity: 0.8;
+}
+
+/* Ensure the logo link container aligns well in the grid */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }

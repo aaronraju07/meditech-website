@@ -23,7 +23,9 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <header class="main-header">
-        <a href="index.html" class="logo"><strong>Meditech Components</strong></a>
+        <a href="{{ url_for('home') }}" class="logo">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Meditech Components">
+</a>
         <nav class="main-nav" aria-label="Main Navigation">
             <ul>
                 <li><a href="{{ url_for('home') }}">Home</a></li>
@@ -123,21 +125,17 @@
                     <p class="section-eyebrow">ABOUT US</p>
                     <h2 class="section-title">Engineering the Future of Medical Care</h2>
                     <p class="section-subtitle" style="margin-left: 0;">
-                        At Meditech Components, we specialize in developing and distributing high-grade medical
-                        components and equipment. We are committed to bridging the gap between innovative technology and
-                        frontline healthcare.
+                       Meditech Components is a dedicated firm in the field of medical devices manufacturing and trading. 
+                As a sister concern of <strong>Ajil Fibretech Pvt. Ltd.</strong> 
+We leverage over 20 years of 
+                expertise in ambulance manufacturing to bring forward innovative solutions and reliable products.
                     </p>
                     <ul class="about-highlights">
-                        <li><strong>&#10003 ; Industry Leading Expertise:</strong> Over two decades of supplying
-                            top-tier
-                            medical components.</li>
-                        <li><strong>&#10003 ; Security First:</strong> Rigorous cybersecurity standards for all
-                            connected
-                            devices.</li>
-                        <li><strong>&#10003 ; Global Supply Chain:</strong> Reliable delivery to hospitals and clinics
-                            worldwide.</li>
-                    </ul>
-                    <a href="trust-center.html" class="btn btn-primary" style="margin-top: 20px;">View About Us</a>
+                <li><strong>&#10003; Strong Foundation:</strong> Backed by Ajil Fibretech’s rich legacy and 20+ years of industry expertise.</li>
+                <li><strong>&#10003; National Network:</strong> An established presence and deep market knowledge across all of India.</li>
+                <li><strong>&#10003; Life-Saving Commitment:</strong> Delivering high-quality medical devices that ensure patient safety and support healthcare providers.</li>
+            </ul>
+                    <a href="{{ url_for('trust') }}" class="btn btn-primary" style="margin-top: 20px;">View About Us</a>
                 </div>
                 <div class="about-image is-loading fade-in">
                     <picture>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCL-S129RG Folding Chair | MediCore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="main-header">
+        <a href="{{ url_for('home') }}" class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Meditech Components">
+        </a>
+
+        <nav class="main-nav" aria-label="Main Navigation">
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('products') }}">Products</a></li>
+                <li><a href="{{ url_for('trust') }}">About Us</a></li>
+                <li><a href="{{ url_for('trust') }}">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="nav-icons">
+            <span role="button" tabindex="0" aria-label="Search Products" id="search-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </span>
+            <span role="button" tabindex="0" aria-label="Shopping Cart" id="cart-icon" style="position: relative;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span id="cart-badge" class="cart-badge">0</span>
+            </span>
+        </div>
+
+        <div id="search-overlay" class="search-overlay hidden">
+            <input type="text" id="global-search-input" placeholder="Search medical equipment...">
+            <button type="button" id="close-search" aria-label="Close search">&times;</button>
+        </div>
+    </header>
+
+    <main id="main-content" class="pdp-container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('products') }}">Products</a></li>
+                <li aria-current="page">MCL-S129RG Folding Chair</li>
+            </ol>
+        </nav>
+
+        <section class="pdp-top-grid">
+            <div class="pdp-gallery">
+                <div class="main-image fade-in">
+                    <img src="{{ url_for('static', filename='s129rg-chair.png' ) }}" alt="MCL-S129RG Folding Chair"
+                        id="current-image">
+                </div>
+                <div class="thumbnail-list fade-in">
+                    <img src="{{ url_for('static', filename='s129rg-chair.png' ) }}" alt="Front view"
+                        class="thumb active-thumb">
+                </div>
+            </div>
+
+            <div class="pdp-info fade-in">
+                <div class="pdp-badges">
+                    <span class="badge badge-fda">Lightweight Design</span>
+                    <span class="badge badge-iso">CE Certified</span>
+                </div>
+                <h1 class="pdp-title" style="color: #d32f2f;">MCL-<span style="color: #1a2533;">S129RG</span></h1>
+                <p class="pdp-sku">SKU: MCL-CHAIR-S129RG</p>
+                <p class="pdp-description">A highly portable and durable folding chair designed for emergency transport, 
+                    featuring a reinforced frame and multiple safety securements for patient stability.</p>
+                
+                <ul class="pdp-highlights">
+                    <li>&#10003; Load Capacity: 150 KG</li>
+                    <li>&#10003; 4 Wheels for smooth maneuverability</li>
+                    <li>&#10003; 3 Safety Belts for patient security</li>
+                    <li>&#10003; 6 Handles (4 Collapsible + 2 Extendable)</li>
+                    <li>&#10003; Folding Footrest for compact storage</li>
+                </ul>
+                
+                <div class="pdp-actions">
+                    <button type="button" class="btn btn-secondary btn-add-cart" data-id="s129rg"
+                        data-name="MCL-S129RG Folding Chair" data-sku="MCL-CHAIR-S129RG" style="width: 100%;">Add to Quote
+                        List</button>
+                    <a href="#" download class="btn btn-primary" style="width: 100%; margin-top: 15px;">Download Tech Sheet</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="pdp-tabs-section fade-in">
+            <div class="tab-headers" role="tablist">
+                <button type="button" class="tab-btn active" role="tab" aria-selected="true"
+                    aria-controls="tab-overview" id="btn-overview">Overview</button>
+                <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-specs"
+                    id="btn-specs">Technical Specs</button>
+            </div>
+            <div class="tab-content-container">
+                <div class="tab-panel active" id="tab-overview" role="tabpanel" aria-labelledby="btn-overview">
+                    <h3>Portable Rescue Solution</h3>
+                    <p>The MCL-S129RG is engineered for efficiency in tight spaces. At a weight of only 10.900 KG, it offers 
+                        unmatched portability without compromising on load capacity or patient safety.</p>
+                </div>
+                <div class="tab-panel" id="tab-specs" role="tabpanel" aria-labelledby="btn-specs" hidden>
+                    <table class="tech-table">
+                        <tbody>
+                            <tr>
+                                <th>Weight</th>
+                                <td>10.900 KG</td>
+                            </tr>
+                            <tr>
+                                <th>Load Capacity</th>
+                                <td>150 KG</td>
+                            </tr>
+                            <tr>
+                                <th>Handles</th>
+                                <td>6 (4 Collapsible, 2 Extendable)</td>
+                            </tr>
+                            <tr>
+                                <th>Security</th>
+                                <td>3 Safety Belts</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+
+</html>

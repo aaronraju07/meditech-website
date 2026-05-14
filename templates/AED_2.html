@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>X-200 Laser Scalpel | MediCore</title>
+    <title>MCL Saver One P | MediCore</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
@@ -14,8 +14,8 @@
 
     <header class="main-header">
         <a href="{{ url_for('home') }}" class="logo">
-    <img src="{{ url_for('static', filename='logo.png') }}" alt="Meditech Components">
-</a></a>
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Meditech Components">
+        </a>
 
         <nav class="main-nav" aria-label="Main Navigation">
             <ul>
@@ -56,42 +56,42 @@
             <ol>
                 <li><a href="{{ url_for('home') }}">Home</a></li>
                 <li><a href="{{ url_for('products') }}">Products</a></li>
-                <li aria-current="page">X-200 Advanced Laser Scalpel</li>
+                <li aria-current="page">MCL Saver One P (Professional)</li>
             </ol>
         </nav>
 
         <section class="pdp-top-grid">
             <div class="pdp-gallery">
                 <div class="main-image fade-in">
-                    <img src="{{ url_for('static', filename='x200-laser.jpg' ) }}" alt="X-200 Advanced Laser Scalpel"
+                    <img src="{{ url_for('static', filename='aed2.png' ) }}" alt="MCL Saver One P Professional"
                         id="current-image">
                 </div>
                 <div class="thumbnail-list fade-in">
-                    <img src="{{ url_for('static', filename='x200-laser.jpg' ) }}" alt="Front view"
+                    <img src="{{ url_for('static', filename='aed2.png' ) }}" alt="Front view"
                         class="thumb active-thumb">
-                    <img src="{{ url_for('static', filename='x200-laser.jpg' ) }}" alt="Side view" class="thumb">
-                    <img src="{{ url_for('static', filename='x200-laser.jpg' ) }}" alt="Interface view" class="thumb">
                 </div>
             </div>
 
             <div class="pdp-info fade-in">
-                <div class="pdp-badges"><span class="badge badge-fda">FDA Approved</span><span
-                        class="badge badge-iso">ISO 13485</span></div>
-                <h1 class="pdp-title">X-200 Advanced Laser Scalpel</h1>
-                <p class="pdp-sku">SKU: MED-SURG-X200</p>
-                <p class="pdp-description">The X-200 provides unparalleled precision for minimally invasive
-                    neurosurgery. Featuring real-time depth monitoring and thermal tissue protection.</p>
+                <div class="pdp-badges">
+                    <span class="badge badge-fda">Professional Grade</span>
+                    <span class="badge badge-iso">CE Certified</span>
+                </div>
+                <h1 class="pdp-title" style="color: #d32f2f;">MCL <span style="color: #1a2533;">Saver One P</span></h1>
+                <p class="pdp-sku">SKU: MCL-AED-PRO-P</p>
+                <p class="pdp-description">A professional-grade AED and monitor designed for high-stakes clinical environments, featuring a built-in display and advanced manual override capabilities.</p>
+                
                 <ul class="pdp-highlights">
-                    <li>&#10003; 0.1mm cutting precision</li>
-                    <li>&#10003; Integrated smoke evacuation system</li>
-                    <li>&#10003; 12-hour continuous battery backup</li>
+                    <li>&#10003; TYPE: Professional AED/Monitor</li>
+                    <li>&#10003; ENERGY (ADULTS): Configurable, up to 360J</li>
+                    <li>&#10003; TARGET USERS: Hospitals and EMS</li>
                 </ul>
+                
                 <div class="pdp-actions">
-                    <button type="button" class="btn btn-secondary btn-add-cart" data-id="x200"
-                        data-name="X-200 Laser Scalpel" data-sku="MED-SURG-X200" style="width: 100%;">Add to Quote
+                    <button type="button" class="btn btn-secondary btn-add-cart" data-id="saver-one-p"
+                        data-name="MCL Saver One P" data-sku="MCL-AED-PRO-P" style="width: 100%;">Add to Quote
                         List</button>
-                    <a href="#" download class="btn btn-primary" style="width: 100%; margin-top: 15px;">Download Spec
-                        Sheet</a>
+                    <a href="#" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Download Tech Manual</a>
                 </div>
             </div>
         </section>
@@ -103,36 +103,35 @@
                 <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-specs"
                     id="btn-specs">Technical Specs</button>
                 <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-support"
-                    id="btn-support">Support & Manuals</button>
+                    id="btn-support">Compliance</button>
             </div>
             <div class="tab-content-container">
                 <div class="tab-panel active" id="tab-overview" role="tabpanel" aria-labelledby="btn-overview">
-                    <h3>Clinical Overview</h3>
-                    <p>Designed for high-demand surgical environments, the X-200 integrates seamlessly into existing OR
-                        workflows...</p>
+                    <h3>Advanced Clinical Monitoring</h3>
+                    <p>The Saver One P provides real-time ECG monitoring and advanced defibrillation capabilities, allowing medical professionals to configure energy levels up to 360J based on patient needs.</p>
                 </div>
                 <div class="tab-panel" id="tab-specs" role="tabpanel" aria-labelledby="btn-specs" hidden>
                     <table class="tech-table">
                         <tbody>
                             <tr>
-                                <th>Laser Type</th>
-                                <td>CO2 Continuous Wave</td>
+                                <th>Battery</th>
+                                <td>Rechargeable High-Capacity Li-ion</td>
                             </tr>
                             <tr>
-                                <th>Wavelength</th>
-                                <td>10.6 µm</td>
+                                <th>Pediatric Setting</th>
+                                <td>Configurable Pediatric Mode Available</td>
                             </tr>
                             <tr>
-                                <th>Operating System</th>
-                                <td>Hardened Embedded Linux</td>
+                                <th>Monitoring</th>
+                                <td>Integrated ECG Display</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="tab-panel" id="tab-support" role="tabpanel" aria-labelledby="btn-support" hidden>
                     <ul class="download-list">
-                        <li><a href="#">&#128196; User Operator Manual (PDF, 4.2MB)</a></li>
-                        <li><a href="#">&#128196; Installation & Calibration Guide (PDF, 1.8MB)</a></li>
+                        <li><a href="#">&#128196; International Medical Standards Certificate</a></li>
+                        <li><a href="#">&#128196; CE Compliance Documentation</a></li>
                     </ul>
                 </div>
             </div>
@@ -140,6 +139,7 @@
     </main>
 
     <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+    
     <dialog id="cart-modal" class="modal">
         <div class="modal-content">
             <button type="button" id="close-cart" class="btn-close" aria-label="Close cart">&times;</button>
@@ -157,17 +157,13 @@
             <button type="button" id="close-modal" class="btn-close" aria-label="Close modal">&times;</button>
             <h2>Request a Quote</h2>
             <form id="quote-form">
-                <div class="form-group"><label for="full-name">Full Name *</label><input type="text" id="full-name"
-                        required></div>
-                <div class="form-group"><label for="email">Institutional Email *</label><input type="email" id="email"
-                        required></div>
+                <div class="form-group"><label for="full-name">Full Name *</label><input type="text" id="full-name" required></div>
+                <div class="form-group"><label for="email">Institutional Email *</label><input type="email" id="email" required></div>
                 <div class="form-group">
                     <label for="product-select">Product of Interest</label>
                     <select id="product-select">
-                        <option value="diagnostic">Diagnostic Imaging</option>
-                        <option value="monitoring">Patient Monitoring</option>
-                        <option value="surgical" selected>Surgical Systems</option>
-                        <option value="combined-cart">Combined Quote (Multiple Items)</option>
+                        <option value="monitoring" selected>Saver One P</option>
+                        <option value="combined-cart">Combined Quote</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary btn-full">Submit Request</button>
