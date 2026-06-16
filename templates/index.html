@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meditech Components - Advanced Medical Equipment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <meta property="og:title" content="Meditech Components | Advanced Medical Equipment Solutions">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "MedicalBusiness",
+      "name": "Meditech Components",
+      "certification": "ISO 13485"
+    }
+    </script>
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="main-header">
+        <a href="{{ url_for('home') }}" class="logo">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Meditech Components">
+</a>
+        <nav class="main-nav" aria-label="Main Navigation">
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('products') }}">Products</a></li>
+                <li><a href="{{ url_for('trust') }}">About Us</a></li>
+                <li><a href="{{ url_for('trust') }}#contact-section">Contact</a></li>
+            </ul>
+        </nav>
+
+       
+            <div class="nav-icons">
+                <span role="button" tabindex="0" aria-label="Search Products" id="search-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </span>
+                <span role="button" tabindex="0" aria-label="Shopping Cart" id="cart-icon" style="position: relative;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span id="cart-badge" class="cart-badge">0</span>
+                </span>
+            </div>
+            <div id="search-overlay" class="search-overlay hidden">
+                <input type="text" id="global-search-input" placeholder="Search medical equipment...">
+                <button type="button" id="close-search" aria-label="Close search">&times;</button>
+            </div>
+
+    </header>
+    <main id="main-content">
+        <section class="hero-section">
+            <div class="hero-badge">&#9679; ISO 13485 Certified</div>
+            <h1 class="hero-title">Advanced Medical <strong>Equipment</strong></h1>
+            <p class="hero-subtitle">Providing healthcare professionals with cutting-edge medical equipment and
+                solutions for superior patient care.</p>
+            <div class="hero-buttons">
+                <a href="{{ url_for('products') }}" class="btn btn-primary">Browse Equipment <span>&#8594</span></a>
+                <button type="button" class="btn btn-secondary btn-quote">Request Quote</button>
+            </div>
+        </section>
+
+        <section class="featured-equipment">
+            <p class="section-eyebrow">FEATURED EQUIPMENT</p>
+            <h2 class="section-title">Medical Equipment</h2>
+            <p class="section-subtitle">Premium medical equipment trusted by healthcare professionals worldwide.</p>
+
+            <div class="featured-grid">
+                <div class="product-card is-loading fade-in" data-category="AED" data-cert="fda iso">
+                    <picture>
+                        <img src="{{ url_for('static', filename='aed.png') }}" alt=" Automated External Defibrillator"
+                            loading="lazy">
+                    </picture>
+                    <div class="card-tag">AED</div>
+                    
+
+                    <div class="card-hover-overlay">
+                        <a href="{{ url_for('products') }}" class="btn btn-featured">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in" id="card-monitoring">
+                    <picture>
+                        <img src="{{ url_for('static', filename='TG-880-C2C4.jpg') }}" alt="Stretcher"
+                            loading="lazy">
+                    </picture>
+                    <div class="card-tag">Stretcher</div>
+                  
+
+                    <div class="card-hover-overlay">
+                        <a href="{{ url_for('products') }}" class="btn btn-featured">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card is-loading fade-in" id="card-surgical">
+                    <picture>
+                        <img src="{{ url_for('static', filename='MCL-CS200.jpg') }}" alt="Wheelchair"
+                            loading="lazy">
+                    </picture>
+                    <div class="card-tag">Wheelchair</div>
+                   
+
+                    <div class="card-hover-overlay">
+                        <a href="{{ url_for('products') }}" class="btn btn-featured">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-us-section" id="about">
+            <div class="about-grid">
+                <div class="about-text fade-in">
+                    <p class="section-eyebrow">ABOUT US</p>
+                    <h2 class="section-title">Engineering the Future of Medical Care</h2>
+                    <p class="section-subtitle" style="margin-left: 0;">
+                       Meditech Components is a dedicated firm in the field of medical devices manufacturing and trading. 
+                As a sister concern of <strong>Ajil Fibretech Pvt. Ltd.</strong> 
+We leverage over 20 years of 
+                expertise in ambulance manufacturing to bring forward innovative solutions and reliable products.
+                    </p>
+                    <ul class="about-highlights">
+                <li><strong>&#10003; Strong Foundation:</strong> Backed by Ajil Fibretech’s rich legacy and 20+ years of industry expertise.</li>
+                <li><strong>&#10003; National Network:</strong> An established presence and deep market knowledge across all of India.</li>
+                <li><strong>&#10003; Life-Saving Commitment:</strong> Delivering high-quality medical devices that ensure patient safety and support healthcare providers.</li>
+            </ul>
+                    <a href="{{ url_for('trust') }}" class="btn btn-primary" style="margin-top: 20px;">View About Us</a>
+                </div>
+                <div class="about-image is-loading fade-in">
+                    <picture>
+                        <img src="{{ url_for('static', filename='meditech-facility.jpg') }}"
+                            alt="Meditech Components Facility" loading="lazy"
+                            style="width: 100%; border-radius: var(--radius-lg); box-shadow: 0 8px 20px rgba(0,0,0,0.05);">
+                    </picture>
+                </div>
+            </div>
+        </section>
+
+        <section class="trusted-partners text-center">
+            <p class="section-eyebrow">OUR TRUSTED PARTNERS</p>
+            <h2 class="section-title">Collaborating with Industry Leaders</h2>
+            <p class="section-subtitle">We supply essential components to top healthcare institutions and technology
+                partners.</p>
+
+            <div class="partners-grid fade-in">
+                <div class="partner-logo"><img src="{{ url_for('static', filename='partner1.png') }}" alt="Partner 1">
+                </div>
+                <div class="partner-logo"><img src="{{ url_for('static', filename='partner2.png') }}" alt="Partner 2">
+                </div>
+                <div class="partner-logo"><img src="{{ url_for('static', filename='partner3.png') }}" alt="Partner 3"
+                        alt="Partner 3"></div>
+                <div class="partner-logo"><img src="{{ url_for('static', filename='partner4.png') }}" alt="Partner 4"
+                        alt="Partner 4"></div>
+                <div class="partner-logo"><img src="{{ url_for('static', filename='partner5.png') }}" alt="Partner 5"
+                        alt="Partner 5"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-column brand">
+                <strong class="logo">Meditech Components</strong>
+                <p>Advanced medical equipment for superior patient care.</p>
+                <div class="social-icons"><a href="#"><span>IG</span></a><a href="#"><span>FB</span></a><a
+                        href="#"><span>TW</span></a><a href="#"><span>YT</span></a></div>
+            </div>
+            <div class="footer-column links">
+                <h3>Products</h3>
+                <ul>
+                    <li><a href="{{ url_for('products') }}">All Equipment</a></li>
+                    <li><a href="#">Diagnostic</a></li>
+                    <li><a href="#">Laboratory</a></li>
+                    <li><a href="#">Surgical</a></li>
+                </ul>
+            </div>
+            <div class="footer-column links">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="{{ url_for('trust') }}">Certifications</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column links">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Technical Support</a></li>
+                    <li><a href="#">Installation</a></li>
+                    <li><a href="#">Maintenance</a></li>
+                    <li><a href="#">Training</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom" id="contact">
+            <p>&copy; 2026 Meditech Components. All rights reserved.</p>
+        </div>
+        
+        <dialog id="cart-modal" class="modal">
+            <div class="modal-content">
+                <button type="button" id="close-cart" class="btn-close" aria-label="Close cart">&times</button>
+                <h2>Your Procurement List</h2>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Review your selected
+                    equipment before requesting a combined quote.</p>
+                <div id="cart-items" class="cart-items-container"></div>
+                <div class="cart-actions" style="display: flex; gap: 10px; margin-top: 25px;">
+                    <button type="button" class="btn btn-secondary" id="clear-cart" style="flex: 1;">Clear List</button>
+                    <button type="button" class="btn btn-primary" id="checkout-cart" style="flex: 2;">Request Combined
+                        Quote</button>
+                </div>
+            </div>
+        </dialog>
+
+        <!-- SEARCH FOR THIS SECTION INSIDE THE quote-modal IN index.html -->
+<dialog id="quote-modal" class="modal">
+    <div class="modal-content">
+        <button type="button" id="close-modal" class="btn-close" aria-label="Close modal">&times;</button>
+        <h2>Request a Quote</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Complete the form below and our medical specialists will contact you.</p>
+        <form method="POST" action="/submit-quote">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <!-- Keep hidden input blank here because it's a single item choice, not a multi-cart selection -->
+            <input type="hidden" name="selected_products_list" id="hidden-products-list" value="">
+            
+            <div class="form-group">
+                <label for="quick-name">Full Name *</label>
+                <input type="text" name="name" id="quick-name" placeholder="Dr. John Doe" required>
+            </div>
+            <div class="form-group">
+                <label for="quick-email">Institutional Email *</label>
+                <input type="email" name="email" id="quick-email" placeholder="john@hospital.org" required>
+            </div>
+            <div class="form-group">
+                <label for="quick-phone">Phone / Contact Number *</label>
+                <input type="text" name="phone" id="quick-phone" placeholder="8799996143" required>
+            </div>
+            <div class="form-group">
+                <label for="quick-message">Message / Requirements</label>
+                <textarea name="message" id="quick-message" placeholder="Enter your custom request specifications..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="product-select">Product of Interest</label>
+                <select name="product" id="product-select">
+                    <option value="aed">AED Devices</option>
+                    <option value="stretcher">Stretchers</option>
+                    <option value="wheelchair">Wheelchairs</option>
+                </select>
+            </div>
+            <!-- Tracks that this submission generated from the home page -->
+            <input type="hidden" name="source" value="home_quick_quote">
+            <button type="submit" class="btn btn-primary btn-full">Submit Request</button>
+        </form>
+    </div>
+</dialog> <dialog id="cart-checkout-modal" class="modal">
+    <div class="modal-content">
+        <button type="button" id="close-checkout-modal" class="btn-close" onclick="document.getElementById('cart-checkout-modal').close()">&times;</button>
+        <h2>Request Combined Quote</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Your chosen items will automatically be submitted with this request.</p>
+        
+        <form method="POST" action="/submit-quote">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="selected_products_list" id="cart-hidden-products-list" value="">
+            
+            <div class="form-group">
+                <label for="cart-name">Full Name *</label>
+                <input type="text" name="name" id="cart-name" placeholder="Dr. John Doe" required>
+            </div>
+            <div class="form-group">
+                <label for="cart-email">Institutional Email *</label>
+                <input type="email" name="email" id="cart-email" placeholder="john@hospital.org" required>
+            </div>
+            <div class="form-group">
+                <label for="cart-phone">Phone / Contact Number *</label>
+                <input type="text" name="phone" id="cart-phone" placeholder="8799996143" required>
+            </div>
+            <div class="form-group">
+                <label for="cart-message">Additional Notes</label>
+                <textarea name="message" id="cart-message" placeholder="Add details about shipping destination, split delivery requirements, etc."></textarea>
+            </div>
+            
+            <input type="hidden" name="product" value="combined-cart">
+            <input type="hidden" name="source" value="home_procurement_cart">
+            <button type="submit" class="btn btn-primary btn-full">Submit Procurement List</button>
+        </form>
+    </div>
+</dialog>
+
+        <div id="success-popup" class="popup hidden">
+            <div class="popup-content">
+                <div class="checkmark">✔</div>
+                <h2>Message Sent!</h2>
+                <p>Your message has been successfully submitted.</p>
+                <button onclick="closePopup()">OK</button>
+            </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+<script>
+    /* ── Home Page Form Routing Logic ── */
+    (function () {
+        // Form 1 Controllers: Single-Product Dropdown Quote Modal
+        const heroQuoteBtn = document.querySelector('.hero-buttons .btn-quote');
+        const quoteModal = document.getElementById('quote-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+
+        if (heroQuoteBtn && quoteModal) {
+            heroQuoteBtn.addEventListener('click', () => {
+                quoteModal.showModal();
+            });
+        }
+        if (closeModalBtn && quoteModal) {
+            closeModalBtn.addEventListener('click', () => {
+                quoteModal.close();
+            });
+        }
+
+        // Form 2 Controllers: Multi-Item Procurement Cart Checkout
+        const checkoutCartBtn = document.getElementById('checkout-cart');
+        const cartModal = document.getElementById('cart-modal');
+        const cartCheckoutModal = document.getElementById('cart-checkout-modal');
+
+        if (checkoutCartBtn) {
+            checkoutCartBtn.addEventListener('click', (e) => {
+                // 🛑 CRITICAL FIX: Stop global app.js from firing on this same button press
+                e.stopImmediatePropagation();
+
+                let localCart = [];
+                try {
+                    // Extract active selections straight from memory storage rows
+                    localCart = JSON.parse(localStorage.getItem('medicore_cart')) || [];
+                } catch(e) {
+                    console.error("Could not parse cart items", e);
+                }
+
+                if (localCart.length > 0) {
+                    const itemsSummary = localCart.map(item => `${item.name} (${item.sku})`).join(', ');
+                    const hiddenInput = document.getElementById('cart-hidden-products-list');
+                    
+                    if (hiddenInput) {
+                        hiddenInput.value = itemsSummary;
+                    }
+                }
+                
+                if (cartModal && typeof cartModal.close === 'function') cartModal.close();
+                if (cartCheckoutModal && typeof cartCheckoutModal.showModal === 'function') cartCheckoutModal.showModal();
+            });
+        }
+    })();
+</script>
+</body>
+
+</html>

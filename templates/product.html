@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-200 Laser Scalpel | MediCore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="main-header">
+        <a href="{{ url_for('home') }}" class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Meditech Components">
+        </a>
+
+        <nav class="main-nav" aria-label="Main Navigation">
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('products') }}">Products</a></li>
+                <li><a href="{{ url_for('trust') }}">About Us</a></li>
+                <li><a href="{{ url_for('trust') }}">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="nav-icons">
+            <span role="button" tabindex="0" aria-label="Search Products" id="search-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </span>
+            <span role="button" tabindex="0" aria-label="Shopping Cart" id="cart-icon" style="position: relative;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span id="cart-badge" class="cart-badge">0</span>
+            </span>
+        </div>
+
+        <div id="search-overlay" class="search-overlay hidden">
+            <input type="text" id="global-search-input" placeholder="Search medical equipment...">
+            <button type="button" id="close-search" aria-label="Close search">&times;</button>
+        </div>
+    </header>
+
+    <main id="main-content" class="pdp-container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('products') }}">Products</a></li>
+                <li aria-current="page">X-200 Advanced Laser Scalpel</li>
+            </ol>
+        </nav>
+
+        <section class="pdp-top-grid">
+            <div class="pdp-gallery">
+                <div class="main-image fade-in">
+                    <img src="{{ url_for('static', filename='x200-laser.jpg' ) }}" alt="X-200 Advanced Laser Scalpel"
+                        id="current-image">
+                </div>
+                <div class="thumbnail-list fade-in">
+                    <img src="{{ url_for('static', filename='x200-laser.jpg' ) }}" alt="Front view"
+                        class="thumb active-thumb">
+                    <img src="{{ url_for('static', filename='x200-laser.jpg' ) }}" alt="Side view" class="thumb">
+                    <img src="{{ url_for('static', filename='x200-laser.jpg' ) }}" alt="Interface view" class="thumb">
+                </div>
+            </div>
+
+            <div class="pdp-info fade-in">
+                <div class="pdp-badges">
+                    <span class="badge badge-fda">FDA Approved</span>
+                    <span class="badge badge-iso">ISO 13485</span>
+                </div>
+                <h1 class="pdp-title">X-200 Advanced Laser Scalpel</h1>
+                <p class="pdp-sku">SKU: MED-SURG-X200</p>
+                <p class="pdp-description">The X-200 provides unparalleled precision for minimally invasive neurosurgery. Featuring real-time depth monitoring and thermal tissue protection.</p>
+                <ul class="pdp-highlights">
+                    <li>&#10003; 0.1mm cutting precision</li>
+                    <li>&#10003; Integrated smoke evacuation system</li>
+                    <li>&#10003; 12-hour continuous battery backup</li>
+                </ul>
+                <div class="pdp-actions">
+                    <button type="button" class="btn btn-secondary btn-add-cart" data-id="x200"
+                        data-name="X-200 Laser Scalpel" data-sku="MED-SURG-X200" style="width: 100%;">Add to Quote List</button>
+                    <button type="button" class="btn btn-primary" id="request-spec-btn" style="width: 100%; margin-top: 15px;">📄 Request Spec Sheet</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="pdp-tabs-section fade-in">
+            <div class="tab-headers" role="tablist">
+                <button type="button" class="tab-btn active" role="tab" aria-selected="true"
+                    aria-controls="tab-overview" id="btn-overview">Overview</button>
+                <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-specs"
+                    id="btn-specs">Technical Specs</button>
+            </div>
+            <div class="tab-content-container">
+                <div class="tab-panel active" id="tab-overview" role="tabpanel" aria-labelledby="btn-overview">
+                    <h3>Clinical Overview</h3>
+                    <p>Designed for high-demand surgical environments, the X-200 integrates seamlessly into existing OR workflows...</p>
+                </div>
+                <div class="tab-panel" id="tab-specs" role="tabpanel" aria-labelledby="btn-specs" hidden>
+                    <table class="tech-table">
+                        <tbody>
+                            <tr>
+                                <th>Laser Type</th>
+                                <td>CO2 Continuous Wave</td>
+                            </tr>
+                            <tr>
+                                <th>Wavelength</th>
+                                <td>10.6 µm</td>
+                            </tr>
+                            <tr>
+                                <th>Operating System</th>
+                                <td>Hardened Embedded Linux</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <dialog id="cart-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-cart" class="btn-close" aria-label="Close cart" onclick="document.getElementById('cart-modal').close()">&times;</button>
+            <h2>Your Procurement List</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Review your selected equipment before requesting a combined quote.</p>
+            <div id="cart-items" class="cart-items-container"></div>
+            <div class="cart-actions" style="display: flex; gap: 10px; margin-top: 25px;">
+                <button type="button" class="btn btn-secondary" id="clear-cart" style="flex: 1;">Clear List</button>
+                <button type="button" class="btn btn-primary" id="checkout-cart" style="flex: 2;">Request Combined Quote</button>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="quote-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-modal" class="btn-close" aria-label="Close modal" onclick="document.getElementById('quote-modal').close()">&times;</button>
+            <h2>Request a Quote</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Complete the form below and our medical specialists will contact you.</p>
+            <form id="quote-form" method="POST" action="/submit-quote">
+                <input type="hidden" name="selected_products_list" id="hidden-products-list" value="">
+                
+                <div class="form-group">
+                    <label for="full-name">Full Name *</label>
+                    <input type="text" name="name" id="full-name" placeholder="Dr. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Institutional Email *</label>
+                    <input type="email" name="email" id="email" placeholder="john@hospital.org" required>
+                </div>
+                <div class="form-group">
+                    <label for="quick-phone">Phone / Contact Number *</label>
+                    <input type="text" name="phone" id="quick-phone" placeholder="8799996143" required>
+                </div>
+                <div class="form-group">
+                    <label for="quick-message">Message / Requirements</label>
+                    <textarea name="message" id="quick-message" placeholder="Enter your custom request specifications..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="product-select">Product of Interest</label>
+                    <select name="product" id="product-select">
+                        <option value="X-200 Laser Scalpel" selected>X-200 Laser Scalpel</option>
+                        <option value="diagnostic">Diagnostic Imaging</option>
+                        <option value="monitoring">Patient Monitoring</option>
+                    </select>
+                </div>
+                <input type="hidden" name="source" value="pdp_quick_quote">
+                <button type="submit" class="btn btn-primary btn-full">Submit Request</button>
+            </form>
+        </div>
+    </dialog>
+
+    <dialog id="cart-checkout-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-checkout-modal" class="btn-close" onclick="document.getElementById('cart-checkout-modal').close()">&times;</button>
+            <h2>Request Combined Quote</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Your chosen items will automatically be submitted with this request.</p>
+            
+            <form method="POST" action="/submit-quote">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="selected_products_list" id="cart-hidden-products-list" value="">
+                
+                <div class="form-group">
+                    <label for="cart-name">Full Name *</label>
+                    <input type="text" name="name" id="cart-name" placeholder="Dr. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="cart-email">Institutional Email *</label>
+                    <input type="email" name="email" id="cart-email" placeholder="john@hospital.org" required>
+                </div>
+                <div class="form-group">
+                    <label for="cart-phone">Phone / Contact Number *</label>
+                    <input type="text" name="phone" id="cart-phone" placeholder="8799996143" required>
+                </div>
+                <div class="form-group">
+                    <label for="cart-message">Additional Notes</label>
+                    <textarea name="message" id="cart-message" placeholder="Add details about shipping destination, split delivery requirements, etc."></textarea>
+                </div>
+                
+                <input type="hidden" name="product" value="combined-cart">
+                <input type="hidden" name="source" value="pdp_procurement_cart">
+                <button type="submit" class="btn btn-primary btn-full">Submit Procurement List</button>
+            </form>
+        </div>
+    </dialog>
+
+    <dialog id="spec-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-spec-modal" class="btn-close" onclick="document.getElementById('spec-modal').close()">&times;</button>
+            <h2>Request Technical Specifications</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Provide your contact details below to receive the full documentation for the X-200 Laser Scalpel.</p>
+            
+            <form method="POST" action="/submit-quote">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="selected_products_list" value="">
+                <input type="hidden" name="product" value="X-200 Technical Spec Sheet Documentation">
+                <input type="hidden" name="source" value="pdp_spec_sheet_form">
+                
+                <div class="form-group">
+                    <label for="spec-name">Full Name *</label>
+                    <input type="text" name="name" id="spec-name" placeholder="Dr. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="spec-email">Institutional Email *</label>
+                    <input type="email" name="email" id="spec-email" placeholder="john@hospital.org" required>
+                </div>
+                <div class="form-group">
+                    <label for="spec-phone">Phone / Contact Number *</label>
+                    <input type="text" name="phone" id="spec-phone" placeholder="8799996143" required>
+                </div>
+                <div class="form-group">
+                    <label for="spec-message">Specific Clinical Application / Notes</label>
+                    <textarea name="message" id="spec-message" placeholder="Please mention if you require specialized customization parameters..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-full">Request Documentation</button>
+            </form>
+        </div>
+    </dialog>
+
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+    
+    <script>
+        /* ── PDP Form Event Controls ── */
+        (function () {
+            // Spec Sheet Modal Trigger
+            const requestSpecBtn = document.getElementById('request-spec-btn');
+            const specModal = document.getElementById('spec-modal');
+
+            if (requestSpecBtn && specModal) {
+                requestSpecBtn.addEventListener('click', () => {
+                    specModal.showModal();
+                });
+            }
+
+            // Procurement Cart Checkout Control
+            const checkoutCartBtn = document.getElementById('checkout-cart');
+            const cartModal = document.getElementById('cart-modal');
+            const cartCheckoutModal = document.getElementById('cart-checkout-modal');
+
+            if (checkoutCartBtn) {
+                checkoutCartBtn.addEventListener('click', (e) => {
+                    // 🛑 CRITICAL INTERCEPT: Stop global app.js from firing a double modal
+                    e.stopImmediatePropagation();
+
+                    let localCart = [];
+                    try {
+                        localCart = JSON.parse(localStorage.getItem('medicore_cart')) || [];
+                    } catch(e) {
+                        console.error("Could not parse cart items", e);
+                    }
+
+                    if (localCart.length > 0) {
+                        const itemsSummary = localCart.map(item => `${item.name} (${item.sku})`).join(', ');
+                        const hiddenInput = document.getElementById('cart-hidden-products-list');
+                        
+                        if (hiddenInput) {
+                            hiddenInput.value = itemsSummary;
+                        }
+                    }
+                    
+                    if (cartModal && typeof cartModal.close === 'function') cartModal.close();
+                    if (cartCheckoutModal && typeof cartCheckoutModal.showModal === 'function') cartCheckoutModal.showModal();
+                });
+            }
+
+            // Thumbnail Image Switcher Logic
+            const mainImg = document.getElementById('current-image');
+            const thumbs = document.querySelectorAll('.thumbnail-list img');
+            
+            thumbs.forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    thumbs.forEach(t => t.classList.remove('active-thumb'));
+                    this.classList.add('active-thumb');
+                    if (mainImg) mainImg.src = this.src;
+                });
+            });
+
+            // Tabs Content Control Logic
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabPanels = document.querySelectorAll('.tab-panel');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    tabBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-selected', 'false');
+                    });
+                    tabPanels.forEach(p => p.setAttribute('hidden', ''));
+
+                    this.classList.add('active');
+                    this.setAttribute('aria-selected', 'true');
+                    
+                    const targetPanel = document.getElementById(this.getAttribute('aria-controls'));
+                    if (targetPanel) targetPanel.removeAttribute('hidden');
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>

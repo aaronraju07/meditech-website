@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Meditech Components</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="main-header">
+        <a href="{{ url_for('home') }}" class="logo">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Meditech Components">
+</a></a>
+
+        <nav class="main-nav" aria-label="Main Navigation">
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('products') }}">Products</a></li>
+                <li><a href="{{ url_for('trust') }}">About Us</a></li>
+                <li><a href="#contact-section">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-icons">
+            <span role="button" tabindex="0" aria-label="Search Products" id="search-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </span>
+            <span role="button" tabindex="0" aria-label="Shopping Cart" id="cart-icon" style="position: relative;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span id="cart-badge" class="cart-badge">0</span>
+            </span>
+        </div>
+
+        <div id="search-overlay" class="search-overlay hidden">
+            <input type="text" id="global-search-input" placeholder="Search medical equipment...">
+            <button type="button" id="close-search" aria-label="Close search">&times;</button>
+        </div>
+    </header>
+
+    <main id="main-content">
+    <section class="about-hero fade-in">
+        <div class="container">
+            <p class="section-eyebrow">Established Paradigm in Healthcare</p>
+            <h1 class="hero-title">Engineering Reliability. <strong>Delivering Medical Excellence.</strong></h1>
+            <p class="hero-subtitle">Bridging the gap between innovative manufacturing engineering and frontline clinical infrastructure across India.</p>
+            <div style="margin-top: 25px; display: flex; gap: 15px; justify-content: center;">
+    <a href="{{ url_for('products') }}" class="btn btn-primary">Explore Product Catalog</a>
+    <button type="button" class="btn btn-brochure" id="request-brochure-btn">📄 Request Company Brochure</button>
+
+        </div>
+    </section>
+
+    <section class="about-genesis-view fade-in">
+        <div class="about-genesis-container">
+            <div class="about-text-pane">
+                <p class="section-eyebrow">Our Corporate Genesis</p>
+                <h2 class="section-title">A Legacy of Precision Fabrication</h2>
+                <p class="text-main" style="margin-bottom: 15px;">Meditech Components is a dedicated firm specialized in the fields of high-end medical device manufacturing and trading, steadily expanding our strategic footprint across the entire healthcare ecosystem.</p>
+                <p class="text-muted">We operate as a proud sister concern of <strong>Ajil Fibretech Pvt. Ltd.</strong>, a highly trusted market leader holding over 20 years of extensive, profound expertise in professional ambulance manufacturing. Backed by this industrial foundation, Meditech brings forward innovative custom solutions, incredibly reliable products, and an intimately deep understanding of challenging medical market requirements.</p>
+                <span class="cert-tag">ISO 13485 Quality Standard Standardized</span>
+            </div>
+            <div class="about-image-pane">
+                <div class="is-loading">
+                    <img src="{{ url_for('static', filename='high-tech-part.jpg') }}" alt="Meditech Manufacturing Infrastructure">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pillars-section fade-in">
+        <p class="section-eyebrow">Operational Framework</p>
+        <h2 class="section-title">Securing the Healthcare Supply Chain</h2>
+        <p class="section-subtitle">How we combine manufacturing legacy with strategic OEM agility to support modern healthcare providers.</p>
+        
+        <div class="pillars-grid">
+            <div class="pillar-item-card">
+                <span class="pillar-item-icon">⚙️</span>
+                <h3>World-Class OEM Network</h3>
+                <p class="text-muted">By partnering with certified Original Equipment Manufacturers globally, we assemble a diverse, state-of-the-art catalog under strict quality control blueprints without asset drag.</p>
+            </div>
+            <div class="pillar-item-card">
+                <span class="pillar-item-icon">🛡️</span>
+                <h3>Uncompromising Safety</h3>
+                <p class="text-muted">In medical care, there is no margin for variance. Every component in our inventory undergoes strict, multi-stage certification validation to safeguard device operational integrity.</p>
+            </div>
+            <div class="pillar-item-card">
+                <span class="pillar-item-icon">🌐</span>
+                <h3>Pan-India Logistical Reach</h3>
+                <p class="text-muted">Combining our parent network's footprint with strategic localized hubs, we possess the deep market placement needed to ensure stable distribution to emergency networks nationwide.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="metrics-accent-banner fade-in">
+        <div class="metrics-flex-wrap">
+            <div class="metric-block-item">
+                <span class="metric-number-huge">20+ Years</span>
+                <span class="metric-label-sub">Industrial Fabrication Legacy</span>
+            </div>
+            <div class="metric-block-item">
+                <span class="metric-number-huge">1,000+</span>
+                <span class="metric-label-sub">Institutional Infrastructure Partners</span>
+            </div>
+            <div class="metric-block-item">
+                <span class="metric-number-huge">Pan-India</span>
+                <span class="metric-label-sub">Distribution Pipeline Coverage</span>
+            </div>
+        </div>
+    </section>
+    <!-- SECTION 3.5: EXCLUSIVE OEM PARTNERS SHOWCASE -->
+    <section class="partners-showcase-section fade-in">
+        <p class="section-eyebrow">Strategic Alliances</p>
+        <h2 class="section-title">Our Exclusive Manufacturing Partners</h2>
+        <p class="section-subtitle" style="margin-bottom: 50px;">Directly delivering world-class medical innovation and precision engineering to the Indian healthcare market.</p>
+
+        <div class="partner-tier-container">
+            <div class="exclusive-oem-grid">
+                <!-- Partner 1: Kartsana -->
+                <div class="exclusive-oem-card">
+                    <img src="{{ url_for('static', filename='partner1.png') }}" alt="Kartsana - Life-moving innovation" class="partner-img-fluid">
+                </div>
+                <!-- Partner 2: AMI Italia -->
+                <div class="exclusive-oem-card">
+                    <img src="{{ url_for('static', filename='partner2.png') }}" alt="AMI Italia Medical Devices" class="partner-img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="vision-statement-block fade-in">
+        <blockquote>
+            "By combining Ajil Fibretech’s rich manufacturing heritage and Meditech’s focused clinical expertise, we have built a robust market presence across India dedicated to saving lives and ensuring absolute patient safety."
+        </blockquote>
+    </section>
+
+    <section class="contact-split-view" id="contact-section">
+        <div class="contact-container">
+            <div class="contact-info-pane">
+                <p class="section-eyebrow">Connect</p>
+                <h2 class="pane-title-sm">Direct Channels</h2>
+                <div class="info-group-sm">
+                    <span class="info-label">Address</span>
+                    <a href="https://maps.app.goo.gl/MgXKswvwNHKCkddB6" target="_blank" rel="noopener noreferrer" class="address-link">
+                        Sr.No 108/1/2 Flat No: A/13<br>
+                        Sai Preetam Park, Vijay Nagar<br>
+                        Kalewadi, Pimpri, Pune<br>
+                        Maharashtra, India - 411017
+                    </a>
+                </div>
+                <div class="info-group-sm">
+                    <span class="info-label">Phone</span>
+                    <p>8799996143</p>
+                    <p>BRYAN DSOUZA (DIRECTOR)</p>
+                </div>
+                <div class="info-group-sm">
+                    <span class="info-label">Email</span>
+                    <p>meditechcomponents@gmail.com</p>
+                </div>
+            </div>
+            <div class="contact-divider"></div>
+            <div class="contact-form-pane">
+    <h2 class="pane-title">Initialize Inquiry</h2>
+    <form class="modern-form" method="POST" action="/contact">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="contact-name" class="sr-only">Full Name *</label>
+                <input type="text" id="contact-name" name="name" placeholder="Dr. John Doe" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="contact-email" class="sr-only">Email Address *</label>
+                <input type="email" id="contact-email" name="email" placeholder="john@hospital.org" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="contact-phone" class="sr-only">Phone Number *</label>
+                <input type="text" id="contact-phone" name="phone" placeholder="8799996143" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="contact-message" class="sr-only">Your Message *</label>
+                <textarea id="contact-message" name="message" placeholder="Enter your custom request specifications..." required></textarea>
+            </div>
+        </div>
+        <button type="submit" class="btn-full">Send Message</button>
+    </form>
+</div>
+        </div>
+    </section>
+</main>
+
+    <dialog id="cart-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-cart" class="btn-close">&times;</button>
+            <h2>Your Procurement List</h2>
+            <div id="cart-items" class="cart-items-container"></div>
+            <div class="cart-actions" style="display: flex; gap: 10px; margin-top: 25px;">
+                <button type="button" class="btn btn-secondary" id="clear-cart" style="flex: 1;">Clear List</button>
+                <button type="button" class="btn btn-primary" id="checkout-cart" style="flex: 2;">Request Quote</button>
+            </div>
+        </div>
+    </dialog> <dialog id="cart-checkout-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-checkout-modal" class="btn-close" onclick="document.getElementById('cart-checkout-modal').close()">&times;</button>
+            <h2>Request Combined Quote</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Your chosen items will automatically be submitted with this request.</p>
+            
+            <form method="POST" action="/submit-quote">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="selected_products_list" id="cart-hidden-products-list" value="">
+                
+                <div class="form-group">
+                    <label for="cart-name">Full Name *</label>
+                    <input type="text" name="name" id="cart-name" placeholder="Dr. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="cart-email">Institutional Email *</label>
+                    <input type="email" name="email" id="cart-email" placeholder="john@hospital.org" required>
+                </div>
+                <div class="form-group">
+                    <label for="cart-phone">Phone / Contact Number *</label>
+                    <input type="text" name="phone" id="cart-phone" placeholder="8799996143" required>
+                </div>
+                <div class="form-group">
+                    <label for="cart-message">Additional Notes</label>
+                    <textarea name="message" id="cart-message" placeholder="Add details about shipping destination, split delivery requirements, etc."></textarea>
+                </div>
+                
+                <input type="hidden" name="product" value="combined-cart">
+                <input type="hidden" name="source" value="about_procurement_cart">
+                <button type="submit" class="btn btn-primary btn-full">Submit Procurement List</button>
+            </form>
+        </div>
+    </dialog>
+<dialog id="brochure-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-brochure-modal" class="btn-close" onclick="document.getElementById('brochure-modal').close()">&times;</button>
+            <h2>Request Company Brochure</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Provide your details below and we will automatically send our digital asset brochure to your inbox.</p>
+            
+            <form method="POST" action="/submit-quote">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="selected_products_list" value="">
+                <input type="hidden" name="product" value="Company Digital Brochure">
+                <input type="hidden" name="source" value="brochure_request_form">
+                
+                <div class="form-group">
+                    <label for="brochure-name">Full Name *</label>
+                    <input type="text" name="name" id="brochure-name" placeholder="Dr. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="brochure-email">Institutional Email *</label>
+                    <input type="email" name="email" id="brochure-email" placeholder="john@hospital.org" required>
+                </div>
+                <div class="form-group">
+                    <label for="brochure-phone">Phone / Contact Number *</label>
+                    <input type="text" name="phone" id="brochure-phone" placeholder="8799996143" required>
+                </div>
+                <div class="form-group">
+                    <label for="brochure-message">Specific Requirements / Facility Notes</label>
+                    <textarea name="message" id="brochure-message" placeholder="Let us know what products you're looking for..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-full">Submit & Request Brochure</button>
+            </form>
+        </div>
+    </dialog>
+
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+
+<!-- 🔍 REPLACE THE ENTIRE BOTTOM SCRIPT BLOCK WITH THIS: -->
+<script>
+    /* ── About Page Form Routing Logic ── */
+    (function () {
+        // Brochure Modal Hook
+        const requestBrochureBtn = document.getElementById('request-brochure-btn');
+        const brochureModal = document.getElementById('brochure-modal');
+
+        if (requestBrochureBtn && brochureModal) {
+            requestBrochureBtn.addEventListener('click', () => {
+                brochureModal.showModal();
+            });
+        }
+
+        // Procurement Cart Checkout Hook
+        const checkoutCartBtn = document.getElementById('checkout-cart');
+        const cartModal = document.getElementById('cart-modal');
+        const cartCheckoutModal = document.getElementById('cart-checkout-modal');
+
+        if (checkoutCartBtn) {
+            checkoutCartBtn.addEventListener('click', (e) => {
+                e.stopImmediatePropagation();
+
+                let localCart = [];
+                try {
+                    localCart = JSON.parse(localStorage.getItem('medicore_cart')) || [];
+                } catch(e) {
+                    console.error("Could not parse cart items", e);
+                }
+
+                if (localCart.length > 0) {
+                    const itemsSummary = localCart.map(item => `${item.name} (${item.sku})`).join(', ');
+                    const hiddenInput = document.getElementById('cart-hidden-products-list');
+                    
+                    if (hiddenInput) {
+                        hiddenInput.value = itemsSummary;
+                    }
+                }
+                
+                if (cartModal && typeof cartModal.close === 'function') cartModal.close();
+                if (cartCheckoutModal && typeof cartCheckoutModal.showModal === 'function') cartCheckoutModal.showModal();
+            });
+        }
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Optimization -->
+    <title>CS-200 Convertible Stretcher Chair | Meditech Components</title>
+    <meta name="description" content="Discover the CS-200 Convertible Stretcher Chair by KARTSANA. Premium aluminum build, 300 kg capacity, 10G crash test certified, and seamless chair transformation for difficult access areas.">
+    <meta name="keywords" content="CS-200 Stretcher, convertible stretcher chair, KARTSANA stretcher, ambulance cot, bariatric stretcher 300kg, 10G certified ambulance chair, patient transfer medical equipment">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="main-header">
+        <a href="{{ url_for('home') }}" class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Meditech Components">
+        </a>
+
+        <nav class="main-nav" aria-label="Main Navigation">
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('products') }}">Products</a></li>
+                <li><a href="{{ url_for('trust') }}">About Us</a></li>
+                <li><a href="{{ url_for('trust') }}">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="nav-icons">
+            <span role="button" tabindex="0" aria-label="Search Products" id="search-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </span>
+            <span role="button" tabindex="0" aria-label="Shopping Cart" id="cart-icon" style="position: relative;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span id="cart-badge" class="cart-badge">0</span>
+            </span>
+        </div>
+
+        <div id="search-overlay" class="search-overlay hidden">
+            <input type="text" id="global-search-input" placeholder="Search medical equipment...">
+            <button type="button" id="close-search" aria-label="Close search">&times;</button>
+        </div>
+    </header>
+
+    <main id="main-content" class="pdp-container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('products') }}">Products</a></li>
+                <li aria-current="page">CS-200 Convertible Stretcher Chair</li>
+            </ol>
+        </nav>
+
+        <section class="pdp-top-grid">
+            <div class="pdp-gallery">
+                <div class="main-image fade-in">
+                    <img src="{{ url_for('static', filename='MCL-CS200.jpg' ) }}" alt="CS-200 Convertible Stretcher Chair System in Multiple Positions"
+                        id="current-image">
+                </div>
+                <div class="thumbnail-list fade-in">
+                    <img src="{{ url_for('static', filename='MCL-CS200.jpg' ) }}" alt="CS-200 Stretcher and chair conversion views"
+                        class="thumb active-thumb">
+                    <img src="{{ url_for('static', filename='cs200-diagram.jpg' ) }}" alt="Sizing, dimensions and position tracking diagram" class="thumb">
+                    <img src="{{ url_for('static', filename='cs200-schematic.jpg' ) }}" alt="Mechanical blueprints of folding systems" class="thumb">
+                </div>
+            </div>
+
+            <div class="pdp-info fade-in">
+                <div class="pdp-badges">
+                    <span class="badge badge-fda">Certified 10G Impact Resistant</span>
+                    <span class="badge badge-iso">Premium Aluminium Profile</span>
+                </div>
+                <h1 class="pdp-title">CS-200 Convertible Stretcher Chair</h1>
+                <p class="pdp-sku">SKU: MED-STR-CS200</p>
+                <p class="pdp-description">The CS-200 is an elite, highly adaptive convertible stretcher chair engineered from premium structural aluminium to be remarkably light and handy. Purpose-built to navigate difficult access places, it effortlessly transforms from a standard horizontal ambulance cot into an upright maneuverable rescue chair. With a maximum unassisted load rating of up to 300 kg and integrated crash-tested safety architecture, the CS-200 delivers ultimate performance for complex patient transport operations.</p>
+                <ul class="pdp-highlights">
+                    <li>&#10003; <strong>Dual-Staged Convertible Layout:</strong> Features effortless transformations between a full-length stretcher profile and an upright chair orientation to operate seamlessly in tight spaces.</li>
+                    <li>&#10003; <strong>Heavy-Duty 300 kg Rating:</strong> High-strength, specialized architectural frame built to comfortably lift and sustain up to 300 kg load configurations.</li>
+                    <li>&#10003; <strong>Comprehensive Treatment Features:</strong> Equipped standard with an adjustable shock absorber assisted backrest, assisted unfolding legs, a folding/removable IV drip stand, and an aluminum CPR tray for cardiac massage.</li>
+                </ul>
+                <div class="pdp-actions">
+                    <!-- Premium yellow color matching #d4af37 -->
+                    <button type="button" class="btn btn-add-cart" data-id="cs-200"
+                        data-name="CS-200 Convertible Stretcher Chair" data-sku="MED-STR-CS200" style="width: 100%; background-color: #d4af37 !important; color: #ffffff !important; border: none; font-weight: 700;">Add to Quote List</button>
+                    <button type="button" class="btn btn-primary" id="request-spec-btn" style="width: 100%; margin-top: 15px;">📄 Request Spec Sheet</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="pdp-tabs-section fade-in">
+            <div class="tab-headers" role="tablist">
+                <button type="button" class="tab-btn active" role="tab" aria-selected="true"
+                    aria-controls="tab-overview" id="btn-overview">Overview</button>
+                <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-specs"
+                    id="btn-specs">Technical Specs</button>
+            </div>
+            <div class="tab-content-container">
+                <div class="tab-panel active" id="tab-overview" role="tabpanel" aria-labelledby="btn-overview">
+                    <h3>Clinical Articulation & Patient Security</h3>
+                    <p>Designed to satisfy modern emergency transport safety thresholds across multi-level egress fields, the KARTSANA CS-200 maximizes situational rescue handling. The articulating frame layout features an endless positioning system to comfortably align patient ergonomics alongside a comfortable 2-piece integrated mattress. While transferring patients longitudinally or laterally, security is continuously maintained through a professional 3-point safety belt restraint kit designed for the shoulders, abdomen, and legs.</p>
+                    <br>
+                    <p>Maneuvering through narrow staircases, elevators, or loading ramps is simplified via automated leg deployment steps and structural lengthwise collapsible safety armrests. On-the-ground mobility relies on four heavy-duty $\varnothing\text{ 150 mm}$ wheel assemblies, organized into 2 fixed front casters and 2 rear pivoting wheels outfitted with independent mechanical brake overrides to guarantee total tracking stability. The entire chassis complies with strict 10G dynamic crash testing safety benchmarks for seamless active vehicle placement.</p>
+                </div>
+                <div class="tab-panel" id="tab-specs" role="tabpanel" aria-labelledby="btn-specs" hidden>
+                    <table class="tech-table">
+                        <tbody>
+                            <tr>
+                                <th>Chassis Core Material</th>
+                                <td>Premium structural Aluminium alloy profile</td>
+                            </tr>
+                            <tr>
+                                <th>Maximum Load Threshold</th>
+                                <td>300 kg structural limit rating</td>
+                            </tr>
+                            <tr>
+                                <th>Position Configurations</th>
+                                <td>Endless positioning adjustments with chair mode for difficult access places</td>
+                            </tr>
+                            <tr>
+                                <th>Backrest Adjustment</th>
+                                <td>Adjustable shock absorber assisted backrest mechanism</td>
+                            </tr>
+                            <tr>
+                                <th>Patient Restraint System</th>
+                                <td>Three-point fastener belt kit (Shoulder, abdomen, and legs)</td>
+                            </tr>
+                            <tr>
+                                <th>Side Armrests / Guards</th>
+                                <td>Lengthwise collapsible structural safety armrests</td>
+                            </tr>
+                            <tr>
+                                <th>Wheel Assemblies Setup</th>
+                                <td>4 wheels $\varnothing\text{ 150 mm}$ (2 fixed front + 2 rear pivoting with step-on brakes)</td>
+                            </tr>
+                            <tr>
+                                <th>Clinical Accessories</th>
+                                <td>Folding & removable intravenous (IV) drip stand | Aluminum cardiac massage CPR tray</td>
+                            </tr>
+                            <tr>
+                                <th>Safety Certifications</th>
+                                <td>Dynamic Crash Test 10G Certified structural integrity</td>
+                            </tr>
+                            <tr>
+                                <th>Stretcher Position Metrics</th>
+                                <td>Height (H): 1028 mm | Leading Wheel Height (HC): 675 mm | Width (W): 603 mm | Length (L): 1983 mm</td>
+                            </tr>
+                            <tr>
+                                <th>Folded / Chair Sizing</th>
+                                <td>Minimum Height (H2): 347 mm | Extended Length (L2): 2007 mm | Chair Position Length (L3): 1350 mm | Chair Height (H3): 1404 mm</td>
+                            </tr>
+                            <tr>
+                                <th>Total Frame Net Weight</th>
+                                <td>41.4 kg (base stretcher assembly weight empty)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <dialog id="cart-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-cart" class="btn-close" aria-label="Close cart" onclick="document.getElementById('cart-modal').close()">&times;</button>
+            <h2>Your Procurement List</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Review your selected equipment before requesting a combined quote.</p>
+            <div id="cart-items" class="cart-items-container"></div>
+            <div class="cart-actions" style="display: flex; gap: 10px; margin-top: 25px;">
+                <button type="button" class="btn btn-secondary" id="clear-cart" style="flex: 1;">Clear List</button>
+                <button type="button" class="btn btn-primary" id="checkout-cart" style="flex: 2;">Request Combined Quote</button>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="quote-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-modal" class="btn-close" aria-label="Close modal" onclick="document.getElementById('quote-modal').close()">&times;</button>
+            <h2>Request a Quote</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Complete the form below and our medical specialists will contact you.</p>
+            <form id="quote-form" method="POST" action="/submit-quote">
+                <input type="hidden" name="selected_products_list" id="hidden-products-list" value="">
+                
+                <div class="form-group">
+                    <label for="full-name">Full Name *</label>
+                    <input type="text" name="name" id="full-name" placeholder="Dr. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Institutional Email *</label>
+                    <input type="email" name="email" id="email" placeholder="john@hospital.org" required>
+                </div>
+                <div class="form-group">
+                    <label for="quick-phone">Phone / Contact Number *</label>
+                    <input type="text" name="phone" id="quick-phone" placeholder="8799996143" required>
+                </div>
+                <div class="form-group">
+                    <label for="quick-message">Message / Requirements</label>
+                    <textarea name="message" id="quick-message" placeholder="Enter your custom request specifications..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="product-select">Product of Interest</label>
+                    <select name="product" id="product-select">
+                        <option value="CS-200 Convertible Stretcher Chair" selected>CS-200 Convertible Stretcher Chair</option>
+                        <option value="diagnostic">Diagnostic Imaging</option>
+                        <option value="monitoring">Patient Monitoring</option>
+                    </select>
+                </div>
+                <input type="hidden" name="source" value="pdp_quick_quote">
+                <button type="submit" class="btn btn-primary btn-full">Submit Request</button>
+            </form>
+        </div>
+    </dialog>
+
+    <dialog id="cart-checkout-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-checkout-modal" class="btn-close" onclick="document.getElementById('cart-checkout-modal').close()">&times;</button>
+            <h2>Request Combined Quote</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Your chosen items will automatically be submitted with this request.</p>
+            
+            <form method="POST" action="/submit-quote">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="selected_products_list" id="cart-hidden-products-list" value="">
+                
+                <div class="form-group">
+                    <label for="cart-name">Full Name *</label>
+                    <input type="text" name="name" id="cart-name" placeholder="Dr. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="cart-email">Institutional Email *</label>
+                    <input type="email" name="email" id="cart-email" placeholder="john@hospital.org" required>
+                </div>
+                <div class="form-group">
+                    <label for="cart-phone">Phone / Contact Number *</label>
+                    <input type="text" name="phone" id="cart-phone" placeholder="8799996143" required>
+                </div>
+                <div class="form-group">
+                    <label for="cart-message">Additional Notes</label>
+                    <textarea name="message" id="cart-message" placeholder="Add details about shipping destination, split delivery requirements, etc."></textarea>
+                </div>
+                
+                <input type="hidden" name="product" value="combined-cart">
+                <input type="hidden" name="source" value="pdp_procurement_cart">
+                <button type="submit" class="btn btn-primary btn-full">Submit Procurement List</button>
+            </form>
+        </div>
+    </dialog>
+
+    <dialog id="spec-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-spec-modal" class="btn-close" onclick="document.getElementById('spec-modal').close()">&times;</button>
+            <h2>Request Technical Specifications</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Provide your contact details below to receive the full documentation for the CS-200 Convertible Stretcher Chair.</p>
+            
+            <form method="POST" action="/submit-quote">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="selected_products_list" value="">
+                <input type="hidden" name="product" value="CS-200 Convertible Stretretcher Chair Technical Spec Sheet Documentation">
+                <input type="hidden" name="source" value="pdp_spec_sheet_form">
+                
+                <div class="form-group">
+                    <label for="spec-name">Full Name *</label>
+                    <input type="text" name="name" id="spec-name" placeholder="Dr. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="spec-email">Institutional Email *</label>
+                    <input type="email" name="email" id="spec-email" placeholder="john@hospital.org" required>
+                </div>
+                <div class="form-group">
+                    <label for="spec-phone">Phone / Contact Number *</label>
+                    <input type="text" name="phone" id="spec-phone" placeholder="8799996143" required>
+                </div>
+                <div class="form-group">
+                    <label for="spec-message">Specific Clinical Application / Notes</label>
+                    <textarea name="message" id="spec-message" placeholder="Please mention if you require specialized customization parameters..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-full">Request Documentation</button>
+            </form>
+        </div>
+    </dialog>
+
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+    
+    <script>
+        /* ── PDP Form Event Controls ── */
+        (function () {
+            // Spec Sheet Modal Trigger
+            const requestSpecBtn = document.getElementById('request-spec-btn');
+            const specModal = document.getElementById('spec-modal');
+
+            if (requestSpecBtn && specModal) {
+                requestSpecBtn.addEventListener('click', () => {
+                    specModal.showModal();
+                });
+            }
+
+            // Procurement Cart Checkout Control
+            const checkoutCartBtn = document.getElementById('checkout-cart');
+            const cartModal = document.getElementById('cart-modal');
+            const cartCheckoutModal = document.getElementById('cart-checkout-modal');
+
+            if (checkoutCartBtn) {
+                checkoutCartBtn.addEventListener('click', (e) => {
+                    // 🛑 CRITICAL INTERCEPT: Stop global app.js from firing a double modal
+                    e.stopImmediatePropagation();
+
+                    let localCart = [];
+                    try {
+                        localCart = JSON.parse(localStorage.getItem('medicore_cart')) || [];
+                    } catch(e) {
+                        console.error("Could not parse cart items", e);
+                    }
+
+                    if (localCart.length > 0) {
+                        const itemsSummary = localCart.map(item => `${item.name} (${item.sku})`).join(', ');
+                        const hiddenInput = document.getElementById('cart-hidden-products-list');
+                        
+                        if (hiddenInput) {
+                            hiddenInput.value = itemsSummary;
+                        }
+                    }
+                    
+                    if (cartModal && typeof cartModal.close === 'function') cartModal.close();
+                    if (cartCheckoutModal && typeof cartCheckoutModal.showModal === 'function') cartCheckoutModal.showModal();
+                });
+            }
+
+            // Thumbnail Image Switcher Logic
+            const mainImg = document.getElementById('current-image');
+            const thumbs = document.querySelectorAll('.thumbnail-list img');
+            
+            thumbs.forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    thumbs.forEach(t => t.classList.remove('active-thumb'));
+                    this.classList.add('active-thumb');
+                    if (mainImg) mainImg.src = this.src;
+                });
+            });
+
+            // Tabs Content Control Logic
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabPanels = document.querySelectorAll('.tab-panel');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    tabBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-selected', 'false');
+                    });
+                    tabPanels.forEach(p => p.setAttribute('hidden', ''));
+
+                    this.classList.add('active');
+                    this.setAttribute('aria-selected', 'true');
+                    
+                    const targetPanel = document.getElementById(this.getAttribute('aria-controls'));
+                    if (targetPanel) targetPanel.removeAttribute('hidden');
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>

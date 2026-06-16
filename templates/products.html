@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Equipment Catalog | Meditech</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════
+           PRODUCTS PAGE — ADVANCED REDESIGN
+        ═══════════════════════════════════════════ */
+
+        /* ── Page hero banner ── */
+        .plp-hero {
+            background: linear-gradient(135deg, #0d1b2a 0%, #1a2f46 60%, #1e3a52 100%);
+            padding: 72px 5% 64px;
+            position: relative;
+            overflow: hidden;
+        }
+        .plp-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 80% 50%, rgba(212,175,55,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .plp-hero-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .plp-hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 18px;
+        }
+        .plp-hero-eyebrow span {
+            width: 28px;
+            height: 1px;
+            background: var(--color-accent);
+            display: block;
+        }
+        .plp-hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+            color: #ffffff;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            max-width: 560px;
+        }
+        .plp-hero h1 em {
+            font-style: italic;
+            color: var(--color-accent);
+        }
+        .plp-hero-sub {
+            color: rgba(255,255,255,0.62);
+            font-size: 1rem;
+            max-width: 480px;
+            line-height: 1.65;
+            margin-bottom: 32px;
+        }
+        .plp-hero-stats {
+            display: flex;
+            gap: 36px;
+            flex-wrap: wrap;
+        }
+        .plp-hero-stat {
+            display: flex;
+            flex-direction: column;
+        }
+        .plp-hero-stat strong {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+        }
+        .plp-hero-stat span {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 4px;
+        }
+        .plp-hero-divider {
+            width: 1px;
+            height: 40px;
+            background: rgba(255,255,255,0.15);
+            align-self: center;
+        }
+
+        /* ── Breadcrumb ── */
+        .plp-breadcrumb {
+            background: #f7f6f3;
+            border-bottom: 1px solid var(--border-light);
+            padding: 12px 5%;
+        }
+        .plp-breadcrumb ol {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            max-width: 1280px;
+            margin: 0 auto;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+        .plp-breadcrumb li + li::before {
+            content: '/';
+            margin-right: 8px;
+            color: #ccc;
+        }
+        .plp-breadcrumb a {
+            text-decoration: none;
+            color: var(--text-muted);
+        }
+        .plp-breadcrumb a:hover { color: var(--color-primary); }
+        .plp-breadcrumb [aria-current] { color: var(--color-primary); font-weight: 600; }
+
+        /* ── Main content wrapper ── */
+        .plp-content-wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* ── Toolbar (search + controls) ── */
+        .plp-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 22px 0;
+            border-bottom: 1px solid var(--border-light);
+            flex-wrap: wrap;
+        }
+        .plp-search-bar {
+            flex: 1;
+            min-width: 220px;
+            position: relative;
+        }
+        .plp-search-bar input {
+            width: 100%;
+            padding: 10px 16px 10px 42px;
+            border: 1.5px solid var(--border-light);
+            border-radius: 8px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            background: #fff;
+            transition: border-color 0.2s;
+        }
+        .plp-search-bar input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+        .plp-search-bar svg {
+            position: absolute;
+            left: 13px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+        .plp-result-count {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+        .plp-result-count strong { color: var(--color-primary); }
+        .plp-sort-select {
+            padding: 10px 14px;
+            border: 1.5px solid var(--border-light);
+            border-radius: 8px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.88rem;
+            color: var(--text-main);
+            background: #fff;
+            cursor: pointer;
+        }
+        .plp-sort-select:focus { outline: none; border-color: var(--color-accent); }
+        .view-toggle {
+            display: flex;
+            border: 1.5px solid var(--border-light);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .view-toggle-btn {
+            padding: 9px 12px;
+            background: #fff;
+            border: none;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: background 0.2s, color 0.2s;
+            display: flex;
+            align-items: center;
+        }
+        .view-toggle-btn.active {
+            background: var(--color-primary);
+            color: #fff;
+        }
+
+        /* ── Body layout ── */
+        .plp-body {
+            display: grid;
+            grid-template-columns: 256px 1fr;
+            gap: 0;
+            padding-top: 0;
+        }
+
+        /* ── Sidebar ── */
+        .plp-sidebar-new {
+            border-right: 1px solid var(--border-light);
+            padding: 28px 24px 28px 0;
+            position: sticky;
+            top: 76px;
+            height: calc(100vh - 76px);
+            overflow-y: auto;
+        }
+        .sidebar-section {
+            margin-bottom: 28px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .sidebar-section:last-child {
+            border-bottom: none;
+        }
+        .sidebar-section-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+
+        /* Category pills */
+        .cat-pills {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .cat-pill {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 9px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 1.5px solid transparent;
+            transition: all 0.18s;
+            background: transparent;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+            text-align: left;
+            width: 100%;
+        }
+        .cat-pill:hover {
+            background: #f4f3f0;
+        }
+        .cat-pill.active {
+            background: var(--color-primary);
+            color: #fff;
+            border-color: var(--color-primary);
+        }
+        .cat-pill-icon {
+            font-size: 1rem;
+            margin-right: 10px;
+        }
+        .cat-pill-count {
+            font-size: 0.75rem;
+            font-weight: 700;
+            background: rgba(255,255,255,0.2);
+            padding: 2px 7px;
+            border-radius: 20px;
+        }
+        .cat-pill:not(.active) .cat-pill-count {
+            background: var(--border-light);
+            color: var(--text-muted);
+        }
+
+        /* Cert badges in sidebar */
+        .cert-filter-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .cert-filter-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+        .cert-filter-item input {
+            accent-color: var(--color-accent);
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Sidebar CTA */
+        .sidebar-cta {
+            background: linear-gradient(135deg, #0d1b2a 0%, #1a2f46 100%);
+            border-radius: 12px;
+            padding: 20px;
+            color: #fff;
+        }
+        .sidebar-cta h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .sidebar-cta p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+        .sidebar-cta .btn-cta {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: var(--color-accent);
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            font-family: 'Manrope', sans-serif;
+            transition: background 0.2s;
+        }
+        .sidebar-cta .btn-cta:hover { background: #c9a952; }
+
+        /* ── Product grid area ── */
+        .plp-main {
+            padding: 28px 0 28px 32px;
+        }
+
+        /* ── Active filter chips ── */
+        .active-filters {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            min-height: 32px;
+        }
+        .active-filters-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .filter-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px 4px 10px;
+            background: var(--color-primary);
+            color: #fff;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+        .filter-chip button {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.7);
+            cursor: pointer;
+            font-size: 1rem;
+            line-height: 1;
+            padding: 0;
+        }
+        .filter-chip button:hover { color: #fff; }
+
+        /* ── Grid & List product cards ── */
+
+        /* Grid mode */
+        #plp-product-grid.view-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 22px;
+        }
+        #plp-product-grid.view-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Card shared */
+        .plp-card {
+            background: #fff;
+            border-radius: 14px;
+            border: 1.5px solid var(--border-light);
+            overflow: hidden;
+            transition: box-shadow 0.22s, border-color 0.22s, transform 0.22s;
+            position: relative;
+        }
+        .plp-card:hover {
+            box-shadow: 0 8px 32px rgba(26,37,51,0.11);
+            border-color: #d0cfca;
+            transform: translateY(-2px);
+        }
+        .plp-card.hidden { display: none !important; }
+
+        /* Grid card layout */
+        .view-grid .plp-card {
+            display: flex;
+            flex-direction: column;
+        }
+        .view-grid .plp-card-img {
+            height: 210px;
+            overflow: hidden;
+            background: #f7f6f3;
+            position: relative;
+        }
+        .view-grid .plp-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 16px;
+            transition: transform 0.35s ease;
+        }
+        .plp-card:hover .plp-card-img img {
+            transform: scale(1.05);
+        }
+        .view-grid .plp-card-body {
+            padding: 18px 18px 14px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .view-grid .plp-card-footer {
+            padding: 12px 18px 16px;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            gap: 8px;
+        }
+
+        /* List card layout */
+        .view-list .plp-card {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+        }
+        .view-list .plp-card-img {
+            width: 180px;
+            min-width: 180px;
+            background: #f7f6f3;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .view-list .plp-card-img img {
+            width: 100%;
+            height: 140px;
+            object-fit: contain;
+            padding: 12px;
+            transition: transform 0.35s;
+        }
+        .view-list .plp-card-body {
+            padding: 20px 20px 16px;
+            flex: 1;
+        }
+        .view-list .plp-card-footer {
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 8px;
+            border-left: 1px solid var(--border-light);
+            min-width: 170px;
+        }
+
+        /* Card internals */
+        .plp-card-badge-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .plp-badge {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border-radius: 20px;
+        }
+        .badge-cat {
+            background: #eef2f7;
+            color: var(--color-primary);
+        }
+        .badge-ce  { background: #e8f4e8; color: #2d7d2d; }
+        .badge-iso { background: #fff3e0; color: #b35a00; }
+        .badge-new { background: var(--color-accent); color: #fff; }
+
+        .plp-card-sku {
+            font-size: 0.73rem;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+            margin-bottom: 4px;
+        }
+        .plp-card-name {
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+            line-height: 1.35;
+        }
+        .plp-card-desc {
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+            margin-bottom: 10px;
+        }
+        .plp-card-specs {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-top: auto;
+        }
+        .plp-card-specs li {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 0.81rem;
+            color: var(--text-muted);
+        }
+        .plp-card-specs li::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            flex-shrink: 0;
+        }
+        .view-list .plp-card-specs {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .view-list .plp-card-specs li {
+            background: #f4f3f0;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+        }
+        .view-list .plp-card-specs li::before { display: none; }
+
+        /* Buttons in card footer */
+        .btn-view-detail {
+            flex: 1;
+            padding: 9px 14px;
+            background: var(--color-primary);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.84rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .btn-view-detail:hover { background: #111d29; }
+        .btn-add-quote {
+            padding: 9px 12px;
+            background: transparent;
+            border: 1.5px solid var(--border-light);
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: border-color 0.2s, color 0.2s, background 0.2s;
+            display: flex;
+            align-items: center;
+            font-family: 'Manrope', sans-serif;
+        }
+        .btn-add-quote:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            background: #fff9ed;
+        }
+        .view-list .btn-view-detail,
+        .view-list .btn-add-quote {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* No-results state */
+        .plp-empty {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-muted);
+            display: none;
+        }
+        .plp-empty.visible { display: block; }
+        .plp-empty svg { opacity: 0.3; margin-bottom: 16px; }
+        .plp-empty h3 { color: var(--color-primary); margin-bottom: 8px; }
+
+        /* Fade-in animation */
+        @keyframes cardFadeIn {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .plp-card { animation: cardFadeIn 0.38s ease both; }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .plp-body { grid-template-columns: 1fr; }
+            .plp-sidebar-new {
+                position: static;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border-light);
+                padding: 20px 0;
+            }
+            .plp-main { padding: 20px 0; }
+            .cat-pills { flex-direction: row; flex-wrap: wrap; }
+            .cat-pill { width: auto; padding: 7px 14px; }
+            .view-list .plp-card-img { width: 120px; min-width: 120px; }
+        }
+        @media (max-width: 640px) {
+            .plp-hero { padding: 44px 5% 40px; }
+            .plp-hero-stats { gap: 20px; }
+            .view-list .plp-card { flex-direction: column; }
+            .view-list .plp-card-img { width: 100%; }
+            .view-list .plp-card-footer {
+                flex-direction: row;
+                border-left: none;
+                border-top: 1px solid var(--border-light);
+                min-width: unset;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ── Header (unchanged from existing site) ── -->
+    <header class="main-header">
+        <a href="{{ url_for('home') }}" class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Meditech Components">
+        </a>
+        <nav class="main-nav" aria-label="Main Navigation">
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('products') }}">Products</a></li>
+                <li><a href="{{ url_for('trust') }}">About Us</a></li>
+                <li><a href="{{ url_for('trust') }}">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-icons">
+            <span role="button" tabindex="0" aria-label="Search Products" id="search-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </span>
+            <span role="button" tabindex="0" aria-label="Shopping Cart" id="cart-icon" style="position:relative;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span id="cart-badge" class="cart-badge">0</span>
+            </span>
+        </div>
+        <div id="search-overlay" class="search-overlay hidden">
+            <input type="text" id="global-search-input" placeholder="Search medical equipment...">
+            <button type="button" id="close-search" aria-label="Close search">&times;</button>
+        </div>
+    </header>
+
+    <!-- ── Hero Banner ── -->
+    <section class="plp-hero" aria-label="Products hero">
+        <div class="plp-hero-inner">
+            <p class="plp-hero-eyebrow"><span></span>Clinical Equipment</p>
+            <h1>Equipment Built for<br><em>Critical Environments</em></h1>
+            <p class="plp-hero-sub">Every device in our catalog is certified to international standards and tested for reliability when it matters most.</p>
+            <div class="plp-hero-stats">
+                <div class="plp-hero-stat">
+                    <strong>9</strong>
+                    <span>Products</span>
+                </div>
+                <div class="plp-hero-divider" aria-hidden="true"></div>
+                <div class="plp-hero-stat">
+                    <strong>3</strong>
+                    <span>Categories</span>
+                </div>
+                <div class="plp-hero-divider" aria-hidden="true"></div>
+                <div class="plp-hero-stat">
+                    <strong>CE / ISO</strong>
+                    <span>Certified</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Breadcrumb ── -->
+    <nav class="plp-breadcrumb" aria-label="Breadcrumb">
+        <ol>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li aria-current="page">Products</li>
+        </ol>
+    </nav>
+
+    <main id="main-content">
+        <div class="plp-content-wrapper">
+
+            <!-- ── Toolbar ── -->
+            <div class="plp-toolbar">
+                <div class="plp-search-bar">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                    <input type="text" id="plp-search-input" placeholder="Search by name or SKU…" aria-label="Search products">
+                </div>
+                <span class="plp-result-count" id="plp-result-count">Showing <strong>9</strong> products</span>
+                <select class="plp-sort-select" id="plp-sort" aria-label="Sort products">
+                    <option value="default">Default order</option>
+                    <option value="name-az">Name: A → Z</option>
+                    <option value="name-za">Name: Z → A</option>
+                    <option value="cat">By category</option>
+                </select>
+                <div class="view-toggle" role="group" aria-label="View mode">
+                    <button class="view-toggle-btn active" id="btn-view-grid" aria-pressed="true" title="Grid view">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+                            <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+                        </svg>
+                    </button>
+                    <button class="view-toggle-btn" id="btn-view-list" aria-pressed="false" title="List view">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/>
+                            <line x1="8" y1="18" x2="21" y2="18"/>
+                            <circle cx="3" cy="6" r="1.5" fill="currentColor" stroke="none"/>
+                            <circle cx="3" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+                            <circle cx="3" cy="18" r="1.5" fill="currentColor" stroke="none"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ── Body: sidebar + grid ── -->
+            <div class="plp-body">
+
+                <!-- Sidebar -->
+                <aside class="plp-sidebar-new" aria-label="Product filters">
+                    <div class="sidebar-section">
+                        <p class="sidebar-section-title">Category</p>
+                        <div class="cat-pills" role="group" aria-label="Filter by category">
+                            <button class="cat-pill active" data-cat="all">
+                                <span><span class="cat-pill-icon">⊞</span>All Products</span>
+                                <span class="cat-pill-count">9</span>
+                            </button>
+                            <button class="cat-pill" data-cat="AED">
+                                <span><span class="cat-pill-icon">⚡</span>AED Devices</span>
+                                <span class="cat-pill-count">3</span>
+                            </button>
+                            <button class="cat-pill" data-cat="Stretcher">
+                                <span><span class="cat-pill-icon">🛏</span>Stretchers</span>
+                                <span class="cat-pill-count">4</span>
+                            </button>
+                            <button class="cat-pill" data-cat="Wheelchair">
+                                <span><span class="cat-pill-icon">♿</span>Wheelchairs</span>
+                                <span class="cat-pill-count">2</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <p class="sidebar-section-title">Certification</p>
+                        <div class="cert-filter-list">
+                            <label class="cert-filter-item">
+                                <input type="checkbox" class="cert-filter" value="ce" checked> CE Mark
+                            </label>
+                            <label class="cert-filter-item">
+                                <input type="checkbox" class="cert-filter" value="iso" checked> ISO 13485
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <div class="sidebar-cta">
+                            <h4>Need a Custom Quote?</h4>
+                            <p>Our specialists can configure the right solution for your facility.</p>
+                            <button type="button" class="btn-cta" id="sidebar-quote-btn">Request a Quote</button>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Product grid -->
+                <div class="plp-main">
+                    <!-- Active filter chips -->
+                    <div class="active-filters" id="active-filters" aria-live="polite"></div>
+
+                    <div id="plp-product-grid" class="view-grid" role="list" aria-label="Product list">
+
+                        <!-- ─── AED Cards ─── -->
+                        <article class="plp-card" role="listitem" data-category="AED" data-cert="ce iso" data-name="MCL Smarty Saver AED">
+                            <div class="plp-card-img">
+                                <img src="{{ url_for('static', filename='aed.png') }}" alt="MCL Smarty Saver AED" loading="lazy">
+                            </div>
+                            <div class="plp-card-body">
+                                <div class="plp-card-badge-row">
+                                    <span class="plp-badge badge-cat">AED</span>
+                                    <span class="plp-badge badge-ce">CE</span>
+                                    <span class="plp-badge badge-iso">ISO</span>
+                                </div>
+                                <p class="plp-card-sku">SKU: MCL-AED-SS-01</p>
+                                <h3 class="plp-card-name">MCL Smarty Saver AED</h3>
+                                <p class="plp-card-desc">Entry-level semi-automatic AED designed for rapid deployment in public spaces.</p>
+                                <ul class="plp-card-specs">
+                                    <li>Semi-Automatic Operation</li>
+                                    <li>Long-Life Lithium Battery</li>
+                                    <li>Fixed 200J Adult Energy</li>
+                                </ul>
+                            </div>
+                            <div class="plp-card-footer">
+                                <a href="{{ url_for('aed_product') }}" class="btn-view-detail">
+                                    View Details
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                                <button type="button" class="btn-add-quote btn-add-cart" data-id="smarty-saver" data-name="MCL Smarty Saver AED" data-sku="MCL-AED-SS-01" title="Add to procurement list">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                                </button>
+                            </div>
+                        </article>
+
+                        <article class="plp-card" role="listitem" data-category="AED" data-cert="ce iso" data-name="MCL Saver One P">
+                            <div class="plp-card-img">
+                                <img src="{{ url_for('static', filename='aed2.png') }}" alt="MCL Saver One P" loading="lazy">
+                            </div>
+                            <div class="plp-card-body">
+                                <div class="plp-card-badge-row">
+                                    <span class="plp-badge badge-cat">Professional</span>
+                                    <span class="plp-badge badge-ce">CE</span>
+                                    <span class="plp-badge badge-iso">ISO</span>
+                                    <span class="plp-badge badge-new">NEW</span>
+                                </div>
+                                <p class="plp-card-sku">SKU: MCL-AED-PRO-P</p>
+                                <h3 class="plp-card-name">MCL Saver One P</h3>
+                                <p class="plp-card-desc">Professional-grade AED/Monitor with ECG display for clinical settings.</p>
+                                <ul class="plp-card-specs">
+                                    <li>Configurable up to 360J</li>
+                                    <li>Integrated ECG Display</li>
+                                    <li>Professional AED/Monitor</li>
+                                </ul>
+                            </div>
+                            <div class="plp-card-footer">
+                                <a href="{{ url_for('aed_product2') }}" class="btn-view-detail">
+                                    View Details
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                                <button type="button" class="btn-add-quote btn-add-cart" data-id="saver-one-p" data-name="MCL Saver One P" data-sku="MCL-AED-PRO-P" title="Add to procurement list">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                                </button>
+                            </div>
+                        </article>
+
+                        <article class="plp-card" role="listitem" data-category="AED" data-cert="ce iso" data-name="MCL Saver One D">
+                            <div class="plp-card-img">
+                                <img src="{{ url_for('static', filename='aed3.png') }}" alt="MCL Saver One D" loading="lazy">
+                            </div>
+                            <div class="plp-card-body">
+                                <div class="plp-card-badge-row">
+                                    <span class="plp-badge badge-cat">AED</span>
+                                    <span class="plp-badge badge-ce">CE</span>
+                                    <span class="plp-badge badge-iso">ISO</span>
+                                </div>
+                                <p class="plp-card-sku">SKU: MCL-AED-S1D</p>
+                                <h3 class="plp-card-name">MCL Saver One D</h3>
+                                <p class="plp-card-desc">Dual-mode AED for training organisations and front-line responders.</p>
+                                <ul class="plp-card-specs">
+                                    <li>Semi/Fully Automatic Mode</li>
+                                    <li>Escalating Energy (360J)</li>
+                                    <li>Trainer Preferred Model</li>
+                                </ul>
+                            </div>
+                            <div class="plp-card-footer">
+                                <a href="{{ url_for('aed_product3') }}" class="btn-view-detail">
+                                    View Details
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                                <button type="button" class="btn-add-quote btn-add-cart" data-id="saver-one-d" data-name="MCL Saver One D" data-sku="MCL-AED-S1D" title="Add to procurement list">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- ─── Stretcher Cards ─── -->
+                        <article class="plp-card" role="listitem" data-category="Stretcher" data-cert="ce tuv" data-name="TG-1000 IN Electric Incubator Stretcher">
+    <div class="plp-card-img">
+        <img src="{{ url_for('static', filename='TG-1000-Power-Brava.jpg') }}" alt="TG-1000 IN Electric Incubator Stretcher" loading="lazy">
+    </div>
+    <div class="plp-card-body">
+        <div class="plp-card-badge-row">
+            <span class="plp-badge badge-cat">Stretcher</span>
+            <span class="plp-badge badge-ce">10G</span>
+            <span class="plp-badge badge-iso">TUV</span>
+        </div>
+        <p class="plp-card-sku">SKU: MED-STR-TG1000IN</p>
+        <h3 class="plp-card-name">TG-1000 IN Electric Incubator Stretcher</h3>
+        <p class="plp-card-desc">Premium high-torque powered ambulance stretcher optimized for neonatal and paediatric incubator transport units.</p>
+        <ul class="plp-card-specs">
+            <li>Unassisted 300 kg Lift Capacity</li>
+            <li>Incubator System Compatibility</li>
+            <li>Fail-Safe Manual Hydraulic Override</li>
+        </ul>
+    </div>
+    <div class="plp-card-footer">
+        <a href="{{ url_for('strech') }}" class="btn-view-detail">
+            View Details
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <button type="button" class="btn-add-quote btn-add-cart" data-id="tg-1000-in" data-name="TG-1000 IN Electric Incubator Stretcher" data-sku="MED-STR-TG1000IN" title="Add to procurement list">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </button>
+    </div>
+</article>
+
+                        <article class="plp-card" role="listitem" data-category="Stretcher" data-cert="ce" data-name="TG-880 C4 / TG-880 C2 Ambulance Stretcher">
+    <div class="plp-card-img">
+        <img src="{{ url_for('static', filename='TG-880-C2C4.jpg') }}" alt="TG-880 C4 / TG-880 C2 Ambulance Stretcher" loading="lazy">
+    </div>
+    <div class="plp-card-body">
+        <div class="plp-card-badge-row">
+            <span class="plp-badge badge-cat">Stretcher</span>
+            <span class="plp-badge badge-ce">10G</span>
+            <span class="plp-badge badge-iso">EN 1865</span>
+        </div>
+        <p class="plp-card-sku">SKU: MED-STR-TG880-SERIES</p>
+        <h3 class="plp-card-name">TG-880 C4 / TG-880 C2 Ambulance Stretcher</h3>
+        <p class="plp-card-desc">Premium lightweight aluminum ambulance stretcher featuring an ergonomic 8 intermediary position reclinable framework.</p>
+        <ul class="plp-card-specs">
+            <li>Unassisted 280 kg Load Capacity</li>
+            <li>Trendelenburg & Reverse Positioning</li>
+            <li>Laterally & Longitudinally Collapsible Guardrails</li>
+        </ul>
+    </div>
+    <div class="plp-card-footer">
+        <a href="{{ url_for('strech2') }}" class="btn-view-detail">
+            View Details
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <button type="button" class="btn-add-quote btn-add-cart" data-id="tg-880" data-name="TG-880 C4 / TG-880 C2 Ambulance Stretcher" data-sku="MED-STR-TG880-SERIES" title="Add to procurement list">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </button>
+    </div>
+</article>
+
+                        <article class="plp-card" role="listitem" data-category="Stretcher" data-cert="ce" data-name="TG-241 Premium Ambulance Stretcher">
+    <div class="plp-card-img">
+        <img src="{{ url_for('static', filename='TG-241.jpg') }}" alt="TG-241 Premium Ambulance Stretcher" loading="lazy">
+    </div>
+    <div class="plp-card-body">
+        <div class="plp-card-badge-row">
+            <span class="plp-badge badge-cat">Stretcher</span>
+            <span class="plp-badge badge-ce">10G</span>
+            <span class="plp-badge badge-iso">KARTSANA</span>
+        </div>
+        <p class="plp-card-sku">SKU: MED-STR-TG241</p>
+        <h3 class="plp-card-name">TG-241 Premium Ambulance Stretcher</h3>
+        <p class="plp-card-desc">High-performance lightweight aluminum ambulance cot engineered with double twin leading wheels to double the ease of vehicle loading.</p>
+        <ul class="plp-card-specs">
+            <li>250 kg Unassisted Load Capacity</li>
+            <li>Trendelenburg & Reverse Positioning</li>
+            <li>Laterally & Longitudinally Collapsible Guardrails</li>
+        </ul>
+    </div>
+    <div class="plp-card-footer">
+        <a href="{{ url_for('strech4') }}" class="btn-view-detail">
+            View Details
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <button type="button" class="btn-add-quote btn-add-cart" data-id="tg-241" data-name="TG-241 Premium Ambulance Stretcher" data-sku="MED-STR-TG241" title="Add to procurement list">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </button>
+    </div>
+</article>
+<article class="plp-card" role="listitem" data-category="Stretcher" data-cert="10g" data-name="TG-880 C4 IN Incubator Ambulance Stretcher">
+    <div class="plp-card-img">
+        <img src="{{ url_for('static', filename='TG-880-C4-IN.jpg') }}" alt="TG-880 C4 IN Incubator Ambulance Stretcher with medical incubator mounted" loading="lazy">
+    </div>
+    <div class="plp-card-body">
+        <div class="plp-card-badge-row">
+            <span class="plp-badge badge-cat">Stretcher</span>
+            <span class="plp-badge badge-ce">Aluminium</span>
+            <span class="plp-badge badge-iso">KARTSANA</span>
+        </div>
+        <p class="plp-card-sku">SKU: MED-STR-TG880-C4IN</p>
+        <h3 class="plp-card-name">TG-880 C4 IN Incubator Stretcher</h3>
+        <p class="plp-card-desc">High-capacity structural aluminum stretcher purpose-engineered to securely transport neonatal and pediatric incubators during critical emergency transit.</p>
+        <ul class="plp-card-specs">
+            <li>280 kg Unassisted Maximum Load Capacity</li>
+            <li>4 Independent Lockable Wheels for Chassis Braking</li>
+            <li>Certified 10G Impact Resistant &amp; EN 1865/1789 Compliant</li>
+        </ul>
+    </div>
+    <div class="plp-card-footer">
+        <a href="{{ url_for('strech3') }}" class="btn-view-detail">
+            View Details
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <button type="button" class="btn-add-quote btn-add-cart" data-id="tg-880-c4-in" data-name="TG-880 C4 IN Incubator Ambulance Stretcher" data-sku="MED-STR-TG880-C4IN" title="Add to procurement list">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </button>
+    </div>
+</article>
+
+                        <!-- ─── Wheelchair Cards ─── -->
+                        <article class="plp-card" role="listitem" data-category="Wheelchair" data-cert="iso" data-name="MCL S129RG Ergonomic Wheelchair">
+                            <div class="plp-card-img">
+                                <img src="{{ url_for('static', filename='MCL-S129RG.jpg') }}" alt="MCL S129RG Wheelchair" loading="lazy">
+                            </div>
+                            <div class="plp-card-body">
+                                <div class="plp-card-badge-row">
+                                    <span class="plp-badge badge-cat">Wheelchair</span>
+                                    <span class="plp-badge badge-iso">ISO</span>
+                                </div>
+                                <p class="plp-card-sku">SKU: MCL-WCH-S129RG</p>
+                                <h3 class="plp-card-name">MCL S129RG Ergonomic Wheelchair</h3>
+                                <p class="plp-card-desc">Steel-frame manual wheelchair with flip-up armrests for patient comfort.</p>
+                                <ul class="plp-card-specs">
+                                    <li>Lightweight Steel Frame</li>
+                                    <li>Flip-up Padded Armrests</li>
+                                    <li>Solid Maintenance-Free Tires</li>
+                                </ul>
+                            </div>
+                            <div class="plp-card-footer">
+                                <a href="{{ url_for('wheelchair1') }}" class="btn-view-detail">
+                                    View Details
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                                <button type="button" class="btn-add-quote btn-add-cart" data-id="s129rg" data-name="MCL S129RG Wheelchair" data-sku="MCL-WCH-S129RG" title="Add to procurement list">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                                </button>
+                            </div>
+                        </article>
+
+                        <article class="plp-card" role="listitem" data-category="Wheelchair" data-cert="ce iso" data-name="MCL CS200 Heavy-Duty Wheelchair">
+                            <div class="plp-card-img">
+                                <img src="{{ url_for('static', filename='MCL-CS200.jpg') }}" alt="MCL CS200 Powered Wheelchair" loading="lazy">
+                            </div>
+                            <div class="plp-card-body">
+                                <div class="plp-card-badge-row">
+                                    <span class="plp-badge badge-cat">Powered</span>
+                                    <span class="plp-badge badge-ce">CE</span>
+                                    <span class="plp-badge badge-iso">ISO</span>
+                                </div>
+                                <p class="plp-card-sku">SKU: MCL-WCH-CS200</p>
+                                <h3 class="plp-card-name">MCL CS200 Heavy-Duty Wheelchair</h3>
+                                <p class="plp-card-desc">Dual-motor powered wheelchair with intelligent drive and electromagnetic braking.</p>
+                                <ul class="plp-card-specs">
+                                    <li>Dual Motor Intelligent Drive</li>
+                                    <li>360-Degree Joystick Controller</li>
+                                    <li>Electromagnetic Braking</li>
+                                </ul>
+                            </div>
+                            <div class="plp-card-footer">
+                                <a href="{{ url_for('wheelchair2') }}" class="btn-view-detail">
+                                    View Details
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                                <button type="button" class="btn-add-quote btn-add-cart" data-id="cs200" data-name="MCL CS200 Wheelchair" data-sku="MCL-WCH-CS200" title="Add to procurement list">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- No-results placeholder -->
+                        <div class="plp-empty" id="plp-empty" aria-live="assertive">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            <h3>No products found</h3>
+                            <p>Try a different search term or clear your filters.</p>
+                        </div>
+
+                    </div><!-- #plp-product-grid -->
+                </div><!-- .plp-main -->
+
+            </div><!-- .plp-body -->
+        </div><!-- .plp-content-wrapper -->
+    </main>
+
+    <!-- ── Modals (preserved from original) ── -->
+    <dialog id="cart-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-cart" class="btn-close" aria-label="Close cart">&times;</button>
+            <h2>Your Procurement List</h2>
+            <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;">Review your selected equipment before requesting a combined quote.</p>
+            <div id="cart-items" class="cart-items-container"></div>
+            <div class="cart-actions" style="display:flex;gap:10px;margin-top:25px;">
+                <button type="button" class="btn btn-secondary" id="clear-cart" style="flex:1;">Clear List</button>
+                <button type="button" class="btn btn-primary" id="checkout-cart" style="flex:2;">Request Combined Quote</button>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="quote-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-modal" class="btn-close" aria-label="Close modal">&times;</button>
+            <h2>Request a Quote</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Complete the form below and our medical specialists will contact you.</p>
+            <form method="POST" action="/submit-quote">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="selected_products_list" id="hidden-products-list" value="">
+                
+                <div class="form-group">
+                    <label for="quick-name">Full Name *</label>
+                    <input type="text" name="name" id="quick-name" placeholder="Dr. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="quick-email">Institutional Email *</label>
+                    <input type="email" name="email" id="quick-email" placeholder="john@hospital.org" required>
+                </div>
+                <div class="form-group">
+                    <label for="quick-phone">Phone / Contact Number *</label>
+                    <input type="text" name="phone" id="quick-phone" placeholder="8799996143" required>
+                </div>
+                <div class="form-group">
+                    <label for="quick-message">Message / Requirements</label>
+                    <textarea name="message" id="quick-message" placeholder="Enter your custom request specifications..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="product-select">Product of Interest</label>
+                    <select name="product" id="product-select">
+                        <option value="aed">AED Devices</option>
+                        <option value="stretcher">Stretchers</option>
+                        <option value="wheelchair">Wheelchairs</option>
+                    </select>
+                </div>
+                <input type="hidden" name="source" value="quick_quote_modal">
+                <button type="submit" class="btn btn-primary btn-full">Submit Request</button>
+            </form>
+        </div>
+    </dialog>
+
+<dialog id="cart-checkout-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-checkout-modal" class="btn-close" onclick="document.getElementById('cart-checkout-modal').close()">&times;</button>
+            <h2>Request Combined Quote</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Your chosen items will automatically be submitted with this request.</p>
+            
+            <form method="POST" action="/submit-quote">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="selected_products_list" id="cart-hidden-products-list" value="">
+                
+                <div class="form-group">
+                    <label for="cart-name">Full Name *</label>
+                    <input type="text" name="name" id="cart-name" placeholder="Dr. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="cart-email">Institutional Email *</label>
+                    <input type="email" name="email" id="cart-email" placeholder="john@hospital.org" required>
+                </div>
+                <div class="form-group">
+                    <label for="cart-phone">Phone / Contact Number *</label>
+                    <input type="text" name="phone" id="cart-phone" placeholder="8799996143" required>
+                </div>
+                <div class="form-group">
+                    <label for="cart-message">Additional Notes</label>
+                    <textarea name="message" id="cart-message" placeholder="Add details about shipping destination, split delivery requirements, etc."></textarea>
+                </div>
+                
+                <input type="hidden" name="product" value="combined-cart">
+                <input type="hidden" name="source" value="procurement_cart">
+                <button type="submit" class="btn btn-primary btn-full">Submit Procurement List</button>
+            </form>
+        </div>
+    </dialog>
+
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+
+    <script>
+    /* ── PLP page-specific JS ── */
+    (function () {
+        const grid        = document.getElementById('plp-product-grid');
+        const cards       = () => [...grid.querySelectorAll('.plp-card[data-category]')];
+        const emptyState  = document.getElementById('plp-empty');
+        const countEl     = document.getElementById('plp-result-count');
+        const searchInput = document.getElementById('plp-search-input');
+        const sortSelect  = document.getElementById('plp-sort');
+        const catPills    = document.querySelectorAll('.cat-pill');
+        const certBoxes   = document.querySelectorAll('.cert-filter');
+        const filterChips = document.getElementById('active-filters');
+
+        let activeCat  = 'all';
+        let activeCerts = new Set(['ce', 'iso']);
+
+        // View toggle
+        document.getElementById('btn-view-grid').addEventListener('click', function() {
+            grid.className = 'view-grid';
+            this.classList.add('active'); this.setAttribute('aria-pressed','true');
+            document.getElementById('btn-view-list').classList.remove('active');
+            document.getElementById('btn-view-list').setAttribute('aria-pressed','false');
+        });
+        document.getElementById('btn-view-list').addEventListener('click', function() {
+            grid.className = 'view-list';
+            this.classList.add('active'); this.setAttribute('aria-pressed','true');
+            document.getElementById('btn-view-grid').classList.remove('active');
+            document.getElementById('btn-view-grid').setAttribute('aria-pressed','false');
+        });
+
+        // Category pill click
+        catPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                catPills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                activeCat = pill.dataset.cat;
+                applyFilters();
+            });
+        });
+
+        // Cert checkbox
+        certBoxes.forEach(cb => {
+            cb.addEventListener('change', () => {
+                activeCerts = new Set([...certBoxes].filter(c=>c.checked).map(c=>c.value));
+                applyFilters();
+            });
+        });
+
+        // Search
+        searchInput.addEventListener('input', applyFilters);
+
+        // Sort
+        sortSelect.addEventListener('change', applyFilters);
+
+        function applyFilters() {
+            const query = searchInput.value.trim().toLowerCase();
+            let visible = [];
+
+            cards().forEach(card => {
+                const cat   = card.dataset.category;
+                const certs = card.dataset.cert.split(' ');
+                const name  = card.dataset.name.toLowerCase();
+
+                const catOk  = activeCat === 'all' || cat === activeCat;
+                const certOk = activeCerts.size === 0 || certs.some(c => activeCerts.has(c));
+                const qOk    = !query || name.includes(query) ||
+                               card.querySelector('.plp-card-sku').textContent.toLowerCase().includes(query);
+
+                if (catOk && certOk && qOk) {
+                    card.classList.remove('hidden');
+                    visible.push(card);
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Sort
+            const mode = sortSelect.value;
+            if (mode === 'name-az') visible.sort((a,b) => a.dataset.name.localeCompare(b.dataset.name));
+            if (mode === 'name-za') visible.sort((a,b) => b.dataset.name.localeCompare(a.dataset.name));
+            if (mode === 'cat')     visible.sort((a,b) => a.dataset.category.localeCompare(b.dataset.category));
+
+            visible.forEach(card => grid.appendChild(card));
+
+            // Count
+            const n = visible.length;
+            countEl.innerHTML = `Showing <strong>${n}</strong> product${n !== 1 ? 's' : ''}`;
+            emptyState.classList.toggle('visible', n === 0);
+
+            renderChips();
+        }
+
+        function renderChips() {
+            filterChips.innerHTML = '';
+            if (activeCat !== 'all') {
+                filterChips.innerHTML += labelChip('Category: ' + activeCat, 'cat-chip');
+            }
+            if (activeCerts.size < 2 && activeCerts.size > 0) {
+                filterChips.innerHTML += labelChip('Cert: ' + [...activeCerts].join(', ').toUpperCase(), 'cert-chip');
+            }
+            if (searchInput.value.trim()) {
+                filterChips.innerHTML += labelChip('Search: ' + searchInput.value.trim(), 'search-chip');
+            }
+            if (filterChips.innerHTML) {
+                filterChips.insertAdjacentHTML('afterbegin', '<span class="active-filters-label">Filters:</span>');
+            }
+        }
+
+        function labelChip(label, id) {
+            return `<span class="filter-chip"><span>${label}</span><button type="button" data-clear="${id}" aria-label="Remove filter">×</button></span>`;
+        }
+
+        filterChips.addEventListener('click', e => {
+            const btn = e.target.closest('button[data-clear]');
+            if (!btn) return;
+            const id = btn.dataset.clear;
+            if (id === 'cat-chip') {
+                activeCat = 'all';
+                catPills.forEach(p => p.classList.toggle('active', p.dataset.cat === 'all'));
+            }
+            if (id === 'cert-chip') {
+                activeCerts = new Set(['ce','iso']);
+                certBoxes.forEach(c => c.checked = true);
+            }
+            if (id === 'search-chip') { searchInput.value = ''; }
+            applyFilters();
+        });
+
+        // Sidebar quote btn
+        document.getElementById('sidebar-quote-btn').addEventListener('click', () => {
+            document.getElementById('quote-modal').showModal();
+        });
+	const checkoutCartBtn = document.getElementById('checkout-cart');
+        const cartModal = document.getElementById('cart-modal');
+        const cartCheckoutModal = document.getElementById('cart-checkout-modal'); // Target the multi-item window
+
+        if (checkoutCartBtn) {
+            checkoutCartBtn.addEventListener('click', (e) => {
+                // 🛑 CRITICAL FIX: Stop global app.js from firing on this same button press
+                e.stopImmediatePropagation();
+
+                let localCart = [];
+                try {
+                    // Pulling items directly from your storage array reference key
+                    localCart = JSON.parse(localStorage.getItem('medicore_cart')) || [];
+                } catch(e) {
+                    console.error("Could not parse cart items", e);
+                }
+
+                if (localCart.length > 0) {
+                    const itemsSummary = localCart.map(item => `${item.name} (${item.sku})`).join(', ');
+                    // Pointing directly to our isolated Form 2 form layout hidden list container
+                    const hiddenInput = document.getElementById('cart-hidden-products-list');
+                    
+                    if (hiddenInput) {
+                        hiddenInput.value = itemsSummary;
+                    }
+                }
+                
+                if (cartModal && typeof cartModal.close === 'function') cartModal.close();
+                if (cartCheckoutModal && typeof cartCheckoutModal.showModal === 'function') cartCheckoutModal.showModal();
+            });
+        }
+    })();
+    </script>
+</body>
+</html>

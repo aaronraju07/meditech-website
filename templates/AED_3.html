@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Optimization -->
+    <title>MCL Saver One D Defibrillator - Professional AED Monitor | Meditech Components</title>
+    <meta name="description" content="Discover the MCL Saver One D Defibrillator. Engineered for harsh environments, outdoor, or mobile rescue settings. Features a 5.7 inch interactive color display and advanced ECG monitoring. Request a quote from Meditech Components.">
+    <meta name="keywords" content="MCL Saver One D, Saver One D Defibrillator, professional AED, semi automatic AED, ECG monitoring defibrillator, public access defibrillator, outdoor emergency medical device">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="main-header">
+        <a href="{{ url_for('home') }}" class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Meditech Components">
+        </a>
+
+        <nav class="main-nav" aria-label="Main Navigation">
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('products') }}">Products</a></li>
+                <li><a href="{{ url_for('trust') }}">About Us</a></li>
+                <li><a href="{{ url_for('trust') }}">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="nav-icons">
+            <span role="button" tabindex="0" aria-label="Search Products" id="search-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </span>
+            <span role="button" tabindex="0" aria-label="Shopping Cart" id="cart-icon" style="position: relative;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span id="cart-badge" class="cart-badge">0</span>
+            </span>
+        </div>
+
+        <div id="search-overlay" class="search-overlay hidden">
+            <input type="text" id="global-search-input" placeholder="Search medical equipment...">
+            <button type="button" id="close-search" aria-label="Close search">&times;</button>
+        </div>
+    </header>
+
+    <main id="main-content" class="pdp-container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('products') }}">Products</a></li>
+                <li aria-current="page">MCL Saver One D Defibrillator</li>
+            </ol>
+        </nav>
+
+        <section class="pdp-top-grid">
+            <div class="pdp-gallery">
+                <div class="main-image fade-in">
+                    <img src="{{ url_for('static', filename='aed3.png' ) }}" alt="MCL Saver One D Semi Automatic Defibrillator Monitor Screen"
+                        id="current-image">
+                </div>
+                <div class="thumbnail-list fade-in">
+                    <img src="{{ url_for('static', filename='saver-one-d-main.jpg' ) }}" alt="MCL Saver One D Front view"
+                        class="thumb active-thumb">
+                    <img src="{{ url_for('static', filename='saver-one-d-display.jpg' ) }}" alt="5.7 inch Interactive Color Screen View" class="thumb">
+                    <img src="{{ url_for('static', filename='saver-one-d-environmental.jpg' ) }}" alt="Rugged design for mobile and outdoor deployment view" class="thumb">
+                </div>
+            </div>
+
+            <div class="pdp-info fade-in">
+                <div class="pdp-badges">
+                    <span class="badge badge-fda">Optimized for Mobile/Harsh Environments</span>
+                    <span class="badge badge-iso">IEC/EN 60601-2-4 Certified</span>
+                </div>
+                <h1 class="pdp-title">MCL Saver One D Defibrillator</h1>
+                <p class="pdp-sku">SKU: MED-DEFIB-SAVERONED</p>
+                <p class="pdp-description">The Saver One D goes beyond standard emergency care protocols, providing a rugged, small, and lightweight semi-automatic AED with advanced ECG monitoring capabilities. Totally reliable for paramedics, medical emergency workers, and trained responders, it stands out as the ultimate choice for harsh weather conditions, outdoor fields, or mobile transport settings. Featuring a large ($12 \times 8\text{ cm}$) full-color interactive screen, it guarantees that critical rescue metrics remain completely scannable at a glance.</p>
+                <ul class="pdp-highlights">
+                    <li>&#10003; <strong>Interactive 5.7" TFT Display:</strong> Delivers the most detailed and comprehensive interface screen for maximum situational awareness.</li>
+                    <li>&#10003; <strong>Dual Monitoring Layouts:</strong> Tracks patient rhythm and heart rates using standard defibrillation pads or via standalone ECG electrodes.</li>
+                    <li>&#10003; <strong>Adaptive Energy Escalation:</strong> Employs an adaptive BTE waveform adjusting dynamically to physical chest impedance with max settings up to 360J.</li>
+                </ul>
+                <div class="pdp-actions">
+                    <!-- Add to Quote List Button utilizing the verified corporate premium yellow color #d4af37 -->
+                    <button type="button" class="btn btn-add-cart" data-id="saver-one-d"
+                        data-name="MCL Saver One D Defibrillator" data-sku="MED-DEFIB-SAVERONED" style="width: 100%; background-color: #d4af37 !important; color: #ffffff !important; border: none; font-weight: 700;">Add to Quote List</button>
+                    <button type="button" class="btn btn-primary" id="request-spec-btn" style="width: 100%; margin-top: 15px;">📄 Request Spec Sheet</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="pdp-tabs-section fade-in">
+            <div class="tab-headers" role="tablist">
+                <button type="button" class="tab-btn active" role="tab" aria-selected="true"
+                    aria-controls="tab-overview" id="btn-overview">Overview</button>
+                <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-specs"
+                    id="btn-specs">Technical Specs</button>
+            </div>
+            <div class="tab-content-container">
+                <div class="tab-panel active" id="tab-overview" role="tabpanel" aria-labelledby="btn-overview">
+                    <h3>Clinical Overview & Device Ergonomics</h3>
+                    <p>Designed for professional responders operating in high-demand field scenarios, the MCL Saver One D provides unmatched structural and functional support. While running in default AED mode, the comprehensive color interface screen outputs an extensive range of system variables. The display window yields immediate data regarding device condition (including a residual capacity battery gauge, an indicator of available recording memory, active microphone status, and local date/time settings) alongside crucial active rescue metrics. Responders have immediate clarity on adult or child protocols, shock counts, elapsed rescue timers, real-time heart rate (bpm), physical thoracic impedance (ohms), upcoming delivery energy levels (joules), precise touch/not touch pictograms, and active CPR countdown bar graphs.</p>
+                    <br>
+                    <p>When tactical circumstances require extended monitoring without shock delivery, the unit seamlessly transitions to a dedicated ECG Monitoring mode. This system architecture ensures a reliable workflow while keeping the device small, highly portable, and deeply efficient under extreme parameters. Data tracking can be reviewed following the rescue event through the "Saver View Express" data manager software platform via USB or flash storage card pathways.</p>
+                </div>
+                <div class="tab-panel" id="tab-specs" role="tabpanel" aria-labelledby="btn-specs" hidden>
+                    <table class="tech-table">
+                        <tbody>
+                            <tr>
+                                <th>Operational Capabilities</th>
+                                <td>AED Semi-Automatic; standalone ECG Monitoring capability</td>
+                            </tr>
+                            <tr>
+                                <th>Maximal Delivered Energy</th>
+                                <td>Standard max 200J or Power max 360J options</td>
+                            </tr>
+                            <tr>
+                                <th>Waveform Technology</th>
+                                <td>Adaptive BTE (biphase truncated exponential) conforming to patient chest's impedance</td>
+                            </tr>
+                            <tr>
+                                <th>Factory Energy Protocols</th>
+                                <td>Adult Standard: 150, 200, 200J | Adult Power: 200, 250, 360J | Pediatric: 50J fixed</td>
+                            </tr>
+                            <tr>
+                                <th>Shock Alert Charging Time</th>
+                                <td>&le; 9 seconds with a new and fully charged battery cell assembly</td>
+                            </tr>
+                            <tr>
+                                <th>Analysis Window & Impedance</th>
+                                <td>IEC/EN 60601-2-4 tracking from 4 to 15 seconds | 20 - 200 ohms range</td>
+                            </tr>
+                            <tr>
+                                <th>Sensitivity & Specificity</th>
+                                <td>IEC/EN 60601-2-4 certified (AHADB, MITDB source); 97% sensitivity and 99% specificity</td>
+                            </tr>
+                            <tr>
+                                <th>ECG Screen Monitor Sizing</th>
+                                <td>5.7" TFT color screen (640 x 480 pixel resolution) measuring 12 x 8 cm</td>
+                            </tr>
+                            <tr>
+                                <th>ECG Sweep Settings</th>
+                                <td>Heart rate tracking from 30 - 200 bpm | Sweep speed: 25 mm/sec</td>
+                            </tr>
+                            <tr>
+                                <th>Disposable Battery Lifespan</th>
+                                <td>Li-SOCI2 (Code SAV-C0903) or Li-MnO2 (Code SAV-C090) | 250 rescue cycles or 4 years standby life</td>
+                            </tr>
+                            <tr>
+                                <th>Defibrillation Pads Options</th>
+                                <td>Disposable, pre-gelled, self-adhesive | Adult: SAV-C0846 | Pediatric: SAV-C0016</td>
+                            </tr>
+                            <tr>
+                                <th>Physical Size & Net Weight</th>
+                                <td>26.5 x 21.5 x 7.5 cm | 2.08 kg with disposable battery cell configuration</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <dialog id="cart-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-cart" class="btn-close" aria-label="Close cart" onclick="document.getElementById('cart-modal').close()">&times;</button>
+            <h2>Your Procurement List</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Review your selected equipment before requesting a combined quote.</p>
+            <div id="cart-items" class="cart-items-container"></div>
+            <div class="cart-actions" style="display: flex; gap: 10px; margin-top: 25px;">
+                <button type="button" class="btn btn-secondary" id="clear-cart" style="flex: 1;">Clear List</button>
+                <button type="button" class="btn btn-primary" id="checkout-cart" style="flex: 2;">Request Combined Quote</button>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="quote-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-modal" class="btn-close" aria-label="Close modal" onclick="document.getElementById('quote-modal').close()">&times;</button>
+            <h2>Request a Quote</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Complete the form below and our medical specialists will contact you.</p>
+            <form id="quote-form" method="POST" action="/submit-quote">
+                <input type="hidden" name="selected_products_list" id="hidden-products-list" value="">
+                
+                <div class="form-group">
+                    <label for="full-name">Full Name *</label>
+                    <input type="text" name="name" id="full-name" placeholder="Dr. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Institutional Email *</label>
+                    <input type="email" name="email" id="email" placeholder="john@hospital.org" required>
+                </div>
+                <div class="form-group">
+                    <label for="quick-phone">Phone / Contact Number *</label>
+                    <input type="text" name="phone" id="quick-phone" placeholder="8799996143" required>
+                </div>
+                <div class="form-group">
+                    <label for="quick-message">Message / Requirements</label>
+                    <textarea name="message" id="quick-message" placeholder="Enter your custom request specifications..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="product-select">Product of Interest</label>
+                    <select name="product" id="product-select">
+                        <option value="MCL Saver One D Defibrillator" selected>MCL Saver One D Defibrillator</option>
+                        <option value="diagnostic">Diagnostic Imaging</option>
+                        <option value="monitoring">Patient Monitoring</option>
+                    </select>
+                </div>
+                <input type="hidden" name="source" value="pdp_quick_quote">
+                <button type="submit" class="btn btn-primary btn-full">Submit Request</button>
+            </form>
+        </div>
+    </dialog>
+
+    <dialog id="cart-checkout-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-checkout-modal" class="btn-close" onclick="document.getElementById('cart-checkout-modal').close()">&times;</button>
+            <h2>Request Combined Quote</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Your chosen items will automatically be submitted with this request.</p>
+            
+            <form method="POST" action="/submit-quote">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="selected_products_list" id="cart-hidden-products-list" value="">
+                
+                <div class="form-group">
+                    <label for="cart-name">Full Name *</label>
+                    <input type="text" name="name" id="cart-name" placeholder="Dr. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="cart-email">Institutional Email *</label>
+                    <input type="email" name="email" id="cart-email" placeholder="john@hospital.org" required>
+                </div>
+                <div class="form-group">
+                    <label for="cart-phone">Phone / Contact Number *</label>
+                    <input type="text" name="phone" id="cart-phone" placeholder="8799996143" required>
+                </div>
+                <div class="form-group">
+                    <label for="cart-message">Additional Notes</label>
+                    <textarea name="message" id="cart-message" placeholder="Add details about shipping destination, split delivery requirements, etc."></textarea>
+                </div>
+                
+                <input type="hidden" name="product" value="combined-cart">
+                <input type="hidden" name="source" value="pdp_procurement_cart">
+                <button type="submit" class="btn btn-primary btn-full">Submit Procurement List</button>
+            </form>
+        </div>
+    </dialog>
+
+    <dialog id="spec-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" id="close-spec-modal" class="btn-close" onclick="document.getElementById('spec-modal').close()">&times;</button>
+            <h2>Request Technical Specifications</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Provide your contact details below to receive the full documentation for the MCL Saver One D Defibrillator.</p>
+            
+            <form method="POST" action="/submit-quote">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="selected_products_list" value="">
+                <input type="hidden" name="product" value="MCL Saver One D Defibrillator Technical Spec Sheet Documentation">
+                <input type="hidden" name="source" value="pdp_spec_sheet_form">
+                
+                <div class="form-group">
+                    <label for="spec-name">Full Name *</label>
+                    <input type="text" name="name" id="spec-name" placeholder="Dr. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="spec-email">Institutional Email *</label>
+                    <input type="email" name="email" id="spec-email" placeholder="john@hospital.org" required>
+                </div>
+                <div class="form-group">
+                    <label for="spec-phone">Phone / Contact Number *</label>
+                    <input type="text" name="phone" id="spec-phone" placeholder="8799996143" required>
+                </div>
+                <div class="form-group">
+                    <label for="spec-message">Specific Clinical Application / Notes</label>
+                    <textarea name="message" id="spec-message" placeholder="Please mention if you require specialized customization parameters..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-full">Request Documentation</button>
+            </form>
+        </div>
+    </dialog>
+
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+    
+    <script>
+        /* ── PDP Form Event Controls ── */
+        (function () {
+            // Spec Sheet Modal Trigger
+            const requestSpecBtn = document.getElementById('request-spec-btn');
+            const specModal = document.getElementById('spec-modal');
+
+            if (requestSpecBtn && specModal) {
+                requestSpecBtn.addEventListener('click', () => {
+                    specModal.showModal();
+                });
+            }
+
+            // Procurement Cart Checkout Control
+            const checkoutCartBtn = document.getElementById('checkout-cart');
+            const cartModal = document.getElementById('cart-modal');
+            const cartCheckoutModal = document.getElementById('cart-checkout-modal');
+
+            if (checkoutCartBtn) {
+                checkoutCartBtn.addEventListener('click', (e) => {
+                    // 🛑 CRITICAL INTERCEPT: Stop global app.js from firing a double modal
+                    e.stopImmediatePropagation();
+
+                    let localCart = [];
+                    try {
+                        localCart = JSON.parse(localStorage.getItem('medicore_cart')) || [];
+                    } catch(e) {
+                        console.error("Could not parse cart items", e);
+                    }
+
+                    if (localCart.length > 0) {
+                        const itemsSummary = localCart.map(item => `${item.name} (${item.sku})`).join(', ');
+                        const hiddenInput = document.getElementById('cart-hidden-products-list');
+                        
+                        if (hiddenInput) {
+                            hiddenInput.value = itemsSummary;
+                        }
+                    }
+                    
+                    if (cartModal && typeof cartModal.close === 'function') cartModal.close();
+                    if (cartCheckoutModal && typeof cartCheckoutModal.showModal === 'function') cartCheckoutModal.showModal();
+                });
+            }
+
+            // Thumbnail Image Switcher Logic
+            const mainImg = document.getElementById('current-image');
+            const thumbs = document.querySelectorAll('.thumbnail-list img');
+            
+            thumbs.forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    thumbs.forEach(t => t.classList.remove('active-thumb'));
+                    this.classList.add('active-thumb');
+                    if (mainImg) mainImg.src = this.src;
+                });
+            });
+
+            // Tabs Content Control Logic
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabPanels = document.querySelectorAll('.tab-panel');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    tabBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-selected', 'false');
+                    });
+                    tabPanels.forEach(p => p.setAttribute('hidden', ''));
+
+                    this.classList.add('active');
+                    this.setAttribute('aria-selected', 'true');
+                    
+                    const targetPanel = document.getElementById(this.getAttribute('aria-controls'));
+                    if (targetPanel) targetPanel.removeAttribute('hidden');
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>

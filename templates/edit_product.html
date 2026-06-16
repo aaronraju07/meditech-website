@@ -1,0 +1,8 @@
+<h2>Edit Product</h2>
+<form method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <input name="name" value="{{ product[1] }}"><br>
+    <input name="description" value="{{ product[2] }}"><br>
+    <input name="image" value="{{ product[3] }}"><br>
+    <button>Update</button>
+</form>

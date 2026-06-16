@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Panel</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 40px;
+            background: #f4f4f4;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: #333;
+            color: white;
+        }
+
+        tr:hover {
+            background: #f1f1f1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="margin-bottom: 20px;">
+        <a href="/add-product">Add Product</a> |
+        <a href="/products">View Products</a> |
+        <a href="/logout">Logout</a>
+    </div>
+
+    <h1>📊 Contact Form Submissions</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Message</th>
+            <th>Action</th>
+        </tr>
+
+        {% for c in contacts %}
+        <tr>
+            <td>{{ c[0] }}</td>
+            <td>{{ c[1] }}</td>
+            <td>{{ c[2] }}</td>
+            <td>{{ c[3] }}</td>
+            <td>{{ c[4] }}</td>
+            <td>
+                <form method="POST" action="/delete/{{ c[0] }}" onsubmit="return confirm('Delete this record?')" style="display:inline;">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Quote Requests</h2>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Message</th>
+            <th>Product</th>
+            <th>Source</th>
+        </tr>
+
+        {% for q in quotes %}
+        <tr>
+            <td>{{ q[0] }}</td>
+            <td>{{ q[1] }}</td>
+            <td>{{ q[2] }}</td>
+            <td>{{ q[3] }}</td>
+            <td>{{ q[4] }}</td>
+            <td>{{ q[5] }}</td>
+            <td>{{ q[6] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+
+</html>
