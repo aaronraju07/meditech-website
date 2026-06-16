@@ -376,7 +376,7 @@
             <h2>Request a Quote</h2>
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Complete the form below and our medical specialists will contact you.</p>
             <form id="quote-form" method="POST" action="/submit-quote">
-                <input type="hidden" name="selected_products_list" id="hidden-products-list" value="">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 
                 <div class="form-group">
                     <label for="full-name">Full Name *</label>
