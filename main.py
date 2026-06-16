@@ -220,15 +220,20 @@ def submit_quote():
     if not name or not email:
         return redirect('/?error=missing_fields')
 
-    conn = get_db()
-    conn.execute(
-        "INSERT INTO quotes (name, email, phone, message, product, source) VALUES (?, ?, ?, ?, ?, ?)",
-        (name, email, phone, message, product, source)
-    )
-    conn.commit()
-    conn.close()
+     try:
+        conn = get_db()
+        conn.execute(
+            "INSERT INTO quotes (name, email, phone, message, product, source) VALUES (?, ?, ?, ?, ?, ?)",
+            (name, email, phone, message, product, source)
+        )
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        print(f"DB error: {e}")
 
+    # Send email — failure must NOT crash the app
     try:
+        app.config['MAIL_TIMEOUT'] = 10
         if 'spec_sheet' in source or 'brochure' in source or 'Documentation' in product:
             request_type = "Technical Documentation & Specification Request"
         elif 'procurement_cart' in source or 'combined-cart' in product:
@@ -241,11 +246,9 @@ def submit_quote():
             recipients=[email],
             cc=['meditechcomponents@gmail.com']
         )
-
         msg.body = f"""Dear {name},
 
 Thank you for contacting Meditech Components.
-
 We have successfully logged your submission, which has been directed to our commercial division. We appreciate the opportunity to assist with your medical facility's operational requirements.
 
 Please review the summary of your submission below:
@@ -268,7 +271,7 @@ Meditech Components Company
         mail.send(msg)
         print("Email sent successfully!")
     except Exception as e:
-        print(f"Email failed to send: {e}")
+        print(f"Email failed (non-fatal): {e}")
 
     return redirect('/?success=1')
 
