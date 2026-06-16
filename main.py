@@ -60,7 +60,8 @@ ADMIN_USERNAME = os.environ.get('ADMIN_USERNAME', '')
 _raw_admin_pw  = os.environ.get('ADMIN_PASSWORD', '')
 ADMIN_PASSWORD_HASH = generate_password_hash(_raw_admin_pw) if _raw_admin_pw else None
 
-DB_PATH = os.path.join(os.path.dirname(__file__), 'database') 
+# Replace your current DB_PATH line with this:
+DB_PATH = "/tmp/database.db" 
 # ---------------- DATABASE SETUP ----------------
 
 def get_db():
