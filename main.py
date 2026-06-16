@@ -220,7 +220,7 @@ def submit_quote():
     if not name or not email:
         return redirect('/?error=missing_fields')
 
-     try:
+    try:
         conn = get_db()
         conn.execute(
             "INSERT INTO quotes (name, email, phone, message, product, source) VALUES (?, ?, ?, ?, ?, ?)",
