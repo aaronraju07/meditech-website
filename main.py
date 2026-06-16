@@ -106,6 +106,8 @@ def init_db():
     conn.commit()
     conn.close()
 
+init_db()
+
 # ---------------- HELPERS ----------------
 
 def login_required(f):
