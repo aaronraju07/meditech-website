@@ -12,6 +12,52 @@ if (window.top !== window.self) {
     window.top.location = window.self.location;
 }
 
+// ======== FUZZY SEARCH (shared across all pages) ========
+// Levenshtein edit distance — tolerates typos (missing/extra/swapped letters)
+function levenshtein(a, b) {
+    if (a === b) return 0;
+    if (a.length === 0) return b.length;
+    if (b.length === 0) return a.length;
+
+    const prev = new Array(b.length + 1);
+    const curr = new Array(b.length + 1);
+    for (let j = 0; j <= b.length; j++) prev[j] = j;
+
+    for (let i = 1; i <= a.length; i++) {
+        curr[0] = i;
+        for (let j = 1; j <= b.length; j++) {
+            const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+            curr[j] = Math.min(
+                prev[j] + 1,        // deletion
+                curr[j - 1] + 1,    // insertion
+                prev[j - 1] + cost  // substitution
+            );
+        }
+        for (let j = 0; j <= b.length; j++) prev[j] = curr[j];
+    }
+    return prev[b.length];
+}
+
+// Returns true if `query` fuzzy-matches anywhere in `text`.
+// Tolerant of typos; scales tolerance with word length.
+function fuzzyMatch(query, text) {
+    if (!query) return true;
+    query = query.toLowerCase();
+    text = text.toLowerCase();
+    if (text.includes(query)) return true; // fast path: exact substring still works
+
+    const queryWords = query.split(/\s+/).filter(Boolean);
+    const textWords  = text.split(/\s+/).filter(Boolean);
+
+    return queryWords.every(qw => {
+        return textWords.some(tw => {
+            if (tw.includes(qw) || qw.includes(tw)) return true;
+            const maxDist = qw.length <= 4 ? 1 : (qw.length <= 8 ? 2 : 3);
+            return levenshtein(qw, tw) <= maxDist;
+        });
+    });
+}
+
 // ======== TOAST SYSTEM (replaces alert()) ========
 function showToast(message, type = 'default', duration = 3200) {
     const container = document.getElementById('toast-container');

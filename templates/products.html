@@ -407,6 +407,7 @@
             overflow: hidden;
             transition: box-shadow 0.22s, border-color 0.22s, transform 0.22s;
             position: relative;
+            cursor: pointer;
         }
         .plp-card:hover {
             box-shadow: 0 8px 32px rgba(26,37,51,0.11);
@@ -1001,7 +1002,7 @@
         </button>
     </div>
 </article>
-<article class="plp-card" role="listitem" data-category="Stretcher" data-cert="10g" data-name="TG-880 C4 IN Incubator Ambulance Stretcher">
+<article class="plp-card" role="listitem" data-category="Stretcher" data-cert="ce iso" data-name="TG-880 C4 IN Incubator Ambulance Stretcher">
     <div class="plp-card-img">
         <img src="{{ url_for('static', filename='TG-880-C4-IN.jpg') }}" alt="TG-880 C4 IN Incubator Ambulance Stretcher with medical incubator mounted" loading="lazy">
     </div>
@@ -1150,6 +1151,7 @@
                         <option value="aed">AED Devices</option>
                         <option value="stretcher">Stretchers</option>
                         <option value="wheelchair">Wheelchairs</option>
+                        <option value="general_inquiry">General Inquiry</option>
                     </select>
                 </div>
                 <input type="hidden" name="source" value="quick_quote_modal">
@@ -1192,7 +1194,7 @@
         </div>
     </dialog>
 
-    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
 
     <script>
     /* ── PLP page-specific JS ── */
@@ -1209,6 +1211,24 @@
 
         let activeCat  = 'all';
         let activeCerts = new Set(['ce', 'iso']);
+
+        // Read ?category= from URL (set by homepage "Featured Equipment" links)
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlCat = urlParams.get('category');
+        if (urlCat) {
+            const matchPill = [...catPills].find(p => p.dataset.cat.toLowerCase() === urlCat.toLowerCase());
+            if (matchPill) {
+                activeCat = matchPill.dataset.cat;
+                catPills.forEach(p => p.classList.remove('active'));
+                matchPill.classList.add('active');
+            }
+        }
+
+        // Read ?search= from URL (set by the nav bar search icon, available on every page)
+        const urlSearch = urlParams.get('search');
+        if (urlSearch && searchInput) {
+            searchInput.value = urlSearch;
+        }
 
         // View toggle
         document.getElementById('btn-view-grid').addEventListener('click', function() {
@@ -1248,6 +1268,10 @@
         // Sort
         sortSelect.addEventListener('change', applyFilters);
 
+        // fuzzyMatch() and levenshtein() are now defined globally in app.js
+        // so the same fuzzy search works from the nav bar on every page.
+
+
         function applyFilters() {
             const query = searchInput.value.trim().toLowerCase();
             let visible = [];
@@ -1256,11 +1280,14 @@
                 const cat   = card.dataset.category;
                 const certs = card.dataset.cert.split(' ');
                 const name  = card.dataset.name.toLowerCase();
+                const sku   = card.querySelector('.plp-card-sku').textContent.toLowerCase();
+                const descEl = card.querySelector('.plp-card-desc');
+                const desc  = descEl ? descEl.textContent.toLowerCase() : '';
+                const searchableText = `${name} ${sku} ${desc} ${cat.toLowerCase()}`;
 
                 const catOk  = activeCat === 'all' || cat === activeCat;
                 const certOk = activeCerts.size === 0 || certs.some(c => activeCerts.has(c));
-                const qOk    = !query || name.includes(query) ||
-                               card.querySelector('.plp-card-sku').textContent.toLowerCase().includes(query);
+                const qOk    = fuzzyMatch(query, searchableText);
 
                 if (catOk && certOk && qOk) {
                     card.classList.remove('hidden');
@@ -1326,6 +1353,25 @@
         document.getElementById('sidebar-quote-btn').addEventListener('click', () => {
             document.getElementById('quote-modal').showModal();
         });
+
+        // Apply initial filters on page load (handles ?category= from homepage links)
+        applyFilters();
+
+        // Make entire product card clickable -> navigates to its "View Details" link.
+        // Clicking the cart button or the link itself is excluded so they keep their own behavior.
+        grid.addEventListener('click', (e) => {
+            if (e.target.closest('.btn-add-cart')) return;   // don't hijack add-to-cart clicks
+            if (e.target.closest('.btn-view-detail')) return; // let the link navigate natively
+
+            const card = e.target.closest('.plp-card');
+            if (!card) return;
+
+            const detailLink = card.querySelector('.btn-view-detail');
+            if (detailLink) {
+                window.location.href = detailLink.href;
+            }
+        });
+
 	const checkoutCartBtn = document.getElementById('checkout-cart');
         const cartModal = document.getElementById('cart-modal');
         const cartCheckoutModal = document.getElementById('cart-checkout-modal'); // Target the multi-item window

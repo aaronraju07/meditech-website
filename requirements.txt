@@ -1,6 +1,6 @@
 Flask
 gunicorn
-Flask-Mail
+requests
 Flask-WTF
 Flask-Limiter
 Flask-Talisman

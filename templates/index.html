@@ -78,7 +78,7 @@
             <p class="section-subtitle">Premium medical equipment trusted by healthcare professionals worldwide.</p>
 
             <div class="featured-grid">
-                <div class="product-card is-loading fade-in" data-category="AED" data-cert="fda iso">
+                <div class="product-card is-loading fade-in" data-category="AED" data-cert="fda iso" onclick="window.location.href='{{ url_for('products') }}?category=AED'" style="cursor:pointer;">
                     <picture>
                         <img src="{{ url_for('static', filename='aed.png') }}" alt=" Automated External Defibrillator"
                             loading="lazy">
@@ -87,11 +87,11 @@
                     
 
                     <div class="card-hover-overlay">
-                        <a href="{{ url_for('products') }}" class="btn btn-featured">View Details</a>
+                        <a href="{{ url_for('products') }}?category=AED" class="btn btn-featured" onclick="event.stopPropagation();">View Details</a>
                     </div>
                 </div>
 
-                <div class="product-card fade-in" id="card-monitoring">
+                <div class="product-card fade-in" id="card-monitoring" onclick="window.location.href='{{ url_for('products') }}?category=Stretcher'" style="cursor:pointer;">
                     <picture>
                         <img src="{{ url_for('static', filename='TG-880-C2C4.jpg') }}" alt="Stretcher"
                             loading="lazy">
@@ -100,11 +100,11 @@
                   
 
                     <div class="card-hover-overlay">
-                        <a href="{{ url_for('products') }}" class="btn btn-featured">View Details</a>
+                        <a href="{{ url_for('products') }}?category=Stretcher" class="btn btn-featured" onclick="event.stopPropagation();">View Details</a>
                     </div>
                 </div>
 
-                <div class="product-card is-loading fade-in" id="card-surgical">
+                <div class="product-card is-loading fade-in" id="card-surgical" onclick="window.location.href='{{ url_for('products') }}?category=Wheelchair'" style="cursor:pointer;">
                     <picture>
                         <img src="{{ url_for('static', filename='MCL-CS200.jpg') }}" alt="Wheelchair"
                             loading="lazy">
@@ -113,7 +113,7 @@
                    
 
                     <div class="card-hover-overlay">
-                        <a href="{{ url_for('products') }}" class="btn btn-featured">View Details</a>
+                        <a href="{{ url_for('products') }}?category=Wheelchair" class="btn btn-featured" onclick="event.stopPropagation();">View Details</a>
                     </div>
                 </div>
             </div>
@@ -256,6 +256,7 @@ We leverage over 20 years of
                     <option value="aed">AED Devices</option>
                     <option value="stretcher">Stretchers</option>
                     <option value="wheelchair">Wheelchairs</option>
+                    <option value="general_inquiry">General Inquiry</option>
                 </select>
             </div>
             <!-- Tracks that this submission generated from the home page -->

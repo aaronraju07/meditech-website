@@ -1,7 +1,7 @@
 import os
 import sqlite3
+import requests
 from flask import Flask, render_template, request, redirect, session, abort
-from flask_mail import Mail, Message
 from flask_wtf.csrf import CSRFProtect
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
@@ -44,24 +44,48 @@ Talisman(app,
     }
 )
 
-# ---------------- EMAIL CONFIG ----------------
+# ---------------- EMAIL CONFIG (Brevo) ----------------
 
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'info.meditechcomponents@gmail.com'
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')   # from .env
-app.config['MAIL_DEFAULT_SENDER'] = ('Meditech Components', 'meditechcomponents@gmail.com')
+BREVO_API_KEY = os.environ.get('BREVO_API_KEY')
+SENDER_EMAIL  = 'info.meditechcomponents@gmail.com'
 
-mail = Mail(app)
+def send_email(to_email, subject, body, cc=None):
+    """Send email via Brevo HTTP API — no SMTP ports needed."""
+    payload = {
+        "sender": {"email": SENDER_EMAIL, "name": "Meditech Components"},
+        "to": [{"email": to_email}],
+        "subject": subject,
+        "textContent": body
+    }
+    if cc:
+        cc_list = cc if isinstance(cc, list) else [cc]
+        payload["cc"] = [{"email": c} for c in cc_list]
+
+    try:
+        response = requests.post(
+            "https://api.brevo.com/v3/smtp/email",
+            headers={
+                "api-key": BREVO_API_KEY,
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            json=payload,
+            timeout=10
+        )
+        if response.status_code in (200, 201):
+            print("Email sent successfully!")
+        else:
+            print(f"Brevo error {response.status_code}: {response.text}")
+    except Exception as e:
+        print(f"Email failed (non-fatal): {e}")
 
 # Admin credentials loaded from .env and hashed at startup
 ADMIN_USERNAME = os.environ.get('ADMIN_USERNAME', '')
 _raw_admin_pw  = os.environ.get('ADMIN_PASSWORD', '')
 ADMIN_PASSWORD_HASH = generate_password_hash(_raw_admin_pw) if _raw_admin_pw else None
 
-# Replace your current DB_PATH line with this:
-DB_PATH = "/tmp/database.db" 
+DB_PATH = os.path.join(os.path.dirname(__file__), 'database')
+
 # ---------------- DATABASE SETUP ----------------
 
 def get_db():
@@ -233,21 +257,16 @@ def submit_quote():
         print(f"DB error: {e}")
 
     # Send email — failure must NOT crash the app
-    try:
-        app.config['MAIL_TIMEOUT'] = 10
-        if 'spec_sheet' in source or 'brochure' in source or 'Documentation' in product:
-            request_type = "Technical Documentation & Specification Request"
-        elif 'procurement_cart' in source or 'combined-cart' in product:
-            request_type = "Multi-Item Procurement Fleet List Quote"
-        else:
-            request_type = "Commercial Product Quote Inquiry"
+    if 'spec_sheet' in source or 'brochure' in source or 'Documentation' in product:
+        request_type = "Technical Documentation & Specification Request"
+    elif 'procurement_cart' in source or 'combined-cart' in product:
+        request_type = "Multi-Item Procurement Fleet List Quote"
+    elif product == 'general_inquiry':
+        request_type = "General Inquiry"
+    else:
+        request_type = "Commercial Product Quote Inquiry"
 
-        msg = Message(
-            subject=f"Inquiry Acknowledgment: {request_type} | Meditech Components",
-            recipients=[email],
-            cc=['meditechcomponents@gmail.com']
-        )
-        msg.body = f"""Dear {name},
+    body = f"""Dear {name},
 
 Thank you for contacting Meditech Components.
 We have successfully logged your submission, which has been directed to our commercial division. We appreciate the opportunity to assist with your medical facility's operational requirements.
@@ -269,10 +288,13 @@ Sincerely,
 Sales Team
 Meditech Components Company
 """
-        mail.send(msg)
-        print("Email sent successfully!")
-    except Exception as e:
-        print(f"Email failed (non-fatal): {e}")
+
+    send_email(
+        to_email=email,
+        subject=f"Inquiry Acknowledgment: {request_type} | Meditech Components",
+        body=body,
+        cc=['meditechcomponents@gmail.com']
+    )
 
     return redirect('/?success=1')
 
