@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /login
+Disallow: /add-product
+Disallow: /edit-product
+Disallow: /delete
+Disallow: /logout
+
+Sitemap: https://meditechcomponents.com/sitemap.xml
