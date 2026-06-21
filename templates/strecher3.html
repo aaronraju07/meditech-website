@@ -21,9 +21,20 @@
       "additionalProperty": [
         { "@type": "PropertyValue", "name": "Certification", "value": "10G Dynamic Crash Tested, EN 1865, EN 1789" },
         { "@type": "PropertyValue", "name": "Compatible Rail Systems", "value": "R-419L, R-303L, R-499N" }
-      ]
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://meditechcomponents.com/strecher3",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition"
+      }
     }
     </script>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='android-chrome-192x192.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
@@ -226,49 +237,15 @@
                         </table>
                     </div>
 
-                    <!-- Variant Selector -->
-                    <div style="margin-top: 12px; display: flex; gap: 10px;">
-                        <div style="flex: 1; border: 2px solid var(--color-accent); border-radius: 8px; padding: 10px 12px; text-align: center;">
-                            <p style="font-weight: 800; font-size: 0.95rem; color: var(--color-primary);">R-419</p>
-                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">L: 1902 mm<br>Wt: 46 kg</p>
-                        </div>
-                        <div style="flex: 1; border: 2px solid #dde4f0; border-radius: 8px; padding: 10px 12px; text-align: center;">
-                            <p style="font-weight: 800; font-size: 0.95rem; color: var(--color-primary);">R-419L</p>
-                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">L: 2079 mm<br>Wt: 51.5 kg</p>
-                        </div>
-                    </div>
-
                     <!-- Badges -->
                     <div style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap;">
                         <span style="background: #1a2533; color: #fff; font-size: 0.72rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; letter-spacing: 0.04em;">JUPITER COMPACT</span>
                         <span style="background: #d4af37; color: #fff; font-size: 0.72rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; letter-spacing: 0.04em;">CERTIFIED 10G</span>
                         <span style="background: #f0f4ff; color: #1a2533; font-size: 0.72rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; letter-spacing: 0.04em; border: 1px solid #dde4f0;">Al + Steel</span>
                     </div>
-                </div>
 
-                <!-- RIGHT: Info Panel -->
-                <div class="pdp-info" itemprop="description">
-                    <p style="font-size: 0.78rem; font-weight: 700; color: var(--color-accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">Jupiter Compact Series · Ambulance Floor Rail System</p>
-
-                    <h3 itemprop="name" style="font-size: 1.9rem; font-weight: 800; color: var(--color-primary); margin-bottom: 6px; line-height: 1.2;">
-                        R-419 / R-419L
-                    </h3>
-                    <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 18px;">Range of Rails for JUPITER COMPACT Ambulance Stretchers — Confirmed Compatible with TG-880 C4 IN</p>
-
-                    <p style="font-size: 0.97rem; color: var(--text-main); line-height: 1.7; margin-bottom: 22px;">
-                        The <strong>R-419 / R-419L</strong> is a factory-certified ambulance floor rail system designed for the <strong>JUPITER COMPACT</strong> stretcher series and confirmed compatible with the <strong>TG-880 C4 IN</strong>. Built from combined <strong>aluminum and steel</strong> construction, it provides a rigid, secure track for incubator stretcher transit. The system features a <strong>manual locking/unlocking entry ramp</strong> for controlled stretcher docking, an integrated <strong>backboard stretcher drawer</strong> for dedicated emergency equipment storage, and full structural certification to the <strong>10G dynamic crash standard</strong> — matching the crash safety level of the stretcher itself.
-                    </p>
-
-                    <!-- Feature Highlights -->
-                    <ul class="pdp-highlights" style="margin-bottom: 26px;" aria-label="Key features of the R-419 rail system">
-                        <li>&#10003; <strong>Factory-Confirmed TG-880 C4 IN Compatibility:</strong> The R-419L is verified by the manufacturer for direct use with the TG-880 C4 IN, eliminating guesswork and ensuring first-time fitment in JUPITER COMPACT-configured ambulances.</li>
-                        <li>&#10003; <strong>Backboard &amp; Scoop Stretcher Storage:</strong> Built-in drawer provides secure in-ambulance storage for a full-size backboard or scoop stretcher, keeping critical rescue equipment instantly accessible without occupying additional cabin space.</li>
-                        <li>&#10003; <strong>Manual Ramp Lock / Unlock:</strong> Precise manual locking ramp mechanism positively engages and releases the stretcher from the rail without tools, enabling fast, controlled loading and unloading for incubator transport workflows.</li>
-                        <li>&#10003; <strong>10G Dynamic Crash Certified:</strong> Every structural element of the R-419 rail system is independently validated under the 10G crash standard — the same benchmark as the TG-880 C4 IN — ensuring the complete stretcher-rail assembly meets a unified safety certification.</li>
-                    </ul>
-
-                    <!-- Dimensions Comparison Table -->
-                    <div style="background: #f8f9fb; border-radius: 10px; padding: 18px 22px; margin-bottom: 26px; border: 1px solid var(--border-light);">
+                    <!-- Dimensions Comparison Table — moved here from right column -->
+                    <div style="background: #f8f9fb; border-radius: 10px; padding: 18px 22px; margin-top: 16px; border: 1px solid var(--border-light);">
                         <p style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 12px;">Dimensions &amp; Weight — R-419 vs R-419L</p>
                         <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem;" aria-label="R-419 and R-419L specifications comparison">
                             <thead>
@@ -307,6 +284,28 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+
+                <!-- RIGHT: Info Panel -->
+                <div class="pdp-info" itemprop="description">
+                    <p style="font-size: 0.78rem; font-weight: 700; color: var(--color-accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">Jupiter Compact Series · Ambulance Floor Rail System</p>
+
+                    <h3 itemprop="name" style="font-size: 1.9rem; font-weight: 800; color: var(--color-primary); margin-bottom: 6px; line-height: 1.2;">
+                        R-419 / R-419L
+                    </h3>
+                    <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 18px;">Range of Rails for JUPITER COMPACT Ambulance Stretchers — Confirmed Compatible with TG-880 C4 IN</p>
+
+                    <p style="font-size: 0.97rem; color: var(--text-main); line-height: 1.7; margin-bottom: 22px;">
+                        The <strong>R-419 / R-419L</strong> is a factory-certified ambulance floor rail system designed for the <strong>JUPITER COMPACT</strong> stretcher series and confirmed compatible with the <strong>TG-880 C4 IN</strong>. Built from combined <strong>aluminum and steel</strong> construction, it provides a rigid, secure track for incubator stretcher transit. The system features a <strong>manual locking/unlocking entry ramp</strong> for controlled stretcher docking, an integrated <strong>backboard stretcher drawer</strong> for dedicated emergency equipment storage, and full structural certification to the <strong>10G dynamic crash standard</strong> — matching the crash safety level of the stretcher itself.
+                    </p>
+
+                    <!-- Feature Highlights -->
+                    <ul class="pdp-highlights" style="margin-bottom: 26px;" aria-label="Key features of the R-419 rail system">
+                        <li>&#10003; <strong>Factory-Confirmed TG-880 C4 IN Compatibility:</strong> The R-419L is verified by the manufacturer for direct use with the TG-880 C4 IN, eliminating guesswork and ensuring first-time fitment in JUPITER COMPACT-configured ambulances.</li>
+                        <li>&#10003; <strong>Backboard &amp; Scoop Stretcher Storage:</strong> Built-in drawer provides secure in-ambulance storage for a full-size backboard or scoop stretcher, keeping critical rescue equipment instantly accessible without occupying additional cabin space.</li>
+                        <li>&#10003; <strong>Manual Ramp Lock / Unlock:</strong> Precise manual locking ramp mechanism positively engages and releases the stretcher from the rail without tools, enabling fast, controlled loading and unloading for incubator transport workflows.</li>
+                        <li>&#10003; <strong>10G Dynamic Crash Certified:</strong> Every structural element of the R-419 rail system is independently validated under the 10G crash standard — the same benchmark as the TG-880 C4 IN — ensuring the complete stretcher-rail assembly meets a unified safety certification.</li>
+                    </ul>
 
                     <!-- CTA Actions -->
                     <div class="pdp-actions" style="display: flex; gap: 12px; flex-wrap: wrap;">
@@ -549,5 +548,6 @@
             });
         })();
     </script>
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
 </body>
 </html>

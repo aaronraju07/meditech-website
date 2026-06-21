@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | Meditech Components</title>
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        .error-page-section {
+            min-height: 62vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+        .error-page-content {
+            text-align: center;
+            max-width: 540px;
+        }
+        .error-code {
+            font-size: 6rem;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--color-primary);
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+        .error-code span {
+            color: var(--color-accent);
+        }
+        .error-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            margin-bottom: 12px;
+        }
+        .error-message {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+        .error-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .error-icon {
+            font-size: 2.5rem;
+            margin-bottom: 18px;
+        }
+        @media (max-width: 480px) {
+            .error-code { font-size: 4.5rem; }
+            .error-actions { flex-direction: column; width: 100%; }
+            .error-actions .btn { width: 100%; }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="main-header">
+        <a href="{{ url_for('home') }}" class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Meditech Components">
+        </a>
+        <nav class="main-nav" aria-label="Main Navigation">
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('products') }}">Products</a></li>
+                <li><a href="{{ url_for('trust') }}">About Us</a></li>
+                <li><a href="{{ url_for('trust') }}#contact-section">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="error-page-section">
+            <div class="error-page-content">
+                <div class="error-icon">🩺</div>
+                <p class="error-code">4<span>0</span>4</p>
+                <h1 class="error-title">This page couldn't be found</h1>
+                <p class="error-message">
+                    The page you're looking for may have been moved, renamed, or doesn't exist.
+                    Let's get you back to browsing our medical equipment catalog.
+                </p>
+                <div class="error-actions">
+                    <a href="{{ url_for('home') }}" class="btn btn-primary">Back to Home</a>
+                    <a href="{{ url_for('products') }}" class="btn btn-secondary">Browse Products</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-bottom">
+            <p>&copy; 2026 Meditech Components. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

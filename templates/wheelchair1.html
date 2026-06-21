@@ -23,9 +23,20 @@
       "additionalProperty": [
         { "@type": "PropertyValue", "name": "Construction", "value": "Ultra-Lightweight Aluminium" },
         { "@type": "PropertyValue", "name": "Manufacturer", "value": "KARTSANA" }
-      ]
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://meditechcomponents.com/wheelchair1",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition"
+      }
     }
     </script>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='android-chrome-192x192.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
@@ -384,6 +395,7 @@
             });
         })();
     </script>
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
 </body>
 
 </html>

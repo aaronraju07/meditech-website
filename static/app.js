@@ -543,11 +543,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ======== 15. Success Popup (after contact form) ========
+    // ======== 15. Success / Error Feedback (after contact or quote form) ========
     const params = new URLSearchParams(window.location.search);
     if (params.get('success') === '1') {
         const popup = document.getElementById('success-popup');
         if (popup) popup.classList.remove('hidden');
+        window.history.replaceState({}, document.title, window.location.pathname);
+    } else if (params.get('error') === 'missing_fields') {
+        showToast('Please fill in your name and email before submitting.', 'error', 4500);
         window.history.replaceState({}, document.title, window.location.pathname);
     }
 

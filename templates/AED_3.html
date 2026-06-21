@@ -23,9 +23,20 @@
       "additionalProperty": [
         { "@type": "PropertyValue", "name": "Display", "value": "5.7 inch Interactive Color Display" },
         { "@type": "PropertyValue", "name": "Operation Mode", "value": "Semi/Fully Automatic" }
-      ]
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://meditechcomponents.com/AED_3",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition"
+      }
     }
     </script>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='android-chrome-192x192.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
@@ -102,7 +113,7 @@
                 </div>
                 <h1 class="pdp-title">MCL Saver One D Defibrillator</h1>
                 <p class="pdp-sku">SKU: MED-DEFIB-SAVERONED</p>
-                <p class="pdp-description">The Saver One D goes beyond standard emergency care protocols, providing a rugged, small, and lightweight semi-automatic AED with advanced ECG monitoring capabilities. Totally reliable for paramedics, medical emergency workers, and trained responders, it stands out as the ultimate choice for harsh weather conditions, outdoor fields, or mobile transport settings. Featuring a large ($12 \times 8\text{ cm}$) full-color interactive screen, it guarantees that critical rescue metrics remain completely scannable at a glance.</p>
+                <p class="pdp-description">The Saver One D goes beyond standard emergency care protocols, providing a rugged, small, and lightweight semi-automatic AED with advanced ECG monitoring capabilities. Totally reliable for paramedics, medical emergency workers, and trained responders, it stands out as the ultimate choice for harsh weather conditions, outdoor fields, or mobile transport settings. Featuring a large (12 × 8 cm) full-color interactive screen, it guarantees that critical rescue metrics remain completely scannable at a glance.</p>
                 <ul class="pdp-highlights">
                     <li>&#10003; <strong>Interactive 5.7" TFT Display:</strong> Delivers the most detailed and comprehensive interface screen for maximum situational awareness.</li>
                     <li>&#10003; <strong>Dual Monitoring Layouts:</strong> Tracks patient rhythm and heart rates using standard defibrillation pads or via standalone ECG electrodes.</li>
@@ -388,6 +399,7 @@
             });
         })();
     </script>
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
 </body>
 
 </html>

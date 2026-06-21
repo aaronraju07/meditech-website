@@ -23,9 +23,20 @@
       "additionalProperty": [
         { "@type": "PropertyValue", "name": "Certification", "value": "10G Impact Resistant, TUV Approved" },
         { "@type": "PropertyValue", "name": "Compatible Lock", "value": "R-1002A BRAVO Telescopic Loading System" }
-      ]
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://meditechcomponents.com/strecher1",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition"
+      }
     }
     </script>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='android-chrome-192x192.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
@@ -129,7 +140,7 @@
                     <h3>Clinical Performance & Maneuverability</h3>
                     <p>Designed to satisfy the highest safety thresholds in professional mobile medicine, the TG-1000 IN Stretcher brings superior versatility to ambulance and emergency transport fleets. Built using high-grade, resilient structural aluminium, it ensures a highly rigid platform while keeping total vehicle payload weight minimal. The stretcher features an fully adjustable operational working height to facilitate seamless patient transfers across varying clinical platform configurations.</p>
                     <br>
-                    <p>Maneuverability is controlled through four oversized $\varnothing\text{ 160 mm}$ rotating wheel assemblies. This heavy-duty caster orientation incorporates 2 localized locking wheels alongside 2 specialized wheels outfitted with dedicated mechanical brake units, ensuring total control on inclines or during tight ambulance tracking steps. Note: The optional modular upper tray panel (Reference C-004) can be paired for non-incubator specialized operations but is not included standard with base reference model TG-1000 IN.</p>
+                    <p>Maneuverability is controlled through four oversized Ø160mm rotating wheel assemblies. This heavy-duty caster orientation incorporates 2 localized locking wheels alongside 2 specialized wheels outfitted with dedicated mechanical brake units, ensuring total control on inclines or during tight ambulance tracking steps. Note: The optional modular upper tray panel (Reference C-004) can be paired for non-incubator specialized operations but is not included standard with base reference model TG-1000 IN.</p>
                 </div>
                 <div class="tab-panel" id="tab-specs" role="tabpanel" aria-labelledby="btn-specs" hidden>
                     <table class="tech-table">
@@ -168,7 +179,7 @@
                             </tr>
                             <tr>
                                 <th>Wheel Diameter Specs</th>
-                                <td>$\varnothing\text{ 160 mm}$ oversized rotating caster units</td>
+                                <td>Ø160mm oversized rotating caster units</td>
                             </tr>
                             <tr>
                                 <th>Braking Configurations</th>
@@ -219,34 +230,9 @@
                         <span style="background: #d4af37; color: #fff; font-size: 0.72rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; letter-spacing: 0.04em;">BRAVA SERIES</span>
                         <span style="background: #f0f4ff; color: #1a2533; font-size: 0.72rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; letter-spacing: 0.04em; border: 1px solid #dde4f0;">CERTIFIED 10G</span>
                     </div>
-                </div>
 
-                <!-- RIGHT: Lock Info -->
-                <div class="pdp-info" itemprop="description">
-                    <!-- Series Label -->
-                    <p style="font-size: 0.78rem; font-weight: 700; color: var(--color-accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">Brava Series · Electric Lock System</p>
-
-                    <!-- Product Name -->
-                    <h3 itemprop="name" style="font-size: 1.9rem; font-weight: 800; color: var(--color-primary); margin-bottom: 6px; line-height: 1.2;">
-                        R-1002A BRAVO
-                    </h3>
-                    <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 18px;">Telescopic Ambulance Stretcher Cot Locking &amp; Loading System</p>
-
-                    <!-- Short Description -->
-                    <p style="font-size: 0.97rem; color: var(--text-main); line-height: 1.7; margin-bottom: 22px;">
-                        The <strong>R-1002A BRAVO</strong> is a certified electric telescopic cot loading and locking system engineered specifically for the BRAVA stretcher series. It integrates a precision <strong>lateral movement mechanism</strong> that ensures secure, effortless docking of the TG-1000 stretcher directly into compatible ambulance vehicle floor tracks — eliminating manual handling effort and dramatically reducing injury risk during patient loading and unloading.
-                    </p>
-
-                    <!-- Feature Highlights -->
-                    <ul class="pdp-highlights" style="margin-bottom: 26px;" aria-label="Key features of the R-1002A BRAVO lock system">
-                        <li>&#10003; <strong>Telescopic BRAVO Loading System:</strong> Motorized telescopic rail mechanism enables smooth, guided stretcher insertion and removal directly into ambulance loading channel without manual lifting.</li>
-                        <li>&#10003; <strong>Lateral Movement Lock:</strong> Integrated lateral displacement control holds the stretcher precisely centered on the vehicle's anchor rail, preventing lateral shift during high-speed transit or emergency braking.</li>
-                        <li>&#10003; <strong>Aluminum &amp; Stainless Steel Construction:</strong> Dual-material frame combining high-strength aluminum alloy with corrosion-resistant stainless steel hardware ensures long operational service life and minimal maintenance overhead.</li>
-                        <li>&#10003; <strong>10G Dynamic Crash Certification:</strong> Independently crash-tested and certified to the 10G dynamic impact standard, confirming complete structural integrity of the lock system under extreme ambulance deceleration forces.</li>
-                    </ul>
-
-                    <!-- Specs Mini Table -->
-                    <div style="background: #f8f9fb; border-radius: 10px; padding: 18px 22px; margin-bottom: 26px; border: 1px solid var(--border-light);">
+                    <!-- Quick Specifications — placed left under the image, matching template -->
+                    <div style="background: #f8f9fb; border-radius: 10px; padding: 18px 22px; margin-top: 16px; border: 1px solid var(--border-light);">
                         <p style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 12px;">Quick Specifications</p>
                         <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;" aria-label="R-1002A BRAVO specifications">
                             <tbody>
@@ -273,6 +259,31 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+
+                <!-- RIGHT: Lock Info -->
+                <div class="pdp-info" itemprop="description">
+                    <!-- Series Label -->
+                    <p style="font-size: 0.78rem; font-weight: 700; color: var(--color-accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">Brava Series · Electric Lock System</p>
+
+                    <!-- Product Name -->
+                    <h3 itemprop="name" style="font-size: 1.9rem; font-weight: 800; color: var(--color-primary); margin-bottom: 6px; line-height: 1.2;">
+                        R-1002A BRAVO
+                    </h3>
+                    <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 18px;">Telescopic Ambulance Stretcher Cot Locking &amp; Loading System</p>
+
+                    <!-- Short Description -->
+                    <p style="font-size: 0.97rem; color: var(--text-main); line-height: 1.7; margin-bottom: 22px;">
+                        The <strong>R-1002A BRAVO</strong> is a certified electric telescopic cot loading and locking system engineered specifically for the BRAVA stretcher series. It integrates a precision <strong>lateral movement mechanism</strong> that ensures secure, effortless docking of the TG-1000 stretcher directly into compatible ambulance vehicle floor tracks — eliminating manual handling effort and dramatically reducing injury risk during patient loading and unloading.
+                    </p>
+
+                    <!-- Feature Highlights -->
+                    <ul class="pdp-highlights" style="margin-bottom: 26px;" aria-label="Key features of the R-1002A BRAVO lock system">
+                        <li>&#10003; <strong>Telescopic BRAVO Loading System:</strong> Motorized telescopic rail mechanism enables smooth, guided stretcher insertion and removal directly into ambulance loading channel without manual lifting.</li>
+                        <li>&#10003; <strong>Lateral Movement Lock:</strong> Integrated lateral displacement control holds the stretcher precisely centered on the vehicle's anchor rail, preventing lateral shift during high-speed transit or emergency braking.</li>
+                        <li>&#10003; <strong>Aluminum &amp; Stainless Steel Construction:</strong> Dual-material frame combining high-strength aluminum alloy with corrosion-resistant stainless steel hardware ensures long operational service life and minimal maintenance overhead.</li>
+                        <li>&#10003; <strong>10G Dynamic Crash Certification:</strong> Independently crash-tested and certified to the 10G dynamic impact standard, confirming complete structural integrity of the lock system under extreme ambulance deceleration forces.</li>
+                    </ul>
 
                     <!-- CTA Actions -->
                     <div class="pdp-actions" style="display: flex; gap: 12px; flex-wrap: wrap;">
@@ -451,6 +462,9 @@
     <script>
         /* ── PDP Form Event Controls ── */
         (function () {
+            // Spec Sheet Modal (shared by both trigger buttons below)
+            const specModal = document.getElementById('spec-modal');
+
             // Lock Spec Sheet Modal Trigger
             const requestLockSpecBtn = document.getElementById('request-lock-spec-btn');
             if (requestLockSpecBtn && specModal) {
@@ -466,10 +480,14 @@
 
             // Spec Sheet Modal Trigger
             const requestSpecBtn = document.getElementById('request-spec-btn');
-            const specModal = document.getElementById('spec-modal');
 
             if (requestSpecBtn && specModal) {
                 requestSpecBtn.addEventListener('click', () => {
+                    // Reset modal back to the main product, in case "Lock Spec" was clicked previously
+                    const modalHeading = specModal.querySelector('h2');
+                    if (modalHeading) modalHeading.textContent = 'Request Technical Specifications';
+                    const hiddenProduct = specModal.querySelector('input[name="product"]');
+                    if (hiddenProduct) hiddenProduct.value = 'TG-1000 IN Electric Incubator Stretcher Technical Spec Sheet Documentation';
                     specModal.showModal();
                 });
             }
@@ -538,6 +556,7 @@
             });
         })();
     </script>
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
 </body>
 
 </html>

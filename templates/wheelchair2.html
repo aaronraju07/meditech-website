@@ -23,9 +23,20 @@
       "additionalProperty": [
         { "@type": "PropertyValue", "name": "Capacity", "value": "300 kg" },
         { "@type": "PropertyValue", "name": "Certification", "value": "10G Crash Test Certified" }
-      ]
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://meditechcomponents.com/wheelchair2",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition"
+      }
     }
     </script>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='android-chrome-192x192.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
@@ -129,7 +140,7 @@
                     <h3>Clinical Articulation & Patient Security</h3>
                     <p>Designed to satisfy modern emergency transport safety thresholds across multi-level egress fields, the KARTSANA CS-200 maximizes situational rescue handling. The articulating frame layout features an endless positioning system to comfortably align patient ergonomics alongside a comfortable 2-piece integrated mattress. While transferring patients longitudinally or laterally, security is continuously maintained through a professional 3-point safety belt restraint kit designed for the shoulders, abdomen, and legs.</p>
                     <br>
-                    <p>Maneuvering through narrow staircases, elevators, or loading ramps is simplified via automated leg deployment steps and structural lengthwise collapsible safety armrests. On-the-ground mobility relies on four heavy-duty $\varnothing\text{ 150 mm}$ wheel assemblies, organized into 2 fixed front casters and 2 rear pivoting wheels outfitted with independent mechanical brake overrides to guarantee total tracking stability. The entire chassis complies with strict 10G dynamic crash testing safety benchmarks for seamless active vehicle placement.</p>
+                    <p>Maneuvering through narrow staircases, elevators, or loading ramps is simplified via automated leg deployment steps and structural lengthwise collapsible safety armrests. On-the-ground mobility relies on four heavy-duty Ø150mm wheel assemblies, organized into 2 fixed front casters and 2 rear pivoting wheels outfitted with independent mechanical brake overrides to guarantee total tracking stability. The entire chassis complies with strict 10G dynamic crash testing safety benchmarks for seamless active vehicle placement.</p>
                 </div>
                 <div class="tab-panel" id="tab-specs" role="tabpanel" aria-labelledby="btn-specs" hidden>
                     <table class="tech-table">
@@ -160,7 +171,7 @@
                             </tr>
                             <tr>
                                 <th>Wheel Assemblies Setup</th>
-                                <td>4 wheels $\varnothing\text{ 150 mm}$ (2 fixed front + 2 rear pivoting with step-on brakes)</td>
+                                <td>4 wheels Ø150mm (2 fixed front + 2 rear pivoting with step-on brakes)</td>
                             </tr>
                             <tr>
                                 <th>Clinical Accessories</th>
@@ -388,6 +399,7 @@
             });
         })();
     </script>
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
 </body>
 
 </html>
