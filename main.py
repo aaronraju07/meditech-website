@@ -222,6 +222,11 @@ def wheelchair2():
 @app.route('/contact', methods=['POST'])
 @limiter.limit("10 per hour")
 def contact():
+    # Honeypot check — invisible field that only bots fill in. Silently
+    # pretend success so bots don't realize they were caught and adapt.
+    if request.form.get('website'):
+        return redirect('/?success=1')
+
     name    = truncate(request.form.get('name'),    100)
     email   = truncate(request.form.get('email'),   200)
     phone   = truncate(request.form.get('phone'),    20)
@@ -245,6 +250,11 @@ def contact():
 @app.route('/submit-quote', methods=['POST'])
 @limiter.limit("10 per hour")
 def submit_quote():
+    # Honeypot check — invisible field that only bots fill in. Silently
+    # pretend success so bots don't realize they were caught and adapt.
+    if request.form.get('website'):
+        return redirect('/?success=1')
+
     name    = truncate(request.form.get('name'),    100)
     email   = truncate(request.form.get('email'),   200)
     phone   = truncate(request.form.get('phone'),    20)

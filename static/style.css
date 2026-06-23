@@ -3444,3 +3444,119 @@ body {
         animation: none !important;
     }
 }
+
+/* ===== FOOTER CONTACT POPOVER (Email / Phone) ===== */
+.contact-popover-wrap {
+    position: relative;
+    display: inline-flex;
+}
+
+.contact-popover-trigger {
+    width: 36px;
+    height: 36px;
+    background-color: #f4f4f4;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.contact-popover-trigger:hover,
+.contact-popover-trigger[aria-expanded="true"] {
+    background-color: var(--color-primary);
+    color: var(--bg-white);
+}
+
+.contact-popover {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary, #1a2533);
+    color: #fff;
+    padding: 10px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 50;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    animation: popover-fade-in 0.18s ease-out;
+}
+
+.contact-popover.hidden {
+    display: none;
+}
+
+.contact-popover::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 7px 7px 7px;
+    border-style: solid;
+    border-color: transparent transparent var(--color-primary, #1a2533) transparent;
+}
+
+.contact-popover-text {
+    color: #fff;
+}
+
+.contact-popover-copy {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 4px 9px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+
+.contact-popover-copy:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.contact-popover-copy.copied {
+    background: #2e7d32;
+}
+
+@keyframes popover-fade-in {
+    from { opacity: 0; transform: translateX(-50%) translateY(-4px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@media (max-width: 480px) {
+    .contact-popover {
+        left: auto;
+        right: -10px;
+        transform: none;
+    }
+    .contact-popover::before {
+        left: auto;
+        right: 18px;
+        transform: none;
+    }
+    @keyframes popover-fade-in {
+        from { opacity: 0; transform: translateY(-4px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contact-popover {
+        animation: none !important;
+    }
+}

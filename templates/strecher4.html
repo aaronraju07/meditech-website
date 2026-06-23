@@ -42,7 +42,7 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <header class="main-header">
+    <header class="main-header" id="main-header">
         <a href="{{ url_for('home') }}" class="logo">
             <img src="{{ url_for('static', filename='logo.png') }}" alt="Meditech Components">
         </a>
@@ -74,7 +74,23 @@
             <input type="text" id="global-search-input" placeholder="Search medical equipment...">
             <button type="button" id="close-search" aria-label="Close search">&times;</button>
         </div>
+
+            <button type="button" class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
     </header>
+
+    <nav class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation" aria-hidden="true">
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('products') }}">Products</a></li>
+            <li><a href="{{ url_for('trust') }}">About Us</a></li>
+            <li><a href="{{ url_for('trust') }}#contact-section">Contact</a></li>
+        </ul>
+    </nav>
 
     <main id="main-content" class="pdp-container">
         <nav class="breadcrumbs" aria-label="Breadcrumb">
@@ -430,6 +446,10 @@
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Complete the form below and our medical specialists will contact you.</p>
             <form id="quote-form" method="POST" action="/submit-quote">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div style="position:absolute; left:-9999px; top:-9999px; height:0; overflow:hidden;" aria-hidden="true">
+                <label for="website">Website</label>
+                <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+            </div>
                 <input type="hidden" name="selected_products_list" id="hidden-products-list" value="">
                 <div class="form-group">
                     <label for="full-name">Full Name *</label>
@@ -470,6 +490,10 @@
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Your chosen items will automatically be submitted with this request.</p>
             <form method="POST" action="/submit-quote">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div style="position:absolute; left:-9999px; top:-9999px; height:0; overflow:hidden;" aria-hidden="true">
+                <label for="website">Website</label>
+                <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+            </div>
                 <input type="hidden" name="selected_products_list" id="cart-hidden-products-list" value="">
                 <div class="form-group">
                     <label for="cart-name">Full Name *</label>
@@ -501,6 +525,10 @@
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Provide your contact details below to receive the full documentation.</p>
             <form method="POST" action="/submit-quote">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div style="position:absolute; left:-9999px; top:-9999px; height:0; overflow:hidden;" aria-hidden="true">
+                <label for="website">Website</label>
+                <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+            </div>
                 <input type="hidden" name="selected_products_list" value="">
                 <input type="hidden" name="product" value="TG-241 Ambulance Stretcher Technical Spec Sheet">
                 <input type="hidden" name="source" value="pdp_spec_sheet_form">

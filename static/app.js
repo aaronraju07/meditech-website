@@ -578,6 +578,82 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ======== 17. Footer Contact Popovers (Email / Phone) ========
+    const popoverTriggers = document.querySelectorAll('.contact-popover-trigger');
+    popoverTriggers.forEach(trigger => {
+        const popoverId = trigger.getAttribute('aria-controls');
+        const popover = document.getElementById(popoverId);
+        if (!popover) return;
+
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = !popover.classList.contains('hidden');
+
+            // Close any other open popovers first
+            document.querySelectorAll('.contact-popover').forEach(p => p.classList.add('hidden'));
+            document.querySelectorAll('.contact-popover-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
+
+            if (!isOpen) {
+                popover.classList.remove('hidden');
+                trigger.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+
+    // Click outside closes any open popover
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.contact-popover-wrap')) {
+            document.querySelectorAll('.contact-popover').forEach(p => p.classList.add('hidden'));
+            document.querySelectorAll('.contact-popover-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
+        }
+    });
+
+    // Escape key closes any open popover
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.contact-popover').forEach(p => p.classList.add('hidden'));
+            document.querySelectorAll('.contact-popover-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
+        }
+    });
+
+    // Copy button inside each popover
+    document.querySelectorAll('.contact-popover-copy').forEach(copyBtn => {
+        copyBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const value = copyBtn.getAttribute('data-copy');
+            if (!value) return;
+
+            const showCopied = () => {
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = 'Copied!';
+                copyBtn.classList.add('copied');
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                    copyBtn.classList.remove('copied');
+                }, 1500);
+            };
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(value).then(showCopied).catch(() => {
+                    showToast('Could not copy automatically — please copy manually.', 'error');
+                });
+            } else {
+                // Fallback for older browsers without Clipboard API
+                const tempInput = document.createElement('input');
+                tempInput.value = value;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                try {
+                    document.execCommand('copy');
+                    showCopied();
+                } catch {
+                    showToast('Could not copy automatically — please copy manually.', 'error');
+                }
+                document.body.removeChild(tempInput);
+            }
+        });
+    });
+
     console.log('%cMeditech Components — Enhanced v2.0', 'color: #d4af37; font-size: 18px; font-weight: bold; background: #1a2533; padding: 8px 16px; border-radius: 4px;');
 });
 

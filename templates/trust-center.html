@@ -23,7 +23,7 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <header class="main-header">
+    <header class="main-header" id="main-header">
         <a href="{{ url_for('home') }}" class="logo">
     <img src="{{ url_for('static', filename='logo.png') }}" alt="Meditech Components">
 </a></a>
@@ -59,7 +59,23 @@
             <input type="text" id="global-search-input" placeholder="Search medical equipment...">
             <button type="button" id="close-search" aria-label="Close search">&times;</button>
         </div>
+
+            <button type="button" class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
     </header>
+
+    <nav class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation" aria-hidden="true">
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('products') }}">Products</a></li>
+            <li><a href="{{ url_for('trust') }}">About Us</a></li>
+            <li><a href="{{ url_for('trust') }}#contact-section">Contact</a></li>
+        </ul>
+    </nav>
 
     <main id="main-content">
     <section class="about-hero fade-in">
@@ -164,11 +180,8 @@
                 <h2 class="pane-title-sm">Direct Channels</h2>
                 <div class="info-group-sm">
                     <span class="info-label">Address</span>
-                    <a href="https://maps.app.goo.gl/MgXKswvwNHKCkddB6" target="_blank" rel="noopener noreferrer" class="address-link">
-                        Sr.No 108/1/2 Flat No: A/13<br>
-                        Sai Preetam Park, Vijay Nagar<br>
-                        Kalewadi, Pimpri, Pune<br>
-                        Maharashtra, India - 411017
+                    <a href="https://maps.app.goo.gl/W6WXhZAjJa3779Ua7" target="_blank" rel="noopener noreferrer" class="address-link">
+                        Meditech Components LLP Head office, Nere, Dattwadi, Maharashtra 411033
                     </a>
                 </div>
                 <div class="info-group-sm">
@@ -185,6 +198,11 @@
             <div class="contact-form-pane">
     <h2 class="pane-title">Initialize Inquiry</h2>
     <form class="modern-form" method="POST" action="/contact">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div style="position:absolute; left:-9999px; top:-9999px; height:0; overflow:hidden;" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+        </div>
         <div class="form-row">
             <div class="form-group">
                 <label for="contact-name" class="sr-only">Full Name *</label>
@@ -231,6 +249,10 @@
             
             <form method="POST" action="/submit-quote">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div style="position:absolute; left:-9999px; top:-9999px; height:0; overflow:hidden;" aria-hidden="true">
+                <label for="website">Website</label>
+                <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+            </div>
                 <input type="hidden" name="selected_products_list" id="cart-hidden-products-list" value="">
                 
                 <div class="form-group">
@@ -264,6 +286,10 @@
             
             <form method="POST" action="/submit-quote">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div style="position:absolute; left:-9999px; top:-9999px; height:0; overflow:hidden;" aria-hidden="true">
+                <label for="website">Website</label>
+                <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+            </div>
                 <input type="hidden" name="selected_products_list" value="">
                 <input type="hidden" name="product" value="Company Digital Brochure">
                 <input type="hidden" name="source" value="brochure_request_form">

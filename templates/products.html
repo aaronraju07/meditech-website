@@ -672,7 +672,7 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- ── Header (unchanged from existing site) ── -->
-    <header class="main-header">
+    <header class="main-header" id="main-header">
         <a href="{{ url_for('home') }}" class="logo">
             <img src="{{ url_for('static', filename='logo.png') }}" alt="Meditech Components">
         </a>
@@ -704,7 +704,23 @@
             <input type="text" id="global-search-input" placeholder="Search medical equipment...">
             <button type="button" id="close-search" aria-label="Close search">&times;</button>
         </div>
+
+            <button type="button" class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
     </header>
+
+    <nav class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation" aria-hidden="true">
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('products') }}">Products</a></li>
+            <li><a href="{{ url_for('trust') }}">About Us</a></li>
+            <li><a href="{{ url_for('trust') }}#contact-section">Contact</a></li>
+        </ul>
+    </nav>
 
     <!-- ── Hero Banner ── -->
     <section class="plp-hero" aria-label="Products hero">
@@ -926,7 +942,7 @@
                         <!-- ─── Stretcher Cards ─── -->
                         <article class="plp-card" role="listitem" data-category="Stretcher" data-cert="ce tuv" data-name="TG-1000 IN Electric Incubator Stretcher">
     <div class="plp-card-img">
-        <img src="{{ url_for('static', filename='TG-1000-Power-Brava.jpg') }}" alt="TG-1000 IN Electric Incubator Stretcher" loading="lazy">
+        <img src="{{ url_for('static', filename='TG-1000-Power-Brava.jpg') }}" alt="TG-1000 Electric Stretcher" loading="lazy">
     </div>
     <div class="plp-card-body">
         <div class="plp-card-badge-row">
@@ -935,8 +951,8 @@
             <span class="plp-badge badge-iso">TUV</span>
         </div>
         <p class="plp-card-sku">SKU: MED-STR-TG1000IN</p>
-        <h3 class="plp-card-name">TG-1000 IN Electric Incubator Stretcher</h3>
-        <p class="plp-card-desc">Premium high-torque powered ambulance stretcher optimized for neonatal and paediatric incubator transport units.</p>
+        <h3 class="plp-card-name">TG-1000 Electric Stretcher</h3>
+        <p class="plp-card-desc">Premium high-torque powered ambulance stretcher optimized transport units.</p>
         <ul class="plp-card-specs">
             <li>Unassisted 300 kg Lift Capacity</li>
             <li>Incubator System Compatibility</li>
@@ -1138,6 +1154,10 @@
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Complete the form below and our medical specialists will contact you.</p>
             <form method="POST" action="/submit-quote">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div style="position:absolute; left:-9999px; top:-9999px; height:0; overflow:hidden;" aria-hidden="true">
+                <label for="website">Website</label>
+                <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+            </div>
                 <input type="hidden" name="selected_products_list" id="hidden-products-list" value="">
                 
                 <div class="form-group">
@@ -1179,6 +1199,10 @@
             
             <form method="POST" action="/submit-quote">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div style="position:absolute; left:-9999px; top:-9999px; height:0; overflow:hidden;" aria-hidden="true">
+                <label for="website">Website</label>
+                <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+            </div>
                 <input type="hidden" name="selected_products_list" id="cart-hidden-products-list" value="">
                 
                 <div class="form-group">
