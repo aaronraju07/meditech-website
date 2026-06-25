@@ -44,7 +44,7 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <header class="main-header" id="main-header">
+    <header class="main-header">
         <a href="{{ url_for('home') }}" class="logo">
             <img src="{{ url_for('static', filename='logo.png') }}" alt="Meditech Components">
         </a>
@@ -81,23 +81,7 @@
             <input type="text" id="global-search-input" placeholder="Search medical equipment...">
             <button type="button" id="close-search" aria-label="Close search">&times;</button>
         </div>
-
-            <button type="button" class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
     </header>
-
-    <nav class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation" aria-hidden="true">
-        <ul>
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('products') }}">Products</a></li>
-            <li><a href="{{ url_for('trust') }}">About Us</a></li>
-            <li><a href="{{ url_for('trust') }}#contact-section">Contact</a></li>
-        </ul>
-    </nav>
 
     <main id="main-content" class="pdp-container">
         <nav class="breadcrumbs" aria-label="Breadcrumb">
@@ -352,6 +336,74 @@
         <!-- END: R-1002A BRAVO Lock Equipment Section -->
 
     </main>
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-column brand">
+                <strong class="logo">Meditech Components</strong>
+                <p>Advanced medical equipment for superior patient care.</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/meditech-components-06a5202b7?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" aria-label="Meditech Components on LinkedIn" title="LinkedIn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.15 2.07 2.07 0 0 1 0 4.15zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+                    </a>
+
+                    <div class="contact-popover-wrap">
+                        <button type="button" class="contact-popover-trigger" id="email-trigger" aria-label="Show email address" aria-expanded="false" aria-controls="email-popover" title="Email">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6.5h18v11a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5v-11z"/><path d="M3 7l9 6 9-6"/></svg>
+                        </button>
+                        <div class="contact-popover hidden" id="email-popover" role="tooltip">
+                            <span class="contact-popover-text">meditechcomponents@gmail.com</span>
+                            <button type="button" class="contact-popover-copy" data-copy="meditechcomponents@gmail.com" aria-label="Copy email address">Copy</button>
+                        </div>
+                    </div>
+
+                    <div class="contact-popover-wrap">
+                        <button type="button" class="contact-popover-trigger" id="phone-trigger" aria-label="Show phone number" aria-expanded="false" aria-controls="phone-popover" title="Phone">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.21 2.2z"/></svg>
+                        </button>
+                        <div class="contact-popover hidden" id="phone-popover" role="tooltip">
+                            <span class="contact-popover-text">+91 87999 96143</span>
+                            <button type="button" class="contact-popover-copy" data-copy="+918799996143" aria-label="Copy phone number">Copy</button>
+                        </div>
+                    </div>
+
+                    <a href="https://maps.app.goo.gl/W6WXhZAjJa3779Ua7" target="_blank" rel="noopener noreferrer" aria-label="Meditech Components location on Google Maps" title="Location">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C7.86 2 4.5 5.36 4.5 9.5c0 5.5 6.5 12 7.06 12.55a.62.62 0 0 0 .88 0C13 21.5 19.5 15 19.5 9.5 19.5 5.36 16.14 2 12 2zm0 10.5a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-column links">
+                <h3>Products</h3>
+                <ul>
+                    <li><a href="{{ url_for('products') }}">All Equipment</a></li>
+                    <li><a href="{{ url_for('products') }}?category=AED">AED</a></li>
+                    <li> <a href="{{ url_for('products') }}?category=Stretcher">Stretcher</a></li>
+                    <li> <a href="{{ url_for('products') }}?category=Wheelchair">Wheelchair</a></li>
+                </ul>
+            </div>
+            <div class="footer-column links">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="{{ url_for('trust') }}">About Us</a></li>
+                    <li><a href="{{ url_for('trust') }}">Certifications</a></li>
+                    <li><a href="{{ url_for('privacy_policy') }}">Privacy Policy</a></li>
+                    <li><a href="{{ url_for('trust') }}#contact-section">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column links">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Technical Support</a></li>
+                    <li><a href="#">Installation</a></li>
+                    <li><a href="#">Maintenance</a></li>
+                    <li><a href="#">Training</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom" id="contact">
+            <p>&copy; 2026 Meditech Components. All rights reserved.</p>
+        </div>
+    </footer>
+
 
     <dialog id="cart-modal" class="modal">
         <div class="modal-content">
@@ -373,10 +425,6 @@
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Complete the form below and our medical specialists will contact you.</p>
             <form id="quote-form" method="POST" action="/submit-quote">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <div style="position:absolute; left:-9999px; top:-9999px; height:0; overflow:hidden;" aria-hidden="true">
-                <label for="website">Website</label>
-                <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
-            </div>
                 
                 <div class="form-group">
                     <label for="full-name">Full Name *</label>
@@ -417,10 +465,6 @@
             
             <form method="POST" action="/submit-quote">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <div style="position:absolute; left:-9999px; top:-9999px; height:0; overflow:hidden;" aria-hidden="true">
-                <label for="website">Website</label>
-                <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
-            </div>
                 <input type="hidden" name="selected_products_list" id="cart-hidden-products-list" value="">
                 
                 <div class="form-group">
@@ -455,10 +499,6 @@
             
             <form method="POST" action="/submit-quote">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <div style="position:absolute; left:-9999px; top:-9999px; height:0; overflow:hidden;" aria-hidden="true">
-                <label for="website">Website</label>
-                <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
-            </div>
                 <input type="hidden" name="selected_products_list" value="">
                 <input type="hidden" name="product" value="TG-1000 IN Electric Incubator Stretcher Technical Spec Sheet Documentation">
                 <input type="hidden" name="source" value="pdp_spec_sheet_form">

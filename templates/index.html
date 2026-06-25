@@ -179,16 +179,15 @@ We leverage over 20 years of
                 partners.</p>
 
             <div class="partners-grid fade-in">
-                <div class="partner-logo"><img src="{{ url_for('static', filename='partner1.png') }}" alt="Partner 1">
-                </div>
-                <div class="partner-logo"><img src="{{ url_for('static', filename='partner2.png') }}" alt="Partner 2">
-                </div>
-                <div class="partner-logo"><img src="{{ url_for('static', filename='partner3.png') }}" alt="Partner 3"
-                        alt="Partner 3"></div>
-                <div class="partner-logo"><img src="{{ url_for('static', filename='partner4.png') }}" alt="Partner 4"
-                        alt="Partner 4"></div>
-                <div class="partner-logo"><img src="{{ url_for('static', filename='partner5.png') }}" alt="Partner 5"
-                        alt="Partner 5"></div>
+                <a href="{{ url_for('products') }}?brand=KARTSANA" class="partner-logo" aria-label="View KARTSANA products">
+                    <img src="{{ url_for('static', filename='partner1.png') }}" alt="KARTSANA">
+                </a>
+                <a href="{{ url_for('products') }}?brand=AMI Italia" class="partner-logo" aria-label="View AMI Italia products">
+                    <img src="{{ url_for('static', filename='partner2.png') }}" alt="AMI Italia">
+                </a>
+                <div class="partner-logo"><img src="{{ url_for('static', filename='partner3.png') }}" alt="Partner 3"></div>
+                <div class="partner-logo"><img src="{{ url_for('static', filename='partner4.png') }}" alt="Partner 4"></div>
+                <div class="partner-logo"><img src="{{ url_for('static', filename='partner5.png') }}" alt="Partner 5"></div>
             </div>
         </section>
     </main>
@@ -242,7 +241,7 @@ We leverage over 20 years of
                 <ul>
                     <li><a href="{{ url_for('trust') }}">About Us</a></li>
                     <li><a href="{{ url_for('trust') }}">Certifications</a></li>
-                    <li><a href="#">Careers</a></li>
+                    <li><a href="{{ url_for('privacy_policy') }}">Privacy Policy</a></li>
                     <li><a href="{{ url_for('trust') }}#contact-section">Contact</a></li>
                 </ul>
             </div>
@@ -259,7 +258,8 @@ We leverage over 20 years of
         <div class="footer-bottom" id="contact">
             <p>&copy; 2026 Meditech Components. All rights reserved.</p>
         </div>
-        
+    </footer>
+
         <dialog id="cart-modal" class="modal">
             <div class="modal-content">
                 <button type="button" id="close-cart" class="btn-close" aria-label="Close cart">&times</button>

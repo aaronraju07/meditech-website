@@ -305,6 +305,15 @@
             flex-direction: column;
             gap: 8px;
         }
+        .cat-group-label {
+            font-size: 0.76rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin: 14px 0 8px;
+        }
+        .cat-group-label:first-child {
+            margin-top: 0;
+        }
         .cert-filter-item {
             display: flex;
             align-items: center;
@@ -520,6 +529,7 @@
         .badge-ce  { background: #e8f4e8; color: #2d7d2d; }
         .badge-iso { background: #fff3e0; color: #b35a00; }
         .badge-new { background: var(--color-accent); color: #fff; }
+        .badge-brand { background: #ede9f5; color: #5b3a9e; }
 
         .plp-card-sku {
             font-size: 0.73rem;
@@ -730,7 +740,7 @@
             <p class="plp-hero-sub">Every device in our catalog is certified to international standards and tested for reliability when it matters most.</p>
             <div class="plp-hero-stats">
                 <div class="plp-hero-stat">
-                    <strong>9</strong>
+                    <strong>11</strong>
                     <span>Products</span>
                 </div>
                 <div class="plp-hero-divider" aria-hidden="true"></div>
@@ -766,7 +776,7 @@
                     </svg>
                     <input type="text" id="plp-search-input" placeholder="Search by name or SKU…" aria-label="Search products">
                 </div>
-                <span class="plp-result-count" id="plp-result-count">Showing <strong>9</strong> products</span>
+                <span class="plp-result-count" id="plp-result-count">Showing <strong>11</strong> products</span>
                 <select class="plp-sort-select" id="plp-sort" aria-label="Sort products">
                     <option value="default">Default order</option>
                     <option value="name-az">Name: A → Z</option>
@@ -799,23 +809,37 @@
                 <aside class="plp-sidebar-new" aria-label="Product filters">
                     <div class="sidebar-section">
                         <p class="sidebar-section-title">Category</p>
-                        <div class="cat-pills" role="group" aria-label="Filter by category">
-                            <button class="cat-pill active" data-cat="all">
-                                <span><span class="cat-pill-icon">⊞</span>All Products</span>
-                                <span class="cat-pill-count">9</span>
-                            </button>
-                            <button class="cat-pill" data-cat="AED">
-                                <span><span class="cat-pill-icon">⚡</span>AED Devices</span>
-                                <span class="cat-pill-count">3</span>
-                            </button>
-                            <button class="cat-pill" data-cat="Stretcher">
-                                <span><span class="cat-pill-icon">🛏</span>Stretchers</span>
-                                <span class="cat-pill-count">4</span>
-                            </button>
-                            <button class="cat-pill" data-cat="Wheelchair">
-                                <span><span class="cat-pill-icon">♿</span>Wheelchairs</span>
-                                <span class="cat-pill-count">2</span>
-                            </button>
+                        <div class="cert-filter-list" id="category-filter-list" role="group" aria-label="Filter by category">
+                            <p class="cat-group-label">Patient Handling Devices</p>
+                            <label class="cert-filter-item">
+                                <input type="checkbox" class="cat-filter" value="Stretcher"> Stretchers <span class="cat-pill-count">5</span>
+                            </label>
+                            <label class="cert-filter-item">
+                                <input type="checkbox" class="cat-filter" value="Wheelchair"> Wheelchairs <span class="cat-pill-count">3</span>
+                            </label>
+
+                            <p class="cat-group-label">Critical Care</p>
+                            <label class="cert-filter-item">
+                                <input type="checkbox" class="cat-filter" value="AED"> AED Devices <span class="cat-pill-count">3</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <p class="sidebar-section-title">Companies</p>
+                        <div class="cert-filter-list" id="brand-filter-list">
+                            <label class="cert-filter-item">
+                                <input type="checkbox" class="brand-filter" value="KARTSANA"> KARTSANA
+                            </label>
+                            <label class="cert-filter-item">
+                                <input type="checkbox" class="brand-filter" value="AMI Italia"> AMI Italia
+                            </label>
+                            <label class="cert-filter-item">
+                                <input type="checkbox" class="brand-filter" value="Satpuda"> Satpuda
+                            </label>
+                            <label class="cert-filter-item">
+                                <input type="checkbox" class="brand-filter" value="Weinmann"> Weinmann
+                            </label>
                         </div>
                     </div>
 
@@ -823,10 +847,10 @@
                         <p class="sidebar-section-title">Certification</p>
                         <div class="cert-filter-list">
                             <label class="cert-filter-item">
-                                <input type="checkbox" class="cert-filter" value="ce" checked> CE Mark
+                                <input type="checkbox" class="cert-filter" value="ce"> CE Mark
                             </label>
                             <label class="cert-filter-item">
-                                <input type="checkbox" class="cert-filter" value="iso" checked> ISO 13485
+                                <input type="checkbox" class="cert-filter" value="iso"> ISO 13485
                             </label>
                         </div>
                     </div>
@@ -848,13 +872,13 @@
                     <div id="plp-product-grid" class="view-grid" role="list" aria-label="Product list">
 
                         <!-- ─── AED Cards ─── -->
-                        <article class="plp-card" role="listitem" data-category="AED" data-cert="ce iso" data-name="MCL Smarty Saver AED">
+                        <article class="plp-card" role="listitem" data-category="AED" data-brand="AMI Italia" data-cert="ce iso" data-name="MCL Smarty Saver AED">
                             <div class="plp-card-img">
                                 <img src="{{ url_for('static', filename='aed.png') }}" alt="MCL Smarty Saver AED" loading="lazy">
                             </div>
                             <div class="plp-card-body">
                                 <div class="plp-card-badge-row">
-                                    <span class="plp-badge badge-cat">AED</span>
+                                    <span class="plp-badge badge-brand">AMI Italia</span><span class="plp-badge badge-cat">AED</span>
                                     <span class="plp-badge badge-ce">CE</span>
                                     <span class="plp-badge badge-iso">ISO</span>
                                 </div>
@@ -878,13 +902,13 @@
                             </div>
                         </article>
 
-                        <article class="plp-card" role="listitem" data-category="AED" data-cert="ce iso" data-name="MCL Saver One P">
+                        <article class="plp-card" role="listitem" data-category="AED" data-brand="AMI Italia" data-cert="ce iso" data-name="MCL Saver One P">
                             <div class="plp-card-img">
                                 <img src="{{ url_for('static', filename='aed2.png') }}" alt="MCL Saver One P" loading="lazy">
                             </div>
                             <div class="plp-card-body">
                                 <div class="plp-card-badge-row">
-                                    <span class="plp-badge badge-cat">Professional</span>
+                                    <span class="plp-badge badge-brand">AMI Italia</span><span class="plp-badge badge-cat">Professional</span>
                                     <span class="plp-badge badge-ce">CE</span>
                                     <span class="plp-badge badge-iso">ISO</span>
                                     <span class="plp-badge badge-new">NEW</span>
@@ -909,13 +933,13 @@
                             </div>
                         </article>
 
-                        <article class="plp-card" role="listitem" data-category="AED" data-cert="ce iso" data-name="MCL Saver One D">
+                        <article class="plp-card" role="listitem" data-category="AED" data-brand="AMI Italia" data-cert="ce iso" data-name="MCL Saver One D">
                             <div class="plp-card-img">
                                 <img src="{{ url_for('static', filename='aed3.png') }}" alt="MCL Saver One D" loading="lazy">
                             </div>
                             <div class="plp-card-body">
                                 <div class="plp-card-badge-row">
-                                    <span class="plp-badge badge-cat">AED</span>
+                                    <span class="plp-badge badge-brand">AMI Italia</span><span class="plp-badge badge-cat">AED</span>
                                     <span class="plp-badge badge-ce">CE</span>
                                     <span class="plp-badge badge-iso">ISO</span>
                                 </div>
@@ -940,13 +964,13 @@
                         </article>
 
                         <!-- ─── Stretcher Cards ─── -->
-                        <article class="plp-card" role="listitem" data-category="Stretcher" data-cert="ce tuv" data-name="TG-1000 IN Electric Incubator Stretcher">
+                        <article class="plp-card" role="listitem" data-category="Stretcher" data-brand="KARTSANA" data-cert="ce tuv" data-name="TG-1000 IN Electric Incubator Stretcher">
     <div class="plp-card-img">
         <img src="{{ url_for('static', filename='TG-1000-Power-Brava.jpg') }}" alt="TG-1000 Electric Stretcher" loading="lazy">
     </div>
     <div class="plp-card-body">
         <div class="plp-card-badge-row">
-            <span class="plp-badge badge-cat">Stretcher</span>
+            <span class="plp-badge badge-brand">KARTSANA</span><span class="plp-badge badge-cat">Stretcher</span>
             <span class="plp-badge badge-ce">10G</span>
             <span class="plp-badge badge-iso">TUV</span>
         </div>
@@ -970,13 +994,13 @@
     </div>
 </article>
 
-                        <article class="plp-card" role="listitem" data-category="Stretcher" data-cert="ce" data-name="TG-880 C4 / TG-880 C2 Ambulance Stretcher">
+                        <article class="plp-card" role="listitem" data-category="Stretcher" data-brand="KARTSANA" data-cert="ce" data-name="TG-880 C4 / TG-880 C2 Ambulance Stretcher">
     <div class="plp-card-img">
         <img src="{{ url_for('static', filename='TG-880-C2C4.jpg') }}" alt="TG-880 C4 / TG-880 C2 Ambulance Stretcher" loading="lazy">
     </div>
     <div class="plp-card-body">
         <div class="plp-card-badge-row">
-            <span class="plp-badge badge-cat">Stretcher</span>
+            <span class="plp-badge badge-brand">KARTSANA</span><span class="plp-badge badge-cat">Stretcher</span>
             <span class="plp-badge badge-ce">10G</span>
             <span class="plp-badge badge-iso">EN 1865</span>
         </div>
@@ -1000,13 +1024,13 @@
     </div>
 </article>
 
-                        <article class="plp-card" role="listitem" data-category="Stretcher" data-cert="ce" data-name="TG-241 Premium Ambulance Stretcher">
+                        <article class="plp-card" role="listitem" data-category="Stretcher" data-brand="KARTSANA" data-cert="ce" data-name="TG-241 Premium Ambulance Stretcher">
     <div class="plp-card-img">
         <img src="{{ url_for('static', filename='TG-241.jpg') }}" alt="TG-241 Premium Ambulance Stretcher" loading="lazy">
     </div>
     <div class="plp-card-body">
         <div class="plp-card-badge-row">
-            <span class="plp-badge badge-cat">Stretcher</span>
+            <span class="plp-badge badge-brand">KARTSANA</span><span class="plp-badge badge-cat">Stretcher</span>
             <span class="plp-badge badge-ce">10G</span>
             <span class="plp-badge badge-iso">KARTSANA</span>
         </div>
@@ -1029,13 +1053,13 @@
         </button>
     </div>
 </article>
-<article class="plp-card" role="listitem" data-category="Stretcher" data-cert="ce iso" data-name="TG-880 C4 IN Incubator Ambulance Stretcher">
+<article class="plp-card" role="listitem" data-category="Stretcher" data-brand="KARTSANA" data-cert="ce iso" data-name="TG-880 C4 IN Incubator Ambulance Stretcher">
     <div class="plp-card-img">
         <img src="{{ url_for('static', filename='TG-880-C4-IN.jpg') }}" alt="TG-880 C4 IN Incubator Ambulance Stretcher with medical incubator mounted" loading="lazy">
     </div>
     <div class="plp-card-body">
         <div class="plp-card-badge-row">
-            <span class="plp-badge badge-cat">Stretcher</span>
+            <span class="plp-badge badge-brand">KARTSANA</span><span class="plp-badge badge-cat">Stretcher</span>
             <span class="plp-badge badge-ce">Aluminium</span>
             <span class="plp-badge badge-iso">KARTSANA</span>
         </div>
@@ -1059,15 +1083,46 @@
     </div>
 </article>
 
+<article class="plp-card" role="listitem" data-category="Stretcher" data-brand="Satpuda" data-cert="iso" data-name="Satpuda AST-919D Ambulance Stretcher">
+    <div class="plp-card-img">
+        <img src="{{ url_for('static', filename='stretcher_satpuda.png') }}" alt="Satpuda AST-919D Certified Ambulance Stretcher" loading="lazy">
+    </div>
+    <div class="plp-card-body">
+        <div class="plp-card-badge-row">
+            <span class="plp-badge badge-brand">Satpuda</span><span class="plp-badge badge-cat">Stretcher</span>
+            <span class="plp-badge badge-iso">AIS-125</span>
+        </div>
+        <p class="plp-card-sku">SKU: MED-STR-AST919D</p>
+        <h3 class="plp-card-name">Satpuda AST-919D Ambulance Stretcher</h3>
+        <p class="plp-card-desc">AIS-125 certified ambulance stretcher featuring mild steel construction, independent folding legs, and collapsible side railings.</p>
+        <ul class="plp-card-specs">
+            <li>170 kg Maximum Load Capacity</li>
+            <li>Mild Steel Frame &amp; Adjustable I.V. Rod</li>
+            <li>AIS-125 Certified for Ambulances</li>
+            <li>Rear Caster Wheels with Side Brakes</li>
+        </ul>
+    </div>
+    <div class="plp-card-footer">
+        <a href="{{ url_for('stretcher_satpuda') }}" class="btn-view-detail">
+            View Details
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <button type="button" class="btn-add-quote btn-add-cart" data-id="stretcher-satpuda" data-name="Satpuda AST-919D Ambulance Stretcher" data-sku="MED-STR-AST919D" title="Add to procurement list">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </button>
+    </div>
+</article>
+
+
                         <!-- ─── Wheelchair Cards ─── -->
-                        <article class="plp-card" role="listitem" data-category="Wheelchair" data-cert="iso" data-name="MCL S129RG Ergonomic Wheelchair">
+                        <article class="plp-card" role="listitem" data-category="Wheelchair" data-brand="KARTSANA" data-cert="ce" data-name="MCL S129RG Ergonomic Wheelchair">
                             <div class="plp-card-img">
                                 <img src="{{ url_for('static', filename='MCL-S129RG.jpg') }}" alt="MCL S129RG Wheelchair" loading="lazy">
                             </div>
                             <div class="plp-card-body">
                                 <div class="plp-card-badge-row">
-                                    <span class="plp-badge badge-cat">Wheelchair</span>
-                                    <span class="plp-badge badge-iso">ISO</span>
+                                    <span class="plp-badge badge-brand">KARTSANA</span><span class="plp-badge badge-cat">Wheelchair</span>
+                                    <span class="plp-badge badge-ce">CE</span>
                                 </div>
                                 <p class="plp-card-sku">SKU: MCL-WCH-S129RG</p>
                                 <h3 class="plp-card-name">MCL S129RG Ergonomic Wheelchair</h3>
@@ -1089,15 +1144,14 @@
                             </div>
                         </article>
 
-                        <article class="plp-card" role="listitem" data-category="Wheelchair" data-cert="ce iso" data-name="MCL CS200 Heavy-Duty Wheelchair">
+                        <article class="plp-card" role="listitem" data-category="Wheelchair" data-brand="KARTSANA" data-cert="ce" data-name="MCL CS200 Heavy-Duty Wheelchair">
                             <div class="plp-card-img">
                                 <img src="{{ url_for('static', filename='MCL-CS200.jpg') }}" alt="MCL CS200 Powered Wheelchair" loading="lazy">
                             </div>
                             <div class="plp-card-body">
                                 <div class="plp-card-badge-row">
-                                    <span class="plp-badge badge-cat">Powered</span>
+                                    <span class="plp-badge badge-brand">KARTSANA</span><span class="plp-badge badge-cat">Powered</span>
                                     <span class="plp-badge badge-ce">CE</span>
-                                    <span class="plp-badge badge-iso">ISO</span>
                                 </div>
                                 <p class="plp-card-sku">SKU: MCL-WCH-CS200</p>
                                 <h3 class="plp-card-name">MCL CS200 Heavy-Duty Wheelchair</h3>
@@ -1119,6 +1173,64 @@
                             </div>
                         </article>
 
+                        <article class="plp-card" role="listitem" data-category="Stretcher" data-brand="Desco" data-cert="ce" data-name="MAM STAS 101 Autoloader Collapsible Stretcher">
+                            <div class="plp-card-img">
+                                <img src="{{ url_for('static', filename='MAMSTAS101.png') }}" alt="DESCO MAM STAS 101 Autoloader Collapsible Stretcher" loading="lazy">
+                            </div>
+                            <div class="plp-card-body">
+                                <div class="plp-card-badge-row">
+                                    <span class="plp-badge badge-brand">Desco</span><span class="plp-badge badge-cat">Stretcher</span>
+                                    <span class="plp-badge badge-ce">CE</span>
+                                </div>
+                                <p class="plp-card-sku">SKU: MED-STR-MAMSTAS101</p>
+                                <h3 class="plp-card-name">MAM STAS 101 Autoloader Collapsible Stretcher</h3>
+                                <p class="plp-card-desc">Automatic loading ambulance stretcher with collapsible legs and adjustable backrest to 75°.</p>
+                                <ul class="plp-card-specs">
+                                    <li>Automatic Folding Legs</li>
+                                    <li>159 kg Load Bearing Capacity</li>
+                                    <li>Adjustable Backrest to 75°</li>
+                                </ul>
+                            </div>
+                            <div class="plp-card-footer">
+                                <a href="{{ url_for('strech5') }}" class="btn-view-detail">
+                                    View Details
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                                <button type="button" class="btn-add-quote btn-add-cart" data-id="mam-stas-101" data-name="MAM STAS 101 Autoloader Collapsible Stretcher" data-sku="MED-STR-MAMSTAS101" title="Add to procurement list">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                                </button>
+                            </div>
+                        </article>
+
+                        <article class="plp-card" role="listitem" data-category="Wheelchair" data-brand="Desco" data-cert="ce" data-name="DESCO STAS 301 Wheelchair Stair Stretcher">
+                            <div class="plp-card-img">
+                                <img src="{{ url_for('static', filename='STAS301.png') }}" alt="DESCO STAS 301 Wheelchair Stair Stretcher" loading="lazy">
+                            </div>
+                            <div class="plp-card-body">
+                                <div class="plp-card-badge-row">
+                                    <span class="plp-badge badge-brand">Desco</span><span class="plp-badge badge-cat">Wheelchair</span>
+                                    <span class="plp-badge badge-ce">CE</span>
+                                </div>
+                                <p class="plp-card-sku">SKU: MED-WCH-STAS301</p>
+                                <h3 class="plp-card-name">STAS 301 Wheelchair Stair Stretcher</h3>
+                                <p class="plp-card-desc">Lightweight aluminium stair stretcher for narrow halls, gangways, and multi-turn staircases.</p>
+                                <ul class="plp-card-specs">
+                                    <li>159 kg Load Bearing</li>
+                                    <li>Folds to 91 x 19 x 51 cm</li>
+                                    <li>9.2 kg Net Weight</li>
+                                </ul>
+                            </div>
+                            <div class="plp-card-footer">
+                                <a href="{{ url_for('wheelchair3') }}" class="btn-view-detail">
+                                    View Details
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                                <button type="button" class="btn-add-quote btn-add-cart" data-id="stas-301" data-name="STAS 301 Wheelchair Stair Stretcher" data-sku="MED-WCH-STAS301" title="Add to procurement list">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                                </button>
+                            </div>
+                        </article>
+
                         <!-- No-results placeholder -->
                         <div class="plp-empty" id="plp-empty" aria-live="assertive">
                             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -1132,6 +1244,74 @@
             </div><!-- .plp-body -->
         </div><!-- .plp-content-wrapper -->
     </main>
+
+<footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-column brand">
+                <strong class="logo">Meditech Components</strong>
+                <p>Advanced medical equipment for superior patient care.</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/meditech-components-06a5202b7?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" aria-label="Meditech Components on LinkedIn" title="LinkedIn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.15 2.07 2.07 0 0 1 0 4.15zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+                    </a>
+
+                    <div class="contact-popover-wrap">
+                        <button type="button" class="contact-popover-trigger" id="email-trigger" aria-label="Show email address" aria-expanded="false" aria-controls="email-popover" title="Email">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6.5h18v11a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5v-11z"/><path d="M3 7l9 6 9-6"/></svg>
+                        </button>
+                        <div class="contact-popover hidden" id="email-popover" role="tooltip">
+                            <span class="contact-popover-text">meditechcomponents@gmail.com</span>
+                            <button type="button" class="contact-popover-copy" data-copy="meditechcomponents@gmail.com" aria-label="Copy email address">Copy</button>
+                        </div>
+                    </div>
+
+                    <div class="contact-popover-wrap">
+                        <button type="button" class="contact-popover-trigger" id="phone-trigger" aria-label="Show phone number" aria-expanded="false" aria-controls="phone-popover" title="Phone">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.21 2.2z"/></svg>
+                        </button>
+                        <div class="contact-popover hidden" id="phone-popover" role="tooltip">
+                            <span class="contact-popover-text">+91 87999 96143</span>
+                            <button type="button" class="contact-popover-copy" data-copy="+918799996143" aria-label="Copy phone number">Copy</button>
+                        </div>
+                    </div>
+
+                    <a href="https://maps.app.goo.gl/W6WXhZAjJa3779Ua7" target="_blank" rel="noopener noreferrer" aria-label="Meditech Components location on Google Maps" title="Location">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C7.86 2 4.5 5.36 4.5 9.5c0 5.5 6.5 12 7.06 12.55a.62.62 0 0 0 .88 0C13 21.5 19.5 15 19.5 9.5 19.5 5.36 16.14 2 12 2zm0 10.5a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-column links">
+                <h3>Products</h3>
+                <ul>
+                    <li><a href="{{ url_for('products') }}">All Equipment</a></li>
+                    <li><a href="{{ url_for('products') }}?category=AED">AED</a></li>
+                    <li> <a href="{{ url_for('products') }}?category=Stretcher">Stretcher</a></li>
+                    <li> <a href="{{ url_for('products') }}?category=Wheelchair">Wheelchair</a></li>
+                </ul>
+            </div>
+            <div class="footer-column links">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="{{ url_for('trust') }}">About Us</a></li>
+                    <li><a href="{{ url_for('trust') }}">Certifications</a></li>
+                    <li><a href="{{ url_for('privacy_policy') }}">Privacy Policy</a></li>
+                    <li><a href="{{ url_for('trust') }}#contact-section">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column links">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Technical Support</a></li>
+                    <li><a href="#">Installation</a></li>
+                    <li><a href="#">Maintenance</a></li>
+                    <li><a href="#">Training</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom" id="contact">
+            <p>&copy; 2026 Meditech Components. All rights reserved.</p>
+        </div>
+    </footer>
 
     <!-- ── Modals (preserved from original) ── -->
     <dialog id="cart-modal" class="modal">
@@ -1240,22 +1420,35 @@
         const countEl     = document.getElementById('plp-result-count');
         const searchInput = document.getElementById('plp-search-input');
         const sortSelect  = document.getElementById('plp-sort');
-        const catPills    = document.querySelectorAll('.cat-pill');
+        const catBoxes    = document.querySelectorAll('.cat-filter');
         const certBoxes   = document.querySelectorAll('.cert-filter');
+        const brandBoxes  = document.querySelectorAll('.brand-filter');
         const filterChips = document.getElementById('active-filters');
 
-        let activeCat  = 'all';
-        let activeCerts = new Set(['ce', 'iso']);
+        let activeCats  = new Set([...catBoxes].filter(c => c.checked).map(c => c.value));
+        let activeCerts = new Set([...certBoxes].filter(c => c.checked).map(c => c.value));
+        let activeBrands = new Set([...brandBoxes].filter(c => c.checked).map(c => c.value));
 
         // Read ?category= from URL (set by homepage "Featured Equipment" links)
         const urlParams = new URLSearchParams(window.location.search);
         const urlCat = urlParams.get('category');
         if (urlCat) {
-            const matchPill = [...catPills].find(p => p.dataset.cat.toLowerCase() === urlCat.toLowerCase());
-            if (matchPill) {
-                activeCat = matchPill.dataset.cat;
-                catPills.forEach(p => p.classList.remove('active'));
-                matchPill.classList.add('active');
+            const matchBox = [...catBoxes].find(c => c.value.toLowerCase() === urlCat.toLowerCase());
+            if (matchBox) {
+                // Show only this category: check it, uncheck every other category checkbox
+                catBoxes.forEach(c => { c.checked = (c === matchBox); });
+                activeCats = new Set([matchBox.value]);
+            }
+        }
+
+        // Read ?brand= from URL (set by homepage "Trusted Partners" logo links)
+        const urlBrand = urlParams.get('brand');
+        if (urlBrand) {
+            const matchBox = [...brandBoxes].find(b => b.value.toLowerCase() === urlBrand.toLowerCase());
+            if (matchBox) {
+                // Show only this brand: check it, uncheck every other brand checkbox
+                brandBoxes.forEach(b => { b.checked = (b === matchBox); });
+                activeBrands = new Set([matchBox.value]);
             }
         }
 
@@ -1279,12 +1472,10 @@
             document.getElementById('btn-view-grid').setAttribute('aria-pressed','false');
         });
 
-        // Category pill click
-        catPills.forEach(pill => {
-            pill.addEventListener('click', () => {
-                catPills.forEach(p => p.classList.remove('active'));
-                pill.classList.add('active');
-                activeCat = pill.dataset.cat;
+        // Category checkbox
+        catBoxes.forEach(cb => {
+            cb.addEventListener('change', () => {
+                activeCats = new Set([...catBoxes].filter(c=>c.checked).map(c=>c.value));
                 applyFilters();
             });
         });
@@ -1293,6 +1484,14 @@
         certBoxes.forEach(cb => {
             cb.addEventListener('change', () => {
                 activeCerts = new Set([...certBoxes].filter(c=>c.checked).map(c=>c.value));
+                applyFilters();
+            });
+        });
+
+        // Brand checkbox
+        brandBoxes.forEach(cb => {
+            cb.addEventListener('change', () => {
+                activeBrands = new Set([...brandBoxes].filter(c=>c.checked).map(c=>c.value));
                 applyFilters();
             });
         });
@@ -1313,18 +1512,20 @@
 
             cards().forEach(card => {
                 const cat   = card.dataset.category;
+                const brand = card.dataset.brand || '';
                 const certs = card.dataset.cert.split(' ');
                 const name  = card.dataset.name.toLowerCase();
                 const sku   = card.querySelector('.plp-card-sku').textContent.toLowerCase();
                 const descEl = card.querySelector('.plp-card-desc');
                 const desc  = descEl ? descEl.textContent.toLowerCase() : '';
-                const searchableText = `${name} ${sku} ${desc} ${cat.toLowerCase()}`;
+                const searchableText = `${name} ${sku} ${desc} ${cat.toLowerCase()} ${brand.toLowerCase()}`;
 
-                const catOk  = activeCat === 'all' || cat === activeCat;
-                const certOk = activeCerts.size === 0 || certs.some(c => activeCerts.has(c));
-                const qOk    = fuzzyMatch(query, searchableText);
+                const catOk   = activeCats.size === 0 || activeCats.has(cat);
+                const certOk  = activeCerts.size === 0 || certs.some(c => activeCerts.has(c));
+                const brandOk = activeBrands.size === 0 || activeBrands.has(brand);
+                const qOk     = fuzzyMatch(query, searchableText);
 
-                if (catOk && certOk && qOk) {
+                if (catOk && certOk && brandOk && qOk) {
                     card.classList.remove('hidden');
                     visible.push(card);
                 } else {
@@ -1350,8 +1551,13 @@
 
         function renderChips() {
             filterChips.innerHTML = '';
-            if (activeCat !== 'all') {
-                filterChips.innerHTML += labelChip('Category: ' + activeCat, 'cat-chip');
+            const totalCats = catBoxes.length;
+            if (activeCats.size < totalCats && activeCats.size > 0) {
+                filterChips.innerHTML += labelChip('Category: ' + [...activeCats].join(', '), 'cat-chip');
+            }
+            const totalBrands = brandBoxes.length;
+            if (activeBrands.size < totalBrands && activeBrands.size > 0) {
+                filterChips.innerHTML += labelChip('Company: ' + [...activeBrands].join(', '), 'brand-chip');
             }
             if (activeCerts.size < 2 && activeCerts.size > 0) {
                 filterChips.innerHTML += labelChip('Cert: ' + [...activeCerts].join(', ').toUpperCase(), 'cert-chip');
@@ -1373,12 +1579,16 @@
             if (!btn) return;
             const id = btn.dataset.clear;
             if (id === 'cat-chip') {
-                activeCat = 'all';
-                catPills.forEach(p => p.classList.toggle('active', p.dataset.cat === 'all'));
+                activeCats = new Set();
+                catBoxes.forEach(c => c.checked = false);
+            }
+            if (id === 'brand-chip') {
+                activeBrands = new Set();
+                brandBoxes.forEach(b => b.checked = false);
             }
             if (id === 'cert-chip') {
-                activeCerts = new Set(['ce','iso']);
-                certBoxes.forEach(c => c.checked = true);
+                activeCerts = new Set();
+                certBoxes.forEach(c => c.checked = false);
             }
             if (id === 'search-chip') { searchInput.value = ''; }
             applyFilters();

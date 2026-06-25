@@ -1,6 +1,7 @@
 import os
 import sqlite3
 import requests
+import re
 from flask import Flask, render_template, request, redirect, session, abort, send_from_directory
 from flask_wtf.csrf import CSRFProtect
 from flask_limiter import Limiter
@@ -177,6 +178,10 @@ def products():
 def trust():
     return render_template('trust-center.html')
 
+@app.route('/privacy-policy')
+def privacy_policy():
+    return render_template('privacy_policy.html')
+
 @app.route('/product-details')
 def product_details():
     return render_template('product.html')
@@ -209,6 +214,15 @@ def strech3():
 def strech4():
     return render_template('strecher4.html')
 
+@app.route('/strecher5')
+def strech5():
+    return render_template('strecher5.html')
+
+@app.route('/stretcher-satpuda')
+def stretcher_satpuda():
+    return render_template('stretcher_satpuda.html')
+
+
 @app.route('/wheelchair1')
 def wheelchair1():
     return render_template('wheelchair1.html')
@@ -216,6 +230,10 @@ def wheelchair1():
 @app.route('/wheelchair2')
 def wheelchair2():
     return render_template('wheelchair2.html')
+
+@app.route('/wheelchair3')
+def wheelchair3():
+    return render_template('wheelchair3.html')
 
 # ---------------- CONTACT ----------------
 
@@ -232,7 +250,7 @@ def contact():
     phone   = truncate(request.form.get('phone'),    20)
     message = truncate(request.form.get('message'), 2000)
 
-    if not name or not email:
+    if not name or not email or not re.match(r'^[^@\s]+@[^@\s]+\.[^@\s]+$', email):
         return redirect('/?error=missing_fields')
 
     conn = get_db()
@@ -264,7 +282,7 @@ def submit_quote():
     hidden_list = request.form.get('selected_products_list', '')
     product = truncate(hidden_list if hidden_list.strip() else request.form.get('product', ''), 500)
 
-    if not name or not email:
+    if not name or not email or not re.match(r'^[^@\s]+@[^@\s]+\.[^@\s]+$', email):
         return redirect('/?error=missing_fields')
 
     try:
