@@ -1,0 +1,24 @@
+# Meditech Components
+
+> Meditech Components is a medical equipment supplier based in India, providing ISO 9001:2015 and ISO 14001:2015 certified AEDs, ambulance stretchers, and evacuation wheelchairs to hospitals and healthcare professionals. Meditech Components is a sister concern of Ajil Fibretech Pvt. Ltd., bringing over 20 years of ambulance manufacturing expertise to its medical device catalog.
+
+Meditech Components supplies medical devices for patient care and emergency response across India, including:
+- Automated External Defibrillators (AEDs) for emergency cardiac response
+- Ambulance stretchers built for durability in transit
+- Evacuation wheelchairs designed for fast, safe patient movement
+
+## Products
+
+- [All Equipment](https://meditechcomponents.com/products): Full catalog of medical devices, filterable by category, brand, and certification.
+- [AEDs](https://meditechcomponents.com/products?category=AED): Automated External Defibrillators from certified manufacturers.
+- [Ambulance Stretchers](https://meditechcomponents.com/products?category=Stretcher): Patient transport stretchers for ambulance and hospital use.
+- [Evacuation Wheelchairs](https://meditechcomponents.com/products?category=Wheelchair): Wheelchairs designed for patient evacuation and transport.
+
+## Company
+
+- [About Us](https://meditechcomponents.com/trust-center): Company background, certifications, and trust information.
+- [Contact](https://meditechcomponents.com/trust-center#contact-section): Contact details for procurement and support inquiries.
+
+## Certifications
+
+Meditech Components products carry ISO 9001:2015, ISO 14001:2015, and CE Mark certifications depending on the product line.

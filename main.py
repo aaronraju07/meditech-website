@@ -163,6 +163,10 @@ def robots_txt():
 def sitemap_xml():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'sitemap.xml', mimetype='application/xml')
 
+@app.route('/llms.txt')
+def llms_txt():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'llms.txt', mimetype='text/plain')
+
 @app.route('/googled8ad15622854b8b3.html')
 def google_site_verification():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'googled8ad15622854b8b3.html', mimetype='text/html')

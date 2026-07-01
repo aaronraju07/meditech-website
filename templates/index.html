@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meditech Components - Advanced Medical Equipment</title>
-    <meta name="description" content="Meditech Components supplies ISO 13485 certified AEDs, ambulance stretchers, and evacuation wheelchairs to hospitals and healthcare providers across India.">
+    <title>Meditech Components | Medical Equipment for Patient Care</title>
+    <meta name="description" content="Meditech Components supplies ISO 9001:2015 and ISO 14001:2015 certified AEDs, ambulance stretchers, and evacuation wheelchairs to hospitals and healthcare professionals across India.">
+    <link rel="canonical" href="https://meditechcomponents.com/">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
@@ -15,16 +16,279 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
     <meta property="og:title" content="Meditech Components | Advanced Medical Equipment Solutions">
-    <meta property="og:description" content="ISO 13485 certified AEDs, ambulance stretchers, and evacuation wheelchairs for hospitals and healthcare providers.">
+    <meta property="og:description" content="ISO 9001:2015 and ISO 14001:2015 certified AEDs, ambulance stretchers, and evacuation wheelchairs for hospitals and healthcare providers.">
     <meta property="og:image" content="https://meditechcomponents.com/static/logo.png">
     <meta property="og:url" content="https://meditechcomponents.com/">
     <meta property="og:type" content="website">
+    <style>
+    /* ============================================================
+       INTERACTIVE ENHANCEMENTS — index.html
+       1. Why-Choose accordion cards
+       2. Hero cursor glow
+       3. Product card magnetic tilt
+       4. Stats counter strip
+    ============================================================ */
+
+    /* ── 1. Why-Choose Accordion ── */
+    .wc-section {
+        padding: 80px 5%;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .wc-header {
+        text-align: center;
+        margin-bottom: 52px;
+    }
+    .wc-accordion {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        border: 1px solid #e8eaed;
+        border-radius: 16px;
+        overflow: hidden;
+    }
+    .wc-item {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        gap: 24px;
+        padding: 28px 32px;
+        background: #fff;
+        border-bottom: 1px solid #e8eaed;
+        cursor: pointer;
+        outline: none;
+        transition: background 0.25s ease;
+        overflow: hidden;
+    }
+    .wc-item:last-child { border-bottom: none; }
+    .wc-item:hover,
+    .wc-item:focus-visible { background: #fafafa; }
+    .wc-item[aria-expanded="true"] { background: #fafbff; }
+    .wc-item:focus-visible { box-shadow: inset 0 0 0 2px var(--color-accent, #d4af37); }
+
+    /* Left column: big number + icon */
+    .wc-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        min-width: 52px;
+        padding-top: 4px;
+        flex-shrink: 0;
+    }
+    .wc-num {
+        font-size: 1.9rem;
+        font-weight: 800;
+        line-height: 1;
+        color: #e8eaed;
+        letter-spacing: -1px;
+        transition: color 0.3s ease;
+        font-variant-numeric: tabular-nums;
+    }
+    .wc-item:hover .wc-num,
+    .wc-item[aria-expanded="true"] .wc-num {
+        color: var(--color-accent, #d4af37);
+    }
+    .wc-icon-wrap {
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        background: #f4f4f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s ease, transform 0.3s ease;
+        color: #555;
+    }
+    .wc-item:hover .wc-icon-wrap,
+    .wc-item[aria-expanded="true"] .wc-icon-wrap {
+        background: var(--color-accent, #d4af37);
+        color: #fff;
+        transform: scale(1.08);
+    }
+
+    /* Body */
+    .wc-body { flex: 1; min-width: 0; }
+    .wc-top-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+    .wc-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--color-primary, #1a2533);
+        margin: 0;
+        line-height: 1.3;
+    }
+    .wc-tags {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+    .wc-tag {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.4px;
+        padding: 2px 8px;
+        border-radius: 20px;
+        background: #f0f0f0;
+        color: #666;
+        border: 1px solid #e0e0e0;
+        transition: background 0.25s, color 0.25s;
+    }
+    .wc-item[aria-expanded="true"] .wc-tag {
+        background: rgba(212,175,55,0.12);
+        color: #a07b10;
+        border-color: rgba(212,175,55,0.3);
+    }
+    .wc-toggle {
+        margin-left: auto;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        color: #999;
+        display: flex;
+        flex-shrink: 0;
+    }
+    .wc-chevron {
+        transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .wc-item[aria-expanded="true"] .wc-chevron {
+        transform: rotate(180deg);
+    }
+    .wc-summary {
+        font-size: 0.9rem;
+        color: #666;
+        margin: 10px 0 0;
+        line-height: 1.6;
+    }
+
+    /* Expandable detail */
+    .wc-expand {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.42s cubic-bezier(0.4,0,0.2,1),
+                    opacity 0.3s ease;
+        opacity: 0;
+    }
+    .wc-item[aria-expanded="true"] .wc-expand {
+        max-height: 240px;
+        opacity: 1;
+    }
+    .wc-detail-text {
+        font-size: 0.88rem;
+        color: #555;
+        line-height: 1.7;
+        margin: 14px 0 10px;
+        padding-top: 12px;
+        border-top: 1px solid #ebebeb;
+    }
+    .wc-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--color-accent, #d4af37);
+        text-decoration: none;
+        margin-bottom: 8px;
+        transition: gap 0.2s ease;
+    }
+    .wc-cta:hover { gap: 8px; text-decoration: underline; }
+
+    /* Animated left accent bar (slides in on expand) */
+    .wc-progress-bar {
+        position: absolute;
+        left: 0; top: 0; bottom: 0;
+        width: 3px;
+        background: var(--color-accent, #d4af37);
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+        border-radius: 0 2px 2px 0;
+    }
+    .wc-item[aria-expanded="true"] .wc-progress-bar {
+        transform: scaleY(1);
+    }
+
+    /* ── 2. Hero cursor glow ── */
+    .hero-section { isolation: isolate; }
+    #hero-cursor-glow {
+        position: absolute;
+        width: 500px; height: 500px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(212,175,55,0.13) 0%, transparent 70%);
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        transition: left 0.12s ease-out, top 0.12s ease-out;
+        z-index: 0;
+        opacity: 0;
+        will-change: left, top;
+    }
+    .hero-section:hover #hero-cursor-glow { opacity: 1; }
+
+    /* ── 3. Product card tilt (magnetic feel) ── */
+    .product-card { will-change: transform; }
+
+    /* ── 4. Stats strip ── */
+    .stats-strip {
+        display: flex;
+        justify-content: center;
+        gap: 0;
+        background: var(--color-primary, #1a2533);
+        padding: 36px 5%;
+    }
+    .stat-pill {
+        text-align: center;
+        padding: 0 40px;
+        border-right: 1px solid rgba(255,255,255,0.1);
+        flex: 1;
+        max-width: 220px;
+    }
+    .stat-pill:last-child { border-right: none; }
+    .stat-num {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: var(--color-accent, #d4af37);
+        line-height: 1;
+        display: block;
+    }
+    .stat-label {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: rgba(255,255,255,0.55);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-top: 6px;
+        display: block;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+        .wc-item { padding: 20px 18px; gap: 14px; }
+        .wc-num { font-size: 1.4rem; }
+        .wc-left { min-width: 38px; }
+        .wc-tags { display: none; }
+        .stats-strip { flex-wrap: wrap; gap: 24px; padding: 28px 5%; }
+        .stat-pill { border-right: none; flex: 0 0 calc(50% - 12px); max-width: none; }
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+        .wc-expand, .wc-progress-bar, .wc-chevron,
+        .wc-icon-wrap, .wc-num { transition: none !important; }
+        #hero-cursor-glow { display: none; }
+    }
+    </style>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org/",
       "@type": "MedicalBusiness",
       "name": "Meditech Components",
-      "certification": "ISO 13485"
+      "certification": "ISO 9001:2015, ISO 14001:2015"
     }
     </script>
 </head>
@@ -172,22 +436,129 @@ We leverage over 20 years of
             </div>
         </section>
 
+        <section class="wc-section" id="why-choose">
+            <div class="wc-header fade-in">
+                <p class="section-eyebrow">WHY CHOOSE US</p>
+                <h2 class="section-title">Medical Devices Built for Patient Care</h2>
+                <p class="section-subtitle">
+                    Hospitals, ambulance services, and healthcare professionals across India rely on Meditech
+                    Components for medical devices that hold up under real-world conditions.
+                </p>
+            </div>
+
+            <div class="wc-accordion" id="wc-accordion" role="list">
+
+                <div class="wc-item" role="listitem" tabindex="0" aria-expanded="false" data-index="0">
+                    <div class="wc-left">
+                        <span class="wc-num" aria-hidden="true">01</span>
+                        <div class="wc-icon-wrap" aria-hidden="true">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5 4 9 8 10 4-1 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+                        </div>
+                    </div>
+                    <div class="wc-body">
+                        <div class="wc-top-row">
+                            <h3 class="wc-title">Certified Quality</h3>
+                            <div class="wc-tags" aria-hidden="true">
+                                <span class="wc-tag">ISO 9001:2015</span>
+                                <span class="wc-tag">ISO 14001:2015</span>
+                            </div>
+                            <button class="wc-toggle" aria-label="Expand Certified Quality" tabindex="-1">
+                                <svg class="wc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                            </button>
+                        </div>
+                        <p class="wc-summary">Every product we supply is ISO 9001:2015 and ISO 14001:2015 certified — tested and verified for clinical use.</p>
+                        <div class="wc-expand" aria-hidden="true">
+                            <p class="wc-detail-text">Our catalog spans AEDs, ambulance stretchers, and evacuation wheelchairs, each selected and rigorously tested to support superior patient care. We don't compromise on standards — because your patients can't afford us to.</p>
+                            <a href="{{ url_for('trust') }}" class="wc-cta">View our certifications <span aria-hidden="true">→</span></a>
+                        </div>
+                    </div>
+                    <div class="wc-progress-bar" aria-hidden="true"></div>
+                </div>
+
+                <div class="wc-item" role="listitem" tabindex="0" aria-expanded="false" data-index="1">
+                    <div class="wc-left">
+                        <span class="wc-num" aria-hidden="true">02</span>
+                        <div class="wc-icon-wrap" aria-hidden="true">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+                        </div>
+                    </div>
+                    <div class="wc-body">
+                        <div class="wc-top-row">
+                            <h3 class="wc-title">Decades of Expertise</h3>
+                            <div class="wc-tags" aria-hidden="true">
+                                <span class="wc-tag">20+ Years</span>
+                                <span class="wc-tag">Ajil Fibretech</span>
+                            </div>
+                            <button class="wc-toggle" aria-label="Expand Decades of Expertise" tabindex="-1">
+                                <svg class="wc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                            </button>
+                        </div>
+                        <p class="wc-summary">Backed by over two decades of ambulance manufacturing through Ajil Fibretech — we understand medical equipment from the inside out.</p>
+                        <div class="wc-expand" aria-hidden="true">
+                            <p class="wc-detail-text">We bring deep field knowledge to every device we supply: how it's loaded into an ambulance, how it holds up in transit, how fast a paramedic can deploy it. That real-world experience shapes which products we choose to carry and which we don't.</p>
+                            <a href="{{ url_for('trust') }}" class="wc-cta">Learn about our background <span aria-hidden="true">→</span></a>
+                        </div>
+                    </div>
+                    <div class="wc-progress-bar" aria-hidden="true"></div>
+                </div>
+
+                <div class="wc-item" role="listitem" tabindex="0" aria-expanded="false" data-index="2">
+                    <div class="wc-left">
+                        <span class="wc-num" aria-hidden="true">03</span>
+                        <div class="wc-icon-wrap" aria-hidden="true">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 20h5v-2a4 4 0 0 0-3-3.87M9 20H4v-2a4 4 0 0 1 3-3.87m5-9.13a4 4 0 1 1 0 8 4 4 0 0 1 0-8z"/><path d="M16 8a4 4 0 1 1 0 8"/></svg>
+                        </div>
+                    </div>
+                    <div class="wc-body">
+                        <div class="wc-top-row">
+                            <h3 class="wc-title">Direct Procurement Support</h3>
+                            <div class="wc-tags" aria-hidden="true">
+                                <span class="wc-tag">Pan-India</span>
+                                <span class="wc-tag">Hospital-Direct</span>
+                            </div>
+                            <button class="wc-toggle" aria-label="Expand Direct Procurement Support" tabindex="-1">
+                                <svg class="wc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                            </button>
+                        </div>
+                        <p class="wc-summary">We work directly with hospital procurement teams — no middlemen, no delays. From a single bay to a full hospital network.</p>
+                        <div class="wc-expand" aria-hidden="true">
+                            <p class="wc-detail-text">Whether you're equipping one ambulance or rolling out devices across a multi-facility network, our team works with you end-to-end: spec matching, documentation, and post-delivery support. You'll always talk to a person who knows your equipment.</p>
+                            <a href="{{ url_for('trust') }}#contact-section" class="wc-cta">Talk to our team <span aria-hidden="true">→</span></a>
+                        </div>
+                    </div>
+                    <div class="wc-progress-bar" aria-hidden="true"></div>
+                </div>
+
+            </div>
+        </section>
+
         <section class="trusted-partners text-center">
             <p class="section-eyebrow">OUR TRUSTED PARTNERS</p>
             <h2 class="section-title">Collaborating with Industry Leaders</h2>
             <p class="section-subtitle">We supply essential components to top healthcare institutions and technology
                 partners.</p>
 
-            <div class="partners-grid fade-in">
-                <a href="{{ url_for('products') }}?brand=KARTSANA" class="partner-logo" aria-label="View KARTSANA products">
-                    <img src="{{ url_for('static', filename='partner1.png') }}" alt="KARTSANA">
-                </a>
-                <a href="{{ url_for('products') }}?brand=AMI Italia" class="partner-logo" aria-label="View AMI Italia products">
-                    <img src="{{ url_for('static', filename='partner2.png') }}" alt="AMI Italia">
-                </a>
-                <div class="partner-logo"><img src="{{ url_for('static', filename='partner3.png') }}" alt="Partner 3"></div>
-                <div class="partner-logo"><img src="{{ url_for('static', filename='partner4.png') }}" alt="Partner 4"></div>
-                <div class="partner-logo"><img src="{{ url_for('static', filename='partner5.png') }}" alt="Partner 5"></div>
+            <div class="partners-marquee-wrap">
+                <div class="partners-marquee-track">
+                    <a href="{{ url_for('products') }}?brand=KARTSANA" class="partner-logo" aria-label="View KARTSANA products">
+                        <img src="{{ url_for('static', filename='partner1.png') }}" alt="KARTSANA">
+                    </a>
+                    <a href="{{ url_for('products') }}?brand=AMI Italia" class="partner-logo" aria-label="View AMI Italia products">
+                        <img src="{{ url_for('static', filename='partner2.png') }}" alt="AMI Italia">
+                    </a>
+                    <div class="partner-logo"><img src="{{ url_for('static', filename='partner3.png') }}" alt="Partner 3"></div>
+                    <div class="partner-logo"><img src="{{ url_for('static', filename='partner4.png') }}" alt="Partner 4"></div>
+                    <div class="partner-logo"><img src="{{ url_for('static', filename='partner5.png') }}" alt="Partner 5"></div>
+                    <a href="{{ url_for('products') }}?brand=KARTSANA" class="partner-logo" aria-label="View KARTSANA products" tabindex="-1" aria-hidden="true">
+                        <img src="{{ url_for('static', filename='partner1.png') }}" alt="">
+                    </a>
+                    <a href="{{ url_for('products') }}?brand=AMI Italia" class="partner-logo" aria-label="View AMI Italia products" tabindex="-1" aria-hidden="true">
+                        <img src="{{ url_for('static', filename='partner2.png') }}" alt="">
+                    </a>
+                    <div class="partner-logo" aria-hidden="true"><img src="{{ url_for('static', filename='partner3.png') }}" alt=""></div>
+                    <div class="partner-logo" aria-hidden="true"><img src="{{ url_for('static', filename='partner4.png') }}" alt=""></div>
+                    <div class="partner-logo" aria-hidden="true"><img src="{{ url_for('static', filename='partner5.png') }}" alt=""></div>
+                </div>
             </div>
         </section>
     </main>
@@ -322,7 +693,7 @@ We leverage over 20 years of
     </div>
 </dialog> <dialog id="cart-checkout-modal" class="modal">
     <div class="modal-content">
-        <button type="button" id="close-checkout-modal" class="btn-close" onclick="document.getElementById('cart-checkout-modal').close()">&times;</button>
+        <button type="button" id="close-checkout-modal" class="btn-close" onclick="closeModalAnimated(document.getElementById('cart-checkout-modal'))">&times;</button>
         <h2>Request Combined Quote</h2>
         <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Your chosen items will automatically be submitted with this request.</p>
         
@@ -421,6 +792,141 @@ We leverage over 20 years of
     })();
 </script>
     <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+<script>
+/* ============================================================
+   INTERACTIVE ENHANCEMENTS — index.html
+   Runs after DOMContentLoaded to avoid blocking render.
+============================================================ */
+document.addEventListener('DOMContentLoaded', function () {
+
+    /* ── 1. Why-Choose Accordion ───────────────────────────── */
+    const items = document.querySelectorAll('.wc-item');
+
+    function openItem(item) {
+        items.forEach(function(i) {
+            if (i !== item) {
+                i.setAttribute('aria-expanded', 'false');
+                var exp = i.querySelector('.wc-expand');
+                if (exp) exp.setAttribute('aria-hidden', 'true');
+                var btn = i.querySelector('.wc-toggle');
+                if (btn) btn.setAttribute('aria-label', btn.getAttribute('aria-label').replace('Collapse', 'Expand'));
+            }
+        });
+        var isOpen = item.getAttribute('aria-expanded') === 'true';
+        item.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+        var expand = item.querySelector('.wc-expand');
+        if (expand) expand.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
+    }
+
+    items.forEach(function(item) {
+        item.addEventListener('click', function() { openItem(item); });
+        item.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openItem(item);
+            }
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                var next = item.nextElementSibling;
+                if (next && next.classList.contains('wc-item')) next.focus();
+            }
+            if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                var prev = item.previousElementSibling;
+                if (prev && prev.classList.contains('wc-item')) prev.focus();
+            }
+        });
+    });
+
+    /* Auto-open first item after a short delay for visual interest */
+    if (items.length > 0) {
+        var wc = document.getElementById('why-choose');
+        if (wc) {
+            var autoObs = new IntersectionObserver(function(entries, obs) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        setTimeout(function() {
+                            if (items[0].getAttribute('aria-expanded') !== 'true') {
+                                openItem(items[0]);
+                            }
+                        }, 400);
+                        obs.unobserve(wc);
+                    }
+                });
+            }, { threshold: 0.3 });
+            autoObs.observe(wc);
+        }
+    }
+
+    /* ── 2. Hero Cursor Glow ────────────────────────────────── */
+    var hero = document.querySelector('.hero-section');
+    if (hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var glow = document.createElement('div');
+        glow.id = 'hero-cursor-glow';
+        hero.appendChild(glow);
+
+        hero.addEventListener('mousemove', function(e) {
+            var rect = hero.getBoundingClientRect();
+            glow.style.left = (e.clientX - rect.left) + 'px';
+            glow.style.top  = (e.clientY - rect.top)  + 'px';
+        });
+        hero.addEventListener('mouseleave', function() {
+            glow.style.opacity = '0';
+        });
+        hero.addEventListener('mouseenter', function() {
+            glow.style.opacity = '1';
+        });
+    }
+
+    /* ── 3. Product Card Subtle Tilt ───────────────────────── */
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        !('ontouchstart' in window)) {
+        document.querySelectorAll('.product-card').forEach(function(card) {
+            card.addEventListener('mousemove', function(e) {
+                var r = card.getBoundingClientRect();
+                var x = (e.clientX - r.left) / r.width  - 0.5; /* -0.5 to 0.5 */
+                var y = (e.clientY - r.top)  / r.height - 0.5;
+                card.style.transform = 'translateY(-7px) rotateX(' + (-y * 6) + 'deg) rotateY(' + (x * 6) + 'deg)';
+            });
+            card.addEventListener('mouseleave', function() {
+                card.style.transform = '';
+                card.style.transition = 'transform 0.4s ease, box-shadow 0.28s ease';
+            });
+            card.addEventListener('mouseenter', function() {
+                card.style.transition = 'transform 0.1s ease, box-shadow 0.28s ease';
+            });
+        });
+    }
+
+    /* ── 4. Stats Strip Counter Animation ──────────────────── */
+    var statsStrip = document.getElementById('stats-strip');
+    if (statsStrip) {
+        var statsObs = new IntersectionObserver(function(entries, obs) {
+            entries.forEach(function(entry) {
+                if (!entry.isIntersecting) return;
+                entry.target.querySelectorAll('.stat-num[data-target]').forEach(function(el) {
+                    var target = parseFloat(el.dataset.target);
+                    var suffix = el.dataset.suffix || '';
+                    var isFloat = el.dataset.float === '1';
+                    var duration = 1400;
+                    var start = performance.now();
+                    (function tick(now) {
+                        var p = Math.min((now - start) / duration, 1);
+                        var eased = 1 - Math.pow(1 - p, 3);
+                        var val = eased * target;
+                        el.textContent = (isFloat ? val.toFixed(1) : Math.round(val)) + suffix;
+                        if (p < 1) requestAnimationFrame(tick);
+                    })(start);
+                });
+                obs.unobserve(entry.target);
+            });
+        }, { threshold: 0.5 });
+        statsObs.observe(statsStrip);
+    }
+
+});
+</script>
 </body>
 
 </html>

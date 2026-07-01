@@ -971,6 +971,52 @@ html {
     text-align: center;
 }
 
+.why-choose-section {
+    padding: 80px 5%;
+    background-color: var(--bg-body);
+    text-align: center;
+}
+
+.why-choose-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: 50px auto 0;
+}
+
+.why-choose-card {
+    background-color: var(--bg-white);
+    border-radius: var(--radius-lg);
+    padding: 40px 30px;
+    text-align: left;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.why-choose-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: rgba(212, 175, 55, 0.12);
+    color: var(--color-accent);
+    margin-bottom: 20px;
+}
+
+.why-choose-card h3 {
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+}
+
+.why-choose-card p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
 .partners-grid {
     display: flex;
     flex-wrap: wrap;
@@ -1698,6 +1744,11 @@ a.partner-logo {
         gap: 40px;
     }
 
+    .why-choose-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
     .footer-bottom {
         flex-direction: column;
         gap: 15px;
@@ -2250,6 +2301,11 @@ a.partner-logo {
     .featured-grid {
         grid-template-columns: 1fr;
         gap: 40px;
+    }
+
+    .why-choose-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
     }
 
     .footer-bottom {
@@ -3382,6 +3438,7 @@ a.partner-logo {
     .cat-strip-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); max-width: 100%; }
 
     .featured-grid { grid-template-columns: 1fr; }
+    .why-choose-grid { grid-template-columns: 1fr; }
 
     .about-image-badge { display: none; }
 
@@ -3703,5 +3760,140 @@ body {
     }
     .privacy-main-title {
         font-size: 2rem;
+    }
+}
+
+/* ================================================================
+   ANIMATION IMPROVEMENTS — index.html
+   Added: hero stagger, card scroll-reveal, sticky header transition,
+          why-choose stagger, partners marquee, modal open/close,
+          reduced-motion support.
+   ================================================================ */
+
+/* 1. Hero staggered entrance
+      Each child element fades/slides in with a cascading delay.
+      Uses `both` fill-mode so elements stay hidden before starting. */
+.hero-section .hero-badge    { animation: mc-fadeIn .5s ease-out .1s both; }
+.hero-section .hero-title    { animation: mc-fadeUp .65s cubic-bezier(0.22,1,0.36,1) .25s both; }
+.hero-section .hero-subtitle { animation: mc-fadeUp .65s cubic-bezier(0.22,1,0.36,1) .42s both; }
+.hero-section .hero-buttons  { animation: mc-fadeUp .65s cubic-bezier(0.22,1,0.36,1) .58s both; }
+
+@keyframes mc-fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0);    }
+}
+@keyframes mc-fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* 2. Sticky header — add transition to BASE state so it animates
+      smoothly in both scroll directions (down AND back up). */
+.main-header {
+    transition: padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 3. Product card hover lift upgrade
+      Previously only worked on .fade-in.is-visible; now always active.
+      Overlay button slides up from below on hover. */
+.product-card {
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+.product-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 18px 36px rgba(0,0,0,0.12);
+}
+.product-card:hover .card-hover-overlay {
+    opacity: 1;
+}
+.product-card:hover .card-hover-overlay .btn {
+    transform: translateY(0);
+}
+
+/* 4. Why-choose cards — scroll-triggered stagger
+      JS (below) observes each card and adds is-visible + a stagger delay. */
+.why-choose-card {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.why-choose-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 5. Partners infinite marquee
+      Wrap .partners-grid content inside .partners-marquee-track (see index.html).
+      Edge fade uses mask so logos dissolve cleanly into nothing. */
+.partners-marquee-wrap {
+    overflow: hidden;
+    margin: 40px auto 0;
+    max-width: var(--container-width);
+    -webkit-mask: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+    mask: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+.partners-marquee-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    animation: mc-marquee 22s linear infinite;
+}
+.partners-marquee-track:hover {
+    animation-play-state: paused;
+}
+.partners-marquee-track .partner-logo {
+    width: 160px;
+    flex-shrink: 0;
+}
+@keyframes mc-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+/* 6. Modal open/close animation
+      dialog[open] fires the enter keyframe automatically.
+      .closing class is added by closeModalAnimated() in app.js
+      before calling .close(), giving the exit animation time to run. */
+dialog.modal[open] {
+    animation: mc-modalIn 0.28s cubic-bezier(0.22,1,0.36,1);
+}
+@keyframes mc-modalIn {
+    from { opacity: 0; transform: scale(0.94) translateY(14px); }
+    to   { opacity: 1; transform: scale(1)    translateY(0);    }
+}
+dialog.modal.closing {
+    animation: mc-modalOut 0.18s ease-in forwards;
+    pointer-events: none;
+}
+@keyframes mc-modalOut {
+    to { opacity: 0; transform: scale(0.94) translateY(14px); }
+}
+
+/* 7. Respect prefers-reduced-motion.
+      Disables ALL custom animations and transitions for users who
+      have enabled "reduce motion" in their OS accessibility settings. */
+@media (prefers-reduced-motion: reduce) {
+    .hero-section .hero-badge,
+    .hero-section .hero-title,
+    .hero-section .hero-subtitle,
+    .hero-section .hero-buttons {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    .why-choose-card {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    .partners-marquee-track {
+        animation: none !important;
+    }
+    .product-card {
+        transition: none !important;
+    }
+    dialog.modal[open],
+    dialog.modal.closing {
+        animation: none !important;
     }
 }

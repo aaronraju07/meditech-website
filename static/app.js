@@ -269,6 +269,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.fade-in, .is-loading').forEach(el => observer.observe(el));
 
+    // ======== 7a. Product Card Stagger (home featured grid) ========
+    // Assigns a progressively increasing transition-delay to each card
+    // so they cascade in one-by-one instead of all at once.
+    document.querySelectorAll('.featured-grid .product-card').forEach((card, i) => {
+        card.style.transitionDelay = (i * 0.13) + 's';
+    });
+
+    // ======== 7b. Why-Choose Cards — Stagger Observer ========
+    const whyCards = document.querySelectorAll('.why-choose-card');
+    if (whyCards.length > 0) {
+        const whyObs = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-visible');
+                obs.unobserve(entry.target);
+            });
+        }, { threshold: 0.15 });
+
+        whyCards.forEach((card, i) => {
+            card.style.transitionDelay = (i * 0.14) + 's';
+            whyObs.observe(card);
+        });
+    }
+
+    // ======== 7c. Animated Modal Close Helper ========
+    // Adds .closing CSS class first (triggers exit keyframe),
+    // then calls .close() only after the animation finishes.
+    function closeModalAnimated(dialog) {
+        if (!dialog || typeof dialog.close !== 'function') return;
+        // If already closing, skip
+        if (dialog.classList.contains('closing')) return;
+        dialog.classList.add('closing');
+        dialog.addEventListener('animationend', () => {
+            dialog.classList.remove('closing');
+            dialog.close();
+        }, { once: true });
+    }
+    // Expose globally so inline onclick handlers can call it
+    window.closeModalAnimated = closeModalAnimated;
+
     // ======== 8. Counter Animation (Stats Bar) ========
     const counterEls = document.querySelectorAll('.stat-item[data-count]');
     if (counterEls.length > 0) {
@@ -410,8 +450,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (cartIcon && cartModal) {
         cartIcon.addEventListener('click', () => { updateCart(); cartModal.showModal(); });
-        closeCartBtn?.addEventListener('click', () => cartModal.close());
-        cartModal.addEventListener('click', (e) => { if (e.target === cartModal) cartModal.close(); });
+        closeCartBtn?.addEventListener('click', () => closeModalAnimated(cartModal));
+        cartModal.addEventListener('click', (e) => { if (e.target === cartModal) closeModalAnimated(cartModal); });
     }
 
     if (clearCartBtn) {
@@ -453,8 +493,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 quoteModal.showModal();
             });
         });
-        closeQuoteBtn?.addEventListener('click', () => quoteModal.close());
-        quoteModal.addEventListener('click', (e) => { if (e.target === quoteModal) quoteModal.close(); });
+        closeQuoteBtn?.addEventListener('click', () => closeModalAnimated(quoteModal));
+        quoteModal.addEventListener('click', (e) => { if (e.target === quoteModal) closeModalAnimated(quoteModal); });
     }
 
     // ======== 12. Product Listing Filter ========
